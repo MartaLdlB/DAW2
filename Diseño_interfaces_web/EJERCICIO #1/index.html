@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Sótano de los Libros</title>
+    <style>
+        header {
+            background-color: rgb(35,35,36);
+            display: flex;
+           
+        }
+
+        /* Opciones de la barra */
+        .opciones {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .barra {
+            background-color: yellow;
+            border: 2px solid black;
+            height: 20px;
+            width: 60px;
+        }
+
+        .img_barras {
+            padding-left: 20px;
+            padding-top: 55px;
+        }
+
+        .div_logo {
+            flex-grow: 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Sección de iconos de redes */
+        .insta, .x, .carrito {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .logos {
+            height: 50px;
+            width: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .logos:hover {
+            transform: scale(1.3);
+            box-shadow: 10px 5px 5px rgb(68, 68, 68);
+        }
+
+        /* Estilo del menú principal */
+        nav {
+            background-color: rgb(102, 102, 102);
+        }
+
+        #menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            background-color: rgb(102, 102, 102);
+        }
+
+        #menu ul li {
+            position: relative;
+            flex-grow: 1;
+            text-align: center;
+            display: block;
+            color: #fff;
+            font-size: 15px;
+            padding: 10px;
+            text-decoration: none;
+            font-family: 'Times New Roman', Times, serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #menu ul a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Times New Roman', Times, serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Efecto hover en el menú principal */
+        #menu ul li:hover {
+            background: rgb(131, 131, 131);
+        }
+
+        /* Submenú desplegable */
+        #menu ul ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgb(131, 131, 131);
+            padding: 0;
+           /* z-index: 999;*/
+        }
+
+        #menu ul ul li {
+            width: 100%;
+        }
+
+        #menu ul ul a {
+            width: 100%;
+            position: relative;
+            flex-grow: 1;
+            /*text-align: center;*/
+            display: block;
+            color: #fff;
+            font-size: 10px;
+            font-family: 'Times New Roman', Times, serif;
+            text-transform: uppercase;         
+        }
+
+        /* Mostrar submenú al pasar el ratón */
+        #menu ul li:hover > ul {
+            display: block;
+        }
+
+        /* Efecto hover en los enlaces del submenú */
+        #menu ul ul li:hover {
+            background: rgb(180, 180, 180);
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <!-- Sección de barras -->
+        <div class="opciones">
+            <div class="barra"></div>
+            <div class="barra"></div>
+            <div class="barra"></div>
+        </div>
+
+        <!-- Icono de Instagram -->
+        <div class="insta">
+            <a href="https://www.instagram.com/?hl=es">
+                <img class="logos" src="img/insta.png" alt="Instagram">
+            </a>
+        </div>
+
+        <!-- Logo del sitio -->
+        <div class="div_logo">
+            <img class="img" src="img/logo.png" alt="Logo" height="150px" width="200px">
+        </div>
+
+        <!-- Icono de X -->
+        <div class="x">
+            <a href="https://x.com/?lang=es">
+                <img class="logos" src="img/x.png" alt="X">
+            </a>
+        </div>
+
+        <!-- Icono del carrito -->
+        <div class="carrito">
+            <a href="carrito.html">
+                <img class="logos" src="img/carrito.png" alt="Carrito">
+            </a>
+        </div>
+    </header>
+
+    <!-- Menú de navegación -->
+    <nav id="menu">
+        <ul>
+            <li>Opciones
+                <ul>
+                    <li><a href="#">Rebajas</a></li>
+                    <li><a href="#">Enlaces de interés</a></li>
+                    <li><a href="sobreNosotros.html">Sobre nosotros</a></li>
+                </ul>
+            </li>
+            <li><a href="librosFantasia.html">Libros de fantasía</a></li>
+            <li><a href="#">Libros de misterio</a></li>
+            <li><a href="#">Libros de terror</a></li>
+            <li><a href="#">Libros de romance</a></li>
+            <li><a href="#">Libros de época</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <!-- Contenido de la página -->
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagen</title>
+    <style>
+        body{
+            background-image: url("https://img.freepik.com/vector-premium/patron-fisuras-geometria-abstracta_185324-10.jpg");
+        }
+        h2,p{
+            background-color: crimson;
+            width: max-content; /*con esto se ajusta el color del fondo al ancho maximo del texto*/
+        }
+        .fondo-texto-alt{
+            background-color: red;
+            color:cyan;
+            width: max-content;
+        }
+        .img:hover{ /*se modifica el texto si el ratón pasa por encima*/
+            background-color: yellow;
+            color: purple;
+            width: max-content;
+        }
+        
+    </style>
+</head>
+<body>
+    <h2>HTML Images</h2>
+    <p>HTML images are defined with the img tag:</p>
+    <img src="https://cdn.icon-icons.com/icons2/112/PNG/512/html5_18891.png" alt="Foto de HTML5">
+    <img class="fondo-texto-alt img"  src="descargas.png" alt="Ejemplo que no va a salir">
+</body>
+</html>
