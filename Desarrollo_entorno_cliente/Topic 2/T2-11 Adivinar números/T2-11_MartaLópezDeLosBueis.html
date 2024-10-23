@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T2-11 Adivinar números
+    </title>
+</head>
+<body>
+    
+    <script>
+
+/*
+
+Crea una página que juegue con el usuario a adivinar un número. 
+
+La página genera un número del 1 al 100.
+La página pregunta al usuario cuál cree que es el número.
+Si el usuario falla, se indica si es menor o mayor y se le vuelve a preguntar.
+Si el usuario acierta, se felicita y se indica que ha acabado el juego, indicando el número de intentos.
+Si el usuario escribe algo que no es un número, se indica el error y vuelve a preguntar.
+Si el usuario cancela en algún momento, el juego termina indicando que se ha cancelado.
+Cuando acaba el juego de cualquiera de las formas, se permite volver a jugar mediante un cuadro de confirmación.
+Muestra por console.log el número calculado para poder comprobar el acierto.
+
+*/
+
+        var numeroAleatorio= parseInt(Math.random() * (100 - 1)+1);
+        var numeroUsuario=0;
+        var numeroDeIntentos=0;
+        var salir=false;
+        console.log(numeroAleatorio);//Muestra por console.log el número calculado para poder comprobar el acierto.
+        do{
+        alert("Estoy pensando en un numero, ¿adivinas cual? o ¿le tienes miedo al exito? ( ͡❛ ͜ʖ ͡❛) ");
+        
+        numeroUsuario=prompt("Prueba tu suerte: ");
+        //if(typeof(numeroUsuario=="string")){}
+           
+       
+       
+        if(numeroUsuario===null){
+            alert("Parece que le tienes miedo al exito");
+        }
+       
+        while(numeroUsuario!=numeroAleatorio){
+            if(numeroUsuario!=numeroAleatorio){
+                numeroDeIntentos++;
+            if(numeroAleatorio>numeroUsuario){
+                numeroUsuario=prompt("El numero introducido "+numeroUsuario+" es menor que el numero que estoy pensado, sigue intentandolo (te puedes morir del asco, pero dale tu puedes)");
+            }else{
+                numeroUsuario=prompt("El numero introducido "+numeroUsuario+" es mayor que el numero que estoy pensado, sigue intentandolo (te puedes morir del asco, pero dale tu puedes)");
+            }
+            }
+         }
+        if(numeroAleatorio==numeroUsuario){ 
+          /*  document.body.style.background = "url('https://i.pinimg.com/originals/70/d6/02/70d6028a8d9044d969c0acb7685fd2e1.gif')";
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundSize = "cover";
+          */
+            numeroDeIntentos++;
+            salir=confirm("HAS GANADO, has usado "+numeroDeIntentos+" intentos, ¿Quieres volver a jugar?");
+           
+            
+        }
+        
+        }while(salir==true);
+        
+       
+</script>
+</body>
+</html>

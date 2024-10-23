@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T3-3 Mostrar asteriscos para un array</title>
+    <meta name="author" content="Marta López de los Bueis">
+</head>
+<body>
+    <div id="div"></div>
+    <script>
+        /*Creamos la variable y el array*/
+        var numeroAleatorio=0;
+        var arrayAleatorios=new Array();
+       
+
+        /*Generamos un numero aleatorio para cada posicion del array*/
+        for (let i = 1; i < 20; i++) {
+            numeroAleatorio=parseInt(Math.random()*(50-1)+1);
+            arrayAleatorios.push(numeroAleatorio);
+        }
+
+        /*Imprimimos cada elemento del array junto con la cantidad de elementos que tiene con asteriscos*/
+        arrayAleatorios.forEach( (numero, posicion) => {
+            document.write("Posición: "+posicion+" numero de asteriscos: "+numero+" "+"*".repeat(numero)+"<br>");
+        });
+
+
+
+    </script>
+
+</body>
+</html>

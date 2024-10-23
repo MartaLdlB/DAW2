@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diferencias entre for in y for of</title>
+</head>
+<body>
+    <script>
+
+        const datos=["Marta","López","de","los","Bueis",,];
+
+        const nombre="Marta López";
+        console.log("Como funciona for in con un array");
+        for (let i in datos) {
+            console.log(i);
+        }
+
+        console.log("Como funciona for in con una cadena");
+        for (let i in nombre) {
+            console.log(i);
+        }
+
+
+        console.log("Como funciona for of con un array");
+        for (let i of datos) {
+            console.log(i);
+        }
+
+        
+        console.log("Como funciona for of con una cadena");
+        for (let i of nombre) {
+            console.log(i);
+        }
+
+
+    </script>
+</body>
+</html>

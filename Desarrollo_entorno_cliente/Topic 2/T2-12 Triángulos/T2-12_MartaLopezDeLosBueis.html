@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T2-12 Triángulos</title>
+</head>
+<body>
+    <script>
+        /*Crea una página que pinte triángulos dada una longitud. 
+
+        La página pide al usuario un número entero positivo.
+        Si el usuario no introduce un número entero positivo, la página no hará nada.
+        Si el usuario manda un número, la página dibujará un triángulo con tantos asteriscos por lado como se indique en el número.*/
+        var numero=0; //numero que va a introducir el usuario
+        const caracter="*"; //caracter que vamos a imprimir
+        var cadenaCaracter=""; //este sera el string que se va a ir imprimiendo
+         numero=prompt("Introduce un numero positivo"); //preguntamos por el numero
+        if(numero>0){ //si es positivo
+             for (let i= 0; i < numero; i++) {
+                var randomRojo=parseInt(Math.random() * 256);
+                var randomAzul=parseInt(Math.random() * 256);
+                var randomVerde=parseInt(Math.random() * 256);
+                cadenaCaracter += caracter;  //va concatenando el caracter hasta llegar al numero introducido
+                document.write('<span style="color: rgb(' + randomRojo + ',' + randomVerde + ',' + randomAzul + ');">' + cadenaCaracter + '</span><br>');//con esto imprimimos por pantalla con un salto de linea
+                //al crear un contenedor para cada linea podemos imprimirlas con un color aleatorio cada una 
+            }
+        } //si el numero es negativo, la pagina no hace nada
+           
+    </script>
+</body>
+</html>

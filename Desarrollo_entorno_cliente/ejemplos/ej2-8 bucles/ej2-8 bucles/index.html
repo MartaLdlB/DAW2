@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="https://iesventura.es/_ies_datos/LOGO_new.jpg">
+    <title>Ejemplo 2-8</title>
+</head>
+
+<body>
+    <h3>Bucles</h3>
+    <p>
+        Cuando queremos que un trozo de código se ejecute varias veces seguidas, utilizamos bucles.
+        <br><br>
+        En JavaScript tenemos los siguientes:
+    <dl>
+        <dt><code><b>while</b>(condición) { acción }</code></dt>
+        <dd>Repite un bloque de código siempre que la condición previa se cumpla.</dd>
+        <dt><code><b>do</b> { acción }<br><b>while</b>(condición)</code></dt>
+        <dd>Igual que el anterior, pero primero recorre el código y después comprueba la condición para volver a recorrerlo.</dd>
+        <dt><code><b>for</b>(condición) { acción }</code></dt>
+        <dd>Ejecuta un bloque de código un número de veces. Normalmente, se utiliza un iterador en la condición.</dd>
+        <dt><code><b>for</b>(clave <b>in</b> objeto) { acción }</code></dt>
+        <dd>Como el anterior, pero el iterador será una propiedad de un objeto dado.</dd>
+        <dt><code><b>for</b>(variable <b>of</b> iterable) { acción }</code></dt>
+        <dd>Otro subtipo de <code>for</code> en el que el iterador es un valor del objeto iterable dado.</dd>
+    </dl>
+    <br>
+    Todos los tipos de bucles se pueden utilizar indistintamente, aunque será preferible uno u otro según el caso. Por ejemplo, para recorrer un vector, es más intuitivo y eficiente utilizar un <code>for</code> que un <code>while</code>.
+    </p>
+    
+    <br><hr><br>
+    
+    <h3>Saltos</h3>
+    <ul>
+        <li>Cuando queremos salir de un bucle, utilizamos la instrucción <code>break</code>.</li>
+        <li>Cuando queremos saltar una iteración dentro de un bucle, utilizamos la instrucción <code>continue</code>.</li>
+    </ul>
+    
+    <script src=""></script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T3-2_Cifrado</title>
+</head>
+<body>
+    
+    <form>
+
+        <label for="texto">Introduce un texto: </label><br>
+        <input type="text" name="texto" id="texto"><br><br>
+        <label for="clave">Introduce una clave numerica</label><br>
+        <input type="number" name="clave" id="clave"><br><br>
+        <button onclick="cifrado()">Pulsa para cifrar</button>
+
+    </form>
+
+    <script>
+        function cifrado(){
+            var texto="";//texto que introduce el usuario
+            var clave=0; //clave numerica que escribe el usuario
+            var textoCifrado="";//texto cifrado
+            var caracter="";//donde almacenamos el caracter
+            texto=document.getElementById(texto).value;
+            clave=document.getElementById(clave).value;
+
+            for (let i = 0; i < texto.length; i++) {
+                for (let j = 0; j < clave.length; j++) {
+                    caracter=texto.charCodeAt(i);
+                    caracter=caracter+clave.charAt(j);
+                   
+                }
+                 textoCifrado+=String.fromCharCode(caracter);
+            }
+            console.log(textoCifrado);
+            document.write("El texto difrado es: " + textoCifrado);
+            }
+       
+    </script>
+</body>
+</html>

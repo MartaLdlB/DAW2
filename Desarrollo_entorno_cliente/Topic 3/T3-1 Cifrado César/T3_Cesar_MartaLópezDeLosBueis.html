@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T3-1 Cifrado César</title>
+</head>
+<body>
+    <h1>Cifrado y descifrado Cesar</h1>
+    <script>
+
+        var texto="";
+        var clave=0;
+        var textoCifrado="";
+        function generarCesar() {
+
+            //almacenamos los datos recibidos del formulario en variables
+            texto = document.getElementById("texto").value;
+            clave = parseInt(document.getElementById("numero").value); 
+            
+            //creamos las variables donde vamos a almacenar el codifo ASCII y la cifra
+            var codigo;
+            var cifra;
+
+            for (let i = 0; i < texto.length; i++) {
+                codigo = texto.charCodeAt(i); // Obtenemos el código ASCII del carácter en la posicion i
+                cifra = codigo + clave; // Sumamos la clave al código ASCII del caracter en la posicion i
+                textoCifrado += String.fromCharCode(cifra); // concatenamos cada caracter nuevo que generamos ya codificado
+            }
+
+            
+            var cesarDiv= document.getElementById("cesar");
+            cesarDiv.textContent=textoCifrado;
+        
+        }
+
+        function deshacerCesar() {
+            var textoDescifrado="";
+            //creamos las variables donde vamos a almacenar el codifo ASCII y la cifra
+            var codigo;
+            var cifra;
+
+            for (let i = 0; i < texto.length; i++) {
+                codigo = textoCifrado.charCodeAt(i); // Obtenemos el código ASCII del carácter en la posicion i
+                cifra = codigo - clave; // Sumamos la clave al código ASCII del caracter en la posicion i
+                textoDescifrado += String.fromCharCode(cifra); // concatenamos cada caracter nuevo que generamos ya codificado
+        }
+       
+        var noCesarDiv= document.getElementById("noCesar");
+        noCesarDiv.textContent=textoDescifrado;
+        }
+
+
+    </script>
+
+
+    <label for="texto">Introduce un texto que quieras: </label><br>
+    <input type="text" name="texto" id="texto"><br><br>
+
+    <label for="texto">Introduce la clave que quieras: </label><br>
+    <input type="number" name="numero" id="numero"><br><br>
+    <button onclick="generarCesar()">enviar</button><br><br>
+    <div id="cesar"></div><br><br>
+    <button onclick="deshacerCesar()">Deshacer cifrado</button><br><br>
+    <div id="noCesar"></div>
+
+</body>
+</html>

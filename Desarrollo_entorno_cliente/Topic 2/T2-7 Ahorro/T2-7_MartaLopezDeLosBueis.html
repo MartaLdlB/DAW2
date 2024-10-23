@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="" />
+    <link rel="icon" type="image/x-icon" href="https://iesventura.es/_ies_datos/LOGO_new.jpg">
+    <title>Tarea 2-8-1</title>
+</head>
+
+<body>
+    <script>
+        /* Pregunta al usuario si desea abrir una cuenta de ahorro.
+           - Si acepta, continúa con el programa. 
+           - Si no, vuelve a preguntar.
+        */
+        var quiereCuenta;
+        var ahorro=0;
+        var cantidadAhorro=0;
+        var dinero=0;
+        do{
+            quiereCuenta= confirm("¿desea abrir una cuenta de ahorro?"); //con confirm aparece una pestaña con la opcion de aceptar o cancelar¡
+        }while(quiereCuenta==false)
+        /* Solicita al usuario la cantidad positiva que desee ahorrar. */
+        cantidadAhorro=prompt("Introduce la cantidad de dinero que deseas ahorrar");
+        if(cantidadAhorro<=0){
+            cantidadAhorro=prompt("Por favor introduce un número en positivo, asi no se puede ahorrar");
+        }
+        /* Pregunta al usuario cuánto dinero quiere añadir. 
+        
+           El dinero se añadirá a lo ahorrado.
+           Cuando la hucha haya cumplido el objetivo,
+           se mostrará un texto de objetivo conseguido 
+           con la cantidad ahorrada.
+        */
+       do{
+        dinero = parseInt(prompt("Introduce la cantidad de dinero que quieras añadir a tu cuenta de ahorro "+ ahorro + " es la cantidad que llevas ahorrado"));
+        ahorro += dinero ;
+       }while( ahorro < cantidadAhorro);
+       alert("Has llegado a tu meta de ahorros de: "+ cantidadAhorro +" lereles, eres un maquina");
+    </script>
+</body>
+
+</html>

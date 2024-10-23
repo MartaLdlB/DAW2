@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T2-8 Pares e Impares</title>
+</head>
+<body>
+    <script>
+        var numeroPositivo=0;
+        
+        // Solicita al usuario un número entero positivo.
+       do{
+        numeroPositivo=prompt("Introduce un numero positivo");
+        try {
+            if(numeroPositivo<0){ //comprobamos que el numero no es negativo
+                throw new Error("No puede ser negativo");
+            }
+        } catch (error) {
+            alert("Error: " + error.message + ".") ;
+        }
+        }while(numeroPositivo<0); //en el caso de que el numero sea negativo lo volverá a preguntar constantemente hasta que se introduzca un numero positivo
+
+        // Imprime por consola los pares desde el 2 hasta ese número.
+        console.log("Los numeros pares desde el 2 de "+numeroPositivo+" son: ");
+        for (var index = 2; index <= numeroPositivo; index++) { //con un for que inicie en 2, mientras que sea menor que el numero introducido
+            console.log(index); //imprime el numero por consola
+            index++; //y le sumamos uno mas para que en el total de la suma se sume dos veces 1 y conseguir el siguiente par.
+        }
+
+        // Imprime por consola los impares desde ese número hasta el 1.
+        console.log("Los numeros impares desde el 1 de "+numeroPositivo+" son: ");
+        for (var index = 1; index <= numeroPositivo; index++) {
+            console.log(index);
+            index++;
+        }
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="https://iesventura.es/_ies_datos/LOGO_new.jpg">
+    <title>Ejemplo 2-4</title>
+</head>
+
+<body>
+    <h3>Operadores:</h3>
+    <dl>
+        <dt>Aritméticos</dt>
+        <dd>+ &nbsp; - &nbsp; * &nbsp; / &nbsp; % &nbsp; **</dd>
+        <dt>Relacionales</dt>
+        <dd>>  &nbsp; < &nbsp; >= &nbsp; <= &nbsp; != &nbsp; == &nbsp; === &nbsp; !==</dd>
+        <dt>De encadenamiento</dt>
+        <dd>+</dd>
+        <dt>Lógicos</dt>
+        <dd>&&  &nbsp; || &nbsp; !</dd>
+        <dt>De bit</dt>
+        <dd>&  &nbsp; | &nbsp; ^ &nbsp; ~ &nbsp; >>  &nbsp; << </dd>
+        <dt>De asignación</dt>
+        <dd>++  &nbsp; --  &nbsp; +=  &nbsp; -= &nbsp; *= &nbsp; /= &nbsp; **= &nbsp; &= &nbsp; |= &nbsp; ^= &nbsp; >>= &nbsp; <<= </dd>
+    </dl>
+    <script src="aritmeticos.js"></script>
+    <script src="relacionales.js"></script>
+    <script src="encadenamiento.js"></script>
+    <script src="logicos.js"></script>
+    <script src="bit.js"></script>
+    <!--<script src="asignacion.js"></script>-->
+
+    <script>
+        
+        /* 1. INICIALIZA DOS VARIABLES
+           2. SÚMALAS Y ASIGNA EL RESULTADO A LA PRIMERA
+           3. INDICA SI ES O NO PAR. */
+        let num1 = prompt('Escribe un número', '1');
+        let num2 = prompt('Escribe otro número', '2');
+        num1 += num2; //num1 = num1 + num2
+        (num1 % 2 == 0) ? console.log('Es par.') : console.log('No es par.');
+
+    </script>
+
+</body>
+
+</html>

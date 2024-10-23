@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="" >
+    <link rel="icon" type="image/x-icon" href="https://iesventura.es/_ies_datos/LOGO_new.jpg">
+    <title>Tarea 2-2</title>
+</head>
+<body> 
+    
+    <strong>Revisa la consola.</strong>
+    <div style="text-align: center;">
+        <img src="https://img1.picmix.com/output/pic/normal/1/8/8/9/9559881_1af17.gif" alt="gatitos">
+    </div>
+    
+  
+    <script>
+
+        //sacamos todas las variables creadas dentro de la funcion e if´s 
+        const A = 6;
+        var diferencia=0; //en un principio diferencia es declarado como constanto, pero al ser algo que va a cambiar no se puede declarar como constante ya que esta no permite que cambie
+        var logro; //esta variable al principio se encontraba dentro de la funcion conseguido() y a su vez dentro del if, por lo que para que pueda ser llamada
+                    //desde fuera de la funcion se tiene que inicializar desde fuera.
+      
+        //estas variables se encontraban dentro del if(A), ya que van a ser utilizada en varias zonas es mejor que las declaremos fuera
+        var suma=1;
+        var resta=1; //en un principio esta variable estaba puesta como let, lo que hace que salga por la consola que esta variable no esta definida
+        
+        const B = 6;
+        
+        
+        function conseguido() {
+            if (diferencia) { 
+               logro = true; //si diferencia fuese un numero que no fuese 0, seria true, por lo que entraria dentro de este buble
+                                // inicializando logro como true, pero no se imprimiría por consola ya que no se indica
+            }
+            console.log(logro); //siempre que diferencia sea false imprimirá por la consola, en este caso como en ningun
+                                //momento inicializa la variable logro directamente a false, (se sabe que es false por que la diferencia es 0)
+                                //lo que se imprime es indefinido
+        }
+        
+        if (A) { //como A es una constante 6, siempre va a ser true, por lo que siempre entra en este bucle
+            console.log('Los valores a operar son ' + A + ' y ' + B + '.');
+        }
+        
+        
+        if (suma) { //entra en este if ya que hemos inicializado la variable suma a 1, lo que es igual a true
+            console.log('Ejecutando la suma...');
+            console.log('La suma es: ' + (A + B));
+        }
+        
+        if (resta) { //entra en este if ya que hemos inicializado la variable resta a 1, lo que es igual a true
+            console.log('Ejecutando la resta...');
+            diferencia = A - B;
+            console.log('La diferencia es: ' + diferencia);
+        }
+        
+        conseguido(); //esta funcion se ejecuta antes, en la consola aparece como indefinido, ya que en este caso
+                    //diferencia es 0 (por la resta que es 6 - 6)por lo que es false, como no entra dentro del if(diferencia); para que pase a true deberia se un numero
+                    //que no sea 0 para que pueda ser true, en el caso de qe fuese true, en la consola no se imprimiria nada ya que
+                    //no existe dentro de ese if la posibilidad de imprimir por consola
+        logro ? console.log('¡Hurra!') : console.log('Ups...'); // operador condicional ternario
+                
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T2-13Tablas en HTML</title>
+    <style>
+        table, tr, td{
+            border: solid black dotted 2px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generador de Tabla</h1>
+
+    <label for="filas">Número de filas:</label>
+    <input type="number" id="filas" min="1" placeholder="Ingresa un número positivo">
+    <br><br>
+    <label for="columnas">Número de columnas:</label>
+    <input type="number" id="columnas" min="1" placeholder="Ingresa un número positivo">
+    <br><br>
+    <button onclick="generarTabla()">Generar Tabla</button>
+
+  
+
+    <script>
+        function generarTabla(){
+    var filas = document.getElementById("filas").value;
+    var columnas = document.getElementById("columnas").value;
+    var contador = 1;
+
+    document.write("<table style='border: solid black 1px;'>");
+        for (let i = 0; i < filas; i++) {
+            document.write("<tr style='border: solid black 1px;'>");
+                for (let j = 0; j < columnas; j++) {
+                    document.write("<td style='border: solid black 1px;'>" + contador + "</td>"); 
+                    contador++;                 
+                }   
+            document.write("</tr>");
+        }
+    document.write("</table>");
+}
+
+
+        
+    </script>
+</body>
+</html>

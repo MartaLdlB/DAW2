@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="" />
+    <link rel="icon" type="image/x-icon" href="https://iesventura.es/_ies_datos/LOGO_new.jpg">
+    <title>T2-9 Listado</title>
+</head>
+
+<body>
+    <script>
+        const lista = ['Ana', 'Bea', 'Carla', 'Dana', 'Elena'];
+        // Imprime por consola los nombres de la lista.
+        console.log("Imprimir los nombres en formato String");
+        console.log("-"+lista.toString());
+
+
+        console.log("Imprimir los nombres indicando su posición en el array");
+        for (let index = 0; index < lista.length; index++) {
+            console.log("["+index+"] -> "+lista[index]); 
+        }
+        // Imprime por consola las posiciones de la lista.
+
+        console.log(Object.keys(lista)); // es un método que se utiliza para obtener un array con las claves, en este caso las claves son el orden del array
+                                            //en el caso de ser un objeto indicaria las claves.
+    </script>
+</body>
+
+</html>

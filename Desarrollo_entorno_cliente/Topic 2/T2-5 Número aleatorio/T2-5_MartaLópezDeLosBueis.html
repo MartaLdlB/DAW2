@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="" />
+    <link rel="icon" type="image/x-icon" href="https://iesventura.es/_ies_datos/LOGO_new.jpg">
+    <title>Tarea 2-6.2</title>
+</head>
+
+<body>
+    <script>
+        // Muestra por consola un número aleatorio entre dos dados por el usuario.
+        var numero1= prompt("Introduce un numero:");
+        var numero2= prompt("Introduce otro numero:");
+        // Utiliza prompt, console.log, Math.random y operaciones aritméticas.
+        var random;
+        if(numero1>numero2){
+            //hacemos un parse int para quedarnos solamente con la parte entera, si no se hace aparece un numero con X decimales
+           random = parseInt( Math.random() * (numero1 - numero2) + numero2);
+        }else{
+            random = parseInt(Math.random() * (numero2 - numero1) + numero1) ;
+        }
+        alert(random); //imprimimos el resultado
+    </script>
+</body>
+
+</html>
