@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 3_1 Formulario</title>
+    <style>
+
+        .gato{
+            background-image: url('https://www.shutterstock.com/image-vector/black-cat-kitten-pixel-art-600nw-2201429943.jpg');
+            background-size: cover;
+        }
+
+    </style>
+</head>
+<body>
+
+    <form action="formulario.php" method="post">
+    <!--Tipo text-->
+    <label for="nombre" >Introduce tu nombre</label>
+    <br>
+    <input type="text" id="nombre" name="nombre">
+    <br>
+    <!--Tipo password-->
+    <label for="contraseña">Introduce una contraseña</label>
+    <br>
+    <input type="password" id="contraseña" name="contraseña">
+    <br>
+    <!--Tipo email-->
+    <label for="email">Introduce tu email</label>
+    <br>
+    <input type="email" id="email" name="email">
+    <br>
+    <!--Tipo telefono-->
+    <label for="telefono">Indica tu numero de telefono: </label>
+    <input type="tel" name="telefono" id="telefono" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+    <br>
+    <!--Tipo datetime-->
+    <label for="fecha">Introduce tu fecha de nacimiento</label>
+    <br>
+    <input type="date" id="fecha" name="fecha">
+    <br>
+    <br>
+    <!--tipo radio-->
+    <label for="genero">Selecciona tu genero</label>
+    <br>
+    <input type="radio" id="Femenino" name="genero">Femenino</input>
+    <input type="radio" id="Masculino" name="genero">Masculino</input>
+    <input type="radio" id="Otro" name="genero">Otro</input>
+    <br>
+    <br>
+    <!--tipo color-->
+    <label for="color">Selecciona tu color favorito</label>
+    <br>
+    <input type="color" name="color" id="color">
+    <br>
+    <br>
+    <!--tipo rango-->
+    <label for="rango" min="0" max="10">Indique su nivel de ingles</label>
+    <br>
+    <input type="range" name="rango" id="rango">
+    <br>
+    <br>
+    <!--Tipo checkbox-->
+    <label for="condiciones">Confirme los terminos y conficiones</label>
+    <br>
+    <input type="checkbox" name="condiciones" id="condiciones1">
+    <label for="condiciones">Terminos y condiciones 1</label>
+    <br>
+    <input type="checkbox" name="condiciones" id="condiciones2"> 
+    <label for="condiciones">Terminos y condiciones 2</label>
+    <br>
+    <input type="checkbox" name="condiciones" id="condiciones3">
+    <label for="condiciones">Terminos y condiciones 3</label>
+    <br>
+    <!--Tipo file-->
+    <br>
+    <label for="archivo">Seleccioona un archivo: </label>
+    <br>
+    
+    <input type="file" name="archivo" id="archivo">
+    <br>
+    <br>
+    <!--Tipo month-->
+    <label for="mes">Selecciona el mes: </label>
+    <input type="month" name="mes" id="mes">
+    <br>
+    <br>
+    <!--Tipo numero-->
+    <label for="numero">Selecciona un numero: </label>
+    <input type="number" name="numero" id="numero">
+    <br>
+    <br>
+    <!--Tipo search-->
+    <label for="buscar">Busca lo necesario: </label>
+    <input type="search" name="buscar" id="buscar">
+    <br>
+    <br>
+    <!--Tipo time-->
+    <label for="time">Indica la hora: </label>
+    <input type="time" name="time" id="time">
+    <br>
+    <br>
+    <!--Tipo URL-->
+    <label for="url">Indica una URL: </label>
+    <input type="url" name="url" id="url">
+    <br>
+    <br>
+    <!--Tipo week-->
+    <label for="week">Indica la semana: </label>
+    <input type="week" name="week" id="week">
+    <br>
+    <br>
+    <!--tipo submit-->
+    <input type="submit" value="enviar" class="gato">
+    <!--Tipo reset-->
+    <input type="reset" value="reset">
+    <!--Tipo button-->
+    <input type="button" value="random">
+    <br>
+    <input type="hidden" name="oculto" id="oculto" value="0001"> <!--Manda informacion del formulario que no puede ver ni modificar el usuario-->
+
+
+    </form>
+     
+</body>
+</html>
