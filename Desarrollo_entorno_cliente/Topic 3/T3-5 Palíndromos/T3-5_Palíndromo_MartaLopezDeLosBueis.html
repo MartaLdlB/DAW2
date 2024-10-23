@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="texto" >Introduce un texto: </label><br>
+        <input type="text" name="texto" id="texto"><br><br>
+        <button onclick="palindromo()">Pulsa aqui para ver la magia</button>
+
+    </form>
+    <script>
+
+        /*
+        
+        Crea un código que, dado un texto: 
+
+            1.Lo devuelva dado la vuelta. 
+            2.Indique si es un palíndromo.
+
+        */
+        function palindromo(){
+
+            	let texto;
+                let palindromo=true;
+                texto=document.getElementById("texto").value;
+
+
+                for (let i = 0; i < texto.length/2; i++) {
+                    if(texto[i]!=texto[length-i-1]){
+                        palindromo=false;
+                    }
+                }
+                
+
+
+
+        }
+        
+        
+        
+    </script>
+
+
+</body>
+</html>

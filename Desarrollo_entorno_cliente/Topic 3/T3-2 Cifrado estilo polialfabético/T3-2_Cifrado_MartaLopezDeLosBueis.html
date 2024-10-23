@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <script>
+    /*Crea un código que, dado un texto y una clave numérica, encripte el texto con cifrado polialfabético
+
+    Muestra ambos textos, en claro y cifrado, en la página utilizando document.write.*/
+    
+
+
+        function cifrado(){
+            var texto;
+            var clave;
+            var textoCifrado="";
+            texto = document.getElementById("texto").value;
+            clave = document.getElementById("clave").value;
+            var codigoLetra;
+            var letra;
+           //var cifrado="";
+            let contadorClave=0;
+            for (var i = 0; i < texto.length; i++) {
+                
+                codigoLetra=texto.charAt(i);
+                
+                letra=codigoLetra + parseInt(clave.charAt(contadorClave));
+                contadorClave++;
+
+
+                console.log(letra);
+                console.log(textoCifrado);
+
+
+                textoCifrado += letra;
+                    if (contadorClave==clave.length) {
+                        contadorClave=0;
+                    }
+
+                }
+            
+            document.write("Texto original: " + texto + "<br>");
+            document.write("Texto cifrado: " + textoCifrado);
+
+        }
+        
+   
+
+    </script>
+     <form>
+
+        <label for="texto" >Introduce un texto: </label><br>
+        <input type="text" name="texto" id="texto"><br><br>
+        <label for="clave" >Introduce la clave numerica: </label><br>
+        <input type="text" name="clave" id="clave"><br><br>
+        <button onclick="cifrado()">Pulsa aqui para ver la magia</button>
+
+    </form>
+</body>
+</html>
