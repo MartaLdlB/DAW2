@@ -36,24 +36,46 @@
         }
 
 
-        //Creamos dos variables que almacena numeros aleatorios entre 0 y la longitud del array que estamos usando.
-        let random1 = parseInt(Math.random()*arrayNumeros.length);
-        let random2 = parseInt(Math.random()*arrayNumeros.length);
-        
+        function mezclar(){
+            for (let i = 0; i < 50; i++) { // Mezclamo el array 50 veces
+              //Creamos dos variables que almacena numeros aleatorios entre 0 y la longitud del array que estamos usando.
+                const random1 = Math.floor(Math.random() * arrayNumeros.length);
+                const random2 = Math.floor(Math.random() * arrayNumeros.length);
+                //Con esta linea indicamos que el valor en la posicion random 1 se intercambie con el valor de la posición de random 2;
+                 [arrayNumeros[random1], arrayNumeros[random2]] = [arrayNumeros[random2], arrayNumeros[random1]]; // Swap elements
+            }
 
-        //Con esta linea indicamos que el numero en la posicion random 1 se intercambie con el numero de la posición de random 2;
-        [arrayNumeros[random1],arrayNumeros[random2]=arrayNumeros[random2]=arrayNumeros[random1]];
 
-        for (let i = 0; i < numerosTotales; i++) {
-
-            resultado[i] = arrayNumeros[i]; //con este for creamos un array con 6 numeros con los primeros 6 numeros del primer array
-            
         }
+       
+    let contador=1;
+        do{
+            mezclar(); //llamamos a la función mezclar para modificar cada array resultado, ya que si no siempre serian los mismos valores
+            for (let i = 0; i < numerosTotales; i++) {
+                 
+                resultado[i] = arrayNumeros[i]; //con este for creamos un array con 6 numeros con los primeros 6 numeros del primer array
+                        
+            }  
 
+            //Usar sort para ordenar los numeros
+            resultado.sort((a,b)=>a-b);
 
+            /*
+            
+            Tenemos que incluir ((a,b)=>a-b) JavaScript sepa cómo comparar los elementos del array y así ordenarlos correctamente ya que JS combierte los valores 
+            en un String y los ordena en orden léxicográfico.
+            Esto quiere decir que por ejemplo de esta lista, 1, 2, 3, 10, 11, 14, 15, 20, 22, 23
+            ordenada de forma lexicografica quedaria asi 1, 10, 11, 14, 15, 2, 20, 22, 23, 3
+            ya que los compara como si fueran cadenas de texto
+            
+            */
 
-        //Usar sort para ordenar los numeros, creamos un array nuevo que almacene los numeros que salen y luego con sort se ordenan .sort(( a + b )=> a - b)
+            document.write("<h2>Loteria nº "+ contador++ +"<br>");
+            document.write("<br>");
+            document.write(resultado);
+            document.write("<br>");
 
+        }while(contador<=combinaciones);
 
     </script>
 </body>
