@@ -19,12 +19,7 @@
             gap: 10px;
         }
 
-        .barra {
-            background-color: yellow;
-            border: 2px solid black;
-            height: 20px;
-            width: 60px;
-        }
+       
 
         .img_barras {
             padding-left: 20px;
@@ -135,6 +130,59 @@
         #menu ul ul li:hover {
             background: rgb(180, 180, 180);
         }
+
+                
+        .divlibros{
+                width: 100%;               /* Ajusta el ancho */
+                height: 500px;             /* Ajusta el alto */
+                background-image: url("imagenes/fondo.jpg");
+                background-size: cover;    /* Ajusta el tamaño de la imagen para cubrir el div */
+                background-position: center; /* Centra la imagen en el div */
+                background-repeat: no-repeat; /* Evita que la imagen se repita */
+                background-image: url("img/libros.jpg");
+        }
+            
+        .boton{
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-size: 20px;
+                padding: 15px;
+                margin: 250px;
+                margin-left: 850px;
+                align-items: center;
+            	background-color: transparent;
+                border: rgb(0, 0, 0) solid 2px;
+
+                transition: transform 0.3s, box-shadow 0.3s;
+
+        }
+        
+        .boton:hover{
+            	
+            transform: scale(1.3);
+
+
+        }
+
+        .imgferia{
+            float: left;
+            width: 400px;	
+            padding-right: 20px;
+        }
+
+        .feria{
+                
+                padding: 20px;
+            	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-size: 15px;
+                width: 900px;
+
+        }
+
+        .feria p{
+            margin: 20px;
+        }
+
+
     </style>
 </head>
 <body>
@@ -142,9 +190,7 @@
     <header>
         <!-- Sección de barras -->
         <div class="opciones">
-            <div class="barra"></div>
-            <div class="barra"></div>
-            <div class="barra"></div>
+            
         </div>
 
         <!-- Icono de Instagram -->
@@ -192,9 +238,31 @@
         </ul>
     </nav>
 
-    <section>
-        <!-- Contenido de la página -->
+    <section class="seccion1">
+        <div class="divlibros">
+
+            <button class="boton">Pulsa para comprar</button>
+
+        </div>
+
+        <div>
+
+            <div class="feria">
+            
+                <img class="imgferia" src="img/feria.PNG" alt="feria">
+                <h3>Feria del libro Madrid 2024 </h3>
+                <p>Este año estuvimos en la Feria del Libro, y fue una experiencia única. Nuestra caseta se llenó de vida, con lectores entusiasmados que se llevaban desde las últimas novedades hasta clásicos ilustrados. Nos encantó poder charlar cara a cara con los visitantes y ver cómo cada libro encontraba su lugar. También organizamos firmas de autores, lo que creó un ambiente muy especial. Fue agotador, ¡pero nada como estar rodeado de amantes de los libros y compartir nuestra pasión por la lectura!</p>
+            </div>
+
+        </div>
+     
+
     </section>
+
+  
+
+
+  
 
 </body>
 </html>
