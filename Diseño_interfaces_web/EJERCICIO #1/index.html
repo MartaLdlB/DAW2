@@ -9,6 +9,7 @@
         html, body {
             margin: 0px;
             padding: 0px;
+            background-color: rgb(220, 220, 226);
         }
 
     
@@ -142,7 +143,6 @@
         .divlibros{
                 width: 100%;               /* Ajusta el ancho */
                 height: 500px;             /* Ajusta el alto */
-                background-image: url("imagenes/fondo.jpg");
                 background-size: cover;    /* Ajusta el tamaño de la imagen para cubrir el div */
                 background-position: center; /* Centra la imagen en el div */
                 background-repeat: no-repeat; /* Evita que la imagen se repita */
@@ -189,6 +189,72 @@
             margin: 20px;
         }
 
+        .club{
+                padding: 20px;
+            	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-size: 15px;
+                width: 900px;
+
+        }
+
+        .imgclub{
+            float: right;
+            width: 400px;	
+            padding-right: 20px;
+
+        }
+
+        .club p{
+            margin: 20px;
+        }
+        .club h3{
+            margin: 20px;
+        }
+
+        .mapa{
+            display: inline-block;
+            margin: 20px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            float: right;
+            margin-right: 200px;
+        }
+
+        .info{
+            display: inline-block;
+        }
+
+        .bestseller1 img{
+            width: 125px;
+            height: 200px;
+            float: left;
+        }
+        .bestseller1{
+            padding: 20px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        }
+
+        .inforebajas{
+            background-color: black;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: white;
+            height: 225px;
+            font-size: 25px;
+            padding-left: 20px;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            display: inline-flex;
+            
+            
+        }
+        .inforebajas img{
+            width: 125px;
+            height: 200px;
+            float: right;
+            padding: 20px;
+            margin-left: 30px;
+            padding-left: 100px;
+        }
 
     </style>
 </head>
@@ -251,19 +317,51 @@
             <button class="boton">Pulsa para comprar</button>
 
         </div>
+        <div class="inforebajas">
 
-        <div>
+            <h1>Un 5% de descuento por compras online</h1>
+            <h3>Con envio gratuito si te haces socio</h3>
+            <img src="img/la asistenta.jpg" alt="la asistenta">
+            <img src="img/el familiar.jpg" alt="el familiar">
+            <img src="img/seis de cuervos.jpg" alt="seis de cuervos">
+            
+        </div>
+        <div class="info">
 
             <div class="feria">
-            
                 <img class="imgferia" src="img/feria.PNG" alt="feria">
                 <h3>Feria del libro Madrid 2024 </h3>
                 <p>Este año estuvimos en la Feria del Libro, y fue una experiencia única. Nuestra caseta se llenó de vida, con lectores entusiasmados que se llevaban desde las últimas novedades hasta clásicos ilustrados. Nos encantó poder charlar cara a cara con los visitantes y ver cómo cada libro encontraba su lugar. También organizamos firmas de autores, lo que creó un ambiente muy especial. Fue agotador, ¡pero nada como estar rodeado de amantes de los libros y compartir nuestra pasión por la lectura!</p>
             </div>
 
-        </div>
-     
+            <div class="club">
 
+                <img class="imgclub" src="img/club.jpg" alt="club">
+                <h3>Realizando un club de lectura </h3>
+                <p>Este es un espacio donde nos reunimos para explorar nuevos mundos, compartir ideas y descubrir juntos el placer de la lectura. Cada mes seleccionamos un libro diferente para sumergirnos en historias cautivadoras, debatir temas interesantes y disfrutar de buenas charlas en un ambiente acogedor y sin prisas. No importa si eres lector ávido o estás empezando a leer más, aquí encontrarás un lugar para conectar, aprender y disfrutar del poder de los libros. ¡Únete y hagamos que cada página cobre vida juntos!</p>
+
+            </div>
+
+
+            
+        </div>
+        <div class="mapa">
+            <h2>Aqui puedes encontrarnos</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.54484434749!2d-3.6994705877986176!3d40.41893287132015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42287d6da3df33%3A0xe119406d894c5d21!2sGran%20V%C3%ADa%2C%20Centro%2C%20Madrid!5e0!3m2!1ses!2ses!4v1729959516775!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div>
+
+            <h2>Best sellers</h2>
+
+            <div class="bestseller1">
+                <h3>Asesino de brujas</h3>
+                <img src="img/asesino de brujas.jpg" alt="asesino de brujas">
+                <p><b>Asesino de brujas</b> es una trilogía de fantasía juvenil escrita por Shelby Mahurin. La historia sigue a Lou, una bruja rebelde que, para sobrevivir, se ve obligada a casarse con Reid, un cazador de brujas. Entre magia, secretos y un romance prohibido, ambos personajes desafían las normas de su mundo, donde la magia y la cacería se enfrentan en una peligrosa batalla. Con elementos de romance, acción y traición, la serie explora la lucha entre el deber y el deseo.</p>
+
+            </div>
+
+        </div>
     </section>
 
   

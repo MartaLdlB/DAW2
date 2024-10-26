@@ -17,29 +17,32 @@
         /*
         
         Crea un código que, dado un texto: 
-
             1.Lo devuelva dado la vuelta. 
             2.Indique si es un palíndromo.
 
         */
-        function palindromo(){
-
-            	let texto;
-                let palindromo=true;
-                texto=document.getElementById("texto").value;
-
-
-                for (let i = 0; i < texto.length/2; i++) {
-                    if(texto[i]!=texto[length-i-1]){
-                        palindromo=false;
-                    }
+        function palindromo() {
+            //creamos la variables principales que utilizaremos
+            let texto;
+            let palindromo = true;
+            //el valor de texto lo conseguimos mediante un formulario simple
+            texto = document.getElementById("texto").value;
+            //con este for recorremos la mitad de la longitud de texto, ya que solo seria necesario comprobar la primera mitad del texto con las letras finales para saber si una palabra es palindroma
+            for (let i = 0; i < texto.length / 2; i++) {
+                //con este if, en el momento en el que una letra del principio sea distinta de la del final que le corresponda se cambia a false
+                if (texto[i] != texto[texto.length - i - 1]) {
+                    palindromo = false;
                 }
-                
+            }
 
-
-
+            //imprimimos el resultado
+            if (palindromo) {
+                document.write("La palabra " + texto + " es palíndroma.") ;
+            } else {
+                document.write("La palabra " + texto + " no es palíndroma.") ;
+            }
         }
-        
+
         
         
     </script>
