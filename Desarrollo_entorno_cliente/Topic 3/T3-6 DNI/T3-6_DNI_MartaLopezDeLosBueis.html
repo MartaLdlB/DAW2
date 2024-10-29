@@ -6,29 +6,33 @@
     <title>T3-3_DNI</title>
 </head>
 <body>
-    <form>
 
         <label for="dni">Introduce tu DNI</label><br>
         <input type="text" name="dni" id="dni" placeholder="12345678X"><br><br>
         <button onclick="dni()">Pulsa para ver la magia</button>
-    </form>
 
     <script>
-        function dni(){
-
+        function dni() {
+            
+        
             let dni;
             let numerosDni;
             let moduloDni;
             let letras = 'TRWAGMYFPDXBNJZSQVHLCKE';
             const rgx = new RegExp(/^\d{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/);
-            /*
-            ^ asegura que la coincidencia comience al inicio de la cadena.
+            
+         
+          /*
+            ^ asegura que lo que tiene que coincidir comience al inicio de la cadena.
             \d{8} valida que haya exactamente 8 dígitos numéricos (del 0 al 9).
             [TRWAGMYFPDXBNJZSQVHLCKE] asegura que el último carácter sea una letra mayúscula de las que estan ahi escritas
             $ asegura que la coincidencia termine al final de la cadena, sin caracteres adicionales.
             */
 
-            dni=document.getElementById("dni").value;
+            do{
+                 dni=document.getElementById("dni").value;
+            }while(!dni.match(rgx));
+
             
             if(dni.match(rgx)){
                 numerosDni = parseInt(dni.slice(0,8));
@@ -41,6 +45,9 @@
             }else{
                 document.write("DNI erroneo, revisalo");
             }
+            
+           
+            
         }
         
 
