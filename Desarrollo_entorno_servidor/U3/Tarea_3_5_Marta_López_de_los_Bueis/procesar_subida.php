@@ -5,12 +5,26 @@ $permitidos = ['image/jpeg', 'image/png', 'application/pdf']; // Tipos de archiv
 
 // Verifica si se ha enviado el formulario de subida
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verifica si hay errores en la subida
-    if ($_FILES['file']['error'] === UPLOAD_ERR_OK) {
-        $fileTmpPath = $_FILES['file']['tmp_name'];
-        $fileName = $_FILES['file']['name'];
-        $fileSize = $_FILES['file']['size'];
-        $fileType = $_FILES['file']['type'];
+        // Verifica si hay errores en la subida
+        // `UPLOAD_ERR_OK` indica que la carga fue exitosa (código de error 0).
+        if ($_FILES['file']['error'] === UPLOAD_ERR_OK) {
+
+            // Guarda el nombre temporal del archivo en el servidor en una variable.
+            // Este es el archivo en la ubicación temporal y se utiliza para moverlo luego a la ubicación final.
+            $fileTmpPath = $_FILES['file']['tmp_name'];
+
+            // Guarda el nombre original del archivo que el usuario subió.
+            // Este nombre puede contener caracteres especiales, así que se recomienda procesarlo.
+            $fileName = $_FILES['file']['name'];
+
+            // Obtiene el tamaño del archivo en bytes.
+            // Esto es útil para verificar si el tamaño cumple con las restricciones permitidas.
+            $fileSize = $_FILES['file']['size'];
+
+            // Obtiene el tipo MIME del archivo, como 'image/jpeg' o 'application/pdf'.
+            // El tipo MIME puede ayudar a validar el tipo de archivo, aunque no siempre es confiable.
+            $fileType = $_FILES['file']['type'];
+        }
 
         // Verifica el tamaño del archivo
         if ($fileSize > $tamañoMax) {
@@ -34,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "Error: Hubo un problema en la subida del archivo.";
     }
-}
+
 ?>
 
 
