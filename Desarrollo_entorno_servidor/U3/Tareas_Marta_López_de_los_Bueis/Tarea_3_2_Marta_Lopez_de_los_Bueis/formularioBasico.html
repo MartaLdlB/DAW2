@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de login</title>
+</head>
+<body>
+    <form action = "login_basico.php" method="POST">  <!--Con action se pasan los parametros que reciba en el html al php que se indique-->
+        <label for="usuario">Nombre de Usuario</label><br>
+        <input name = "usuario" type="text"> <br> <!-- Segun el tipo de "type" que se indique la presentacion es una u otra-->
+        <label for="pw">Contraseña</label><br>
+        <input name = "pw" type = "password" placeholder="Escribe tu contraseña"> <!-- Por ejemplo, con password como type, lo que va a hacer es que sale en oculto-->
+        <input type = "submit">
+    </form>
+</body>
+</html>
