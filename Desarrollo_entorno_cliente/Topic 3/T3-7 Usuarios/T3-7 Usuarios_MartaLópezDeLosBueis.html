@@ -11,85 +11,112 @@
         <br>
         <input type="text" name="cadena" id="cadena" placeholder="nombre:apellidos:dni:telefono:email:codigopostal">
         <br><br>
-        <button onclick="">Pulsa y ve la magia</button>
+        <button type="button" onclick="procesarDatos()">Pulsa y ve la magia</button>
     </form>
+
+    <div id="resultados"></div> <!-- Div para mostrar los resultados -->
+
     <script>
+        let contadorOsos = 0;  // Contador de "osos" encontrados
+        let usuarios = [];     // Array para almacenar los usuarios
 
-        /*
+        function procesarDatos() {
+            let cadena = document.getElementById("cadena").value;
+            let cadenaArray = separarCadena(cadena);
 
-        Realizar un programa que reciba una cadena con el siguiente formato:
+            // Variables de la cadena
+            let nombre = cadenaArray[0];
+            let apellido = cadenaArray[1];
+            let dni = cadenaArray[2];
+            let telefono = cadenaArray[3];
+            let email = cadenaArray[4];
+            let codigoPostal = cadenaArray[5];
 
-        “nombre:apellidos:dni:telefono:email:codigopostal”
+            // Resto de variables
+            let dniValido = validarDni(dni);
+            let servidor = obtenerServidor(email);
+            let username = generarNombreUsuario(nombre, apellido);
+            let pais = "🇪🇸"; // Bandera de España
+            let esOsoUsuario = esOso(nombre, apellido);
 
+            // Crear objeto usuario
+            let usuario = {
+                nombre: nombre,
+                apellido: apellido,
+                dni: dni,
+                dniValido: dniValido,
+                telefono: telefono,
+                email: email,
+                servidor: servidor,
+                codigoPostal: codigoPostal,
+                username: username,
+                pais: pais
+            };
 
-        1.Tras recibir la cadena, se debe desglosar la información. Crear una estructura de datos que recoja la información extraída de la cadena de caracteres.
-        2.Validar si la letra del DNI introducido es correcta. (Para la validación usar aproximación sin utilizar Expresiones regulares). 
-        Añadir el campo de tipo boolean “dniValido” cuyo valor será true en caso de DNI correcto o false en caso de que la letra del DNI del usuario no coincida.
-        3.Suponiendo un formato de email “direccion@servidor”, se debe crear un campo llamado “servidor” para asignarle el nombre del servidor asociado (sin la @).
-        4.Generar un nombre de usuario con la primera letra del nombre, las tres últimas del apellido separadas por un carácter “_”.
-        5.Guardar el nombre de usuario generado en el campo “username” de la estructura creada, asociado a cada usuario.
-        6.Añadir un campo a la estructura llamado “país” y asignar como valor una cadena de caracteres que represente la bandera de su país (elegir cualquiera). 
-        *Dependiendo del navegador, en algunos casos se puede visualizar un icono de la bandera o en otros casos la combinación de los caracteres únicos para cada país. 
-        (Ejemplo: España se podría visualizar: Bandera de España o 🇪🇸).
-        7.Mostrar los nombres de usuario y las banderas correspondientes a su país en la página del lado del cliente.
-        8.Por último, si la inicial del nombre y los dos primeros caracteres del apellido forman la palabra “oso” (sin distinguir mayúsculas o minúsculas), 
-        la página lanzará una ventana de dialogo de tipo alert: “¡Cuidado, hay # osos cerca!”, indicando en # el número de usuarios con la cadena.
-        Unos usuarios de ejemplo serían:
+            // Agregar el usuario al array de usuarios
+            usuarios.push(usuario);
 
-        Rocio:Osorno:01101315Y:612345649:rocio@outlook.com:28001
-        Sonia: Sastre:15340807Z:765430987:ssastre@gmail.com:43071
-        Olivia:Soriano:46216401X:654567098:osor01@educa.madrid.org:28660
-        Elena:Costaguta:70068005T:7123098654:ecostag@madrid.org:45230
-        Orestes:Sosa:52243028T::sosaorestes2000@yahoo.com:28001
-        
-        */
+            // Si es un "oso", incrementar contador y mostrar alerta
+            if (esOsoUsuario) {
+                contadorOsos++;
+                alert("¡Cuidado, hay " + contadorOsos + " osos cerca!");
+            }
 
-
-        let cadena;
-        cadena= document.getElementById("cadena").value;
-
-        //variables para la cadena
-        let nombre;
-        let apellido;
-        let dni;
-        let telefono;
-        let email;
-        let codigoPostal;
-
-        //resto de variables
-        let cadenaArray=[]; //esta variable será un array que contendrá los datos de la cadena
-        let dniValido; //boolean que almacena si el DNI introducido por el usuario es correcto
-        let servidor=obtenerServidor(email); //Esta variable almacenará el servidor que urilice en el email para mostrarlo sin la @
-        let username; //Esta variable tendrá el nombre de usuario que se generará con la 1º letra de su nombre y las 3 ultimas de su apellido separadas por _ ejemplo n_aaa
-
-
-        cadenaArray=cadena.split(":"); //El método split() devuelve el nuevo array.
-
-
-        //Al formar un array con los datos de la cadena, suponemos que el usuario los ha introducido correctamente, por lo que
-        //se almacenan en su variable
-        nombre=cadenaArray[0];
-        apellido=cadenaArray[1];
-        dni=cadenaArray[2];
-        telefono=cadenaArray[3];
-        email=cadenaArray[4];
-        codigoPostal=cadenaArray[5];
-
-
-        
-        function obtenerServidor(email){
-
-            let arroba="@";
-            
-            let cadenaServidor= String.prototype.substring(email.charAt(arroba));
-
-            return cadenaServidor;
-
+            // Mostrar la lista de usuarios en la página una vez conseguidos todos los datos necesarios
+            mostrarUsuarios();
         }
 
+        function separarCadena(cadena) {
+            return cadena.split(":");
+        }
+
+        function obtenerServidor(email) {
+            return email.substring(email.indexOf("@") + 1);
+        }
+
+        function validarDni(dni) {
+            let numerosDni, moduloDni;
+            let letras = 'TRWAGMYFPDXBNJZSQVHLCKE';
+            let esCorrecto;
+            const rgx = /^\d{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+
+            if (dni.match(rgx)) {
+                numerosDni = parseInt(dni.slice(0, 8));
+                moduloDni = numerosDni % 23;
+                esCorrecto = letras[moduloDni] === dni.charAt(8);
+            } else {
+                esCorrecto = false;
+            }
+            return esCorrecto;
+        }
+
+        function generarNombreUsuario(nombre, apellido) {
+            return nombre.charAt(0) + "_" + apellido.slice(-3);
+        }
+
+        function esOso(nombre, apellido) {
+            let iniciales = (nombre.charAt(0) + apellido.charAt(0) + apellido.charAt(1)).toLowerCase();
+            return iniciales === "oso";
+        }
+
+        
+        // Función para mostrar los usuarios en la página
+        function mostrarUsuarios() {
+            let resultadosDiv = document.getElementById("resultados");
+            resultadosDiv.innerHTML = "<h3>Usuarios:</h3>";
+            usuarios.forEach(usuario => {
+                resultadosDiv.innerHTML += `<p>Nombre: ${usuario.nombre}<br>
+                    Apellido: ${usuario.apellido}<br>
+                    Usuario: ${usuario.username}<br> 
+                    DNI: ${usuario.dni} (${usuario.dniValido ? "Válido" : "No válido"})<br>
+                    Telefono: ${usuario.telefono}<br>
+                    Email: ${usuario.email}<br>
+                    Servidor: ${usuario.servidor}<br>
+                    Codigo postal: ${usuario.codigoPostal}<br>
+                    Pais: ${usuario.pais}</p>`;
+            });
+        }
 
     </script>
-
-
 </body>
 </html>
