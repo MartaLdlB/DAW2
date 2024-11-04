@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <h2>Usando ID en JS</h2>
+  <p>JS puede acceder al elemento con un id especifico utilizando getElementById()</p>
+
+  <h1 id="myHeader">Hola mundo mundial</h1>
+  <button onclick="displayResult()">Change text</button>
+
+  <script>
+    function displayResult(){
+      document.getElementById("myHeader").innerHTML = "Que tengas un buen dia";
+    }
+  </script>
+
+</body>
+</html>
