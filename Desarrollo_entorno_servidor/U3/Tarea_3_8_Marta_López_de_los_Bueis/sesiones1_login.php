@@ -54,7 +54,7 @@ session_start();
 if (!isset($_SESSION['usuario'])) {
     // en el caso de no haber una sesión, redirigimos al formulario de login
     header("Location: form_en_uno_sesion.php");
-    exit(); // Importante salir después de redirigir
+    
 }
 
 // Mensaje de bienvenida al usuario

@@ -76,12 +76,10 @@
             </div>
     </div>
     
-   
-
     <?php
      session_start(); //crea una sesion 
     if($_SERVER["REQUEST_METHOD"]=="POST"){     
-            $error;
+            $error=false;
             if($_POST["usuario"]==="marta" && $_POST["pw"]==="1234"){
                 $_SESSION["usuario"] =$_POST["usuario"]; // Guardamos el nombre de usuario en la sesión
                 header("Location: sesiones1_login.php");
@@ -97,9 +95,6 @@
             
             }
     }
-
-
-
     ?>
 
 </body>
