@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pares e impares</title>
+</head>
+<body>   
+    <script>
+        //array de 10 posiciones con numeros aleatorios entre el 1 y 50
+        //hacer una funcion que diga cuantos pares e impares hay
+        let arrayNumeros=[];
+        let numeros;
+        for (let i = 0; i < 10; i++) {
+            arrayNumeros[i]=parseInt(Math.random()*(50-1)+1);
+        }
+        document.write("La cantidad de numeros pares es-> "+pares(arrayNumeros)+"<br>");
+        document.write("La cantidad de numeros impares es-> "+impares(arrayNumeros));
+        function pares(arrayNumeros){
+            let contador=0;
+            for (const i of arrayNumeros) {
+                if(i%2 === 0){
+                    contador++;
+                }
+            }
+            return contador;
+        }
+        function impares(arrayNumeros){
+            let contador=0;
+            for (const i of arrayNumeros) {
+                if(i%2 === 1){
+                    contador++;
+                }
+            }
+            return contador;
+        }
+    </script>
+</body>
+</html>
