@@ -20,8 +20,12 @@
         let contadorOsos = 0;  // Contador de "osos" encontrados
         let usuarios = [];     // Array para almacenar los usuarios
 
+
+        //funcion que procesa todos los datos
         function procesarDatos() {
+            //obtenemos la cadena que proporciona el usuario
             let cadena = document.getElementById("cadena").value;
+            //en esta variable array almacenamos los datos recibido, ya separados
             let cadenaArray = separarCadena(cadena);
 
             // Variables de la cadena
@@ -74,6 +78,7 @@
             return email.substring(email.indexOf("@") + 1);
         }
 
+        //devuelve true o false si es valido o no
         function validarDni(dni) {
             let numerosDni, moduloDni;
             let letras = 'TRWAGMYFPDXBNJZSQVHLCKE';
@@ -90,10 +95,12 @@
             return esCorrecto;
         }
 
+        //Crea el nombre de usuario
         function generarNombreUsuario(nombre, apellido) {
             return nombre.charAt(0) + "_" + apellido.slice(-3);
         }
 
+        //devuelve true si es exactamente igual al String oso
         function esOso(nombre, apellido) {
             let iniciales = (nombre.charAt(0) + apellido.charAt(0) + apellido.charAt(1)).toLowerCase();
             return iniciales === "oso";
