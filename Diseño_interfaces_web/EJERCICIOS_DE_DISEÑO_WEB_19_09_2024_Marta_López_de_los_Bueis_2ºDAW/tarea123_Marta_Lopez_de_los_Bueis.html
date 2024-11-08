@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /*Header*/
+    header{
+      background-color: #666;
+      padding: 30px;
+      text-align: center;
+      font-size: 35px;
+      color: white;
+    }
+    nav{
+      float:left;
+      width: 30%;
+      height: 300px;
+      background: #ccc;
+      padding: 20px;
+    }
+
+    /*Lista dentro del menu*/
+    nav ul{
+      list-style-type: none;
+      padding: 0;
+    }
+
+    article{
+      float: left;
+      padding: 20px;
+      width: 70%;
+      background-color: #f1f1f1;
+      height: 300px;
+    }
+    /*limpiar floats despues de las columnas*/
+    section:after{
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /*footer*/
+    footer{
+      background-color: #777;
+      padding: 10px;
+      text-align: center;
+      color: white;
+    }
+
+    /*Responsive*/
+
+    @media (max-width: 600px){
+      nav, article {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>CSS Layout  Float</h2>
+  <p>En este ejemplo, hemos creado un header con dos culumnas y un footer. </p>
+  <header>
+    <h2>Ciudades</h2>
+  </header>
+  <section>
+    <nav>
+      <ul>
+        <li><a href="#">Londres</a></li>
+        <li><a href="#">Paris</a></li>
+        <li><a href="#">Tokio</a></li>
+      </ul>
+      <article>
+        <h1>Londres</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ante enim, molestie sed nunc vel, accumsan vestibulum nibh. Aliquam placerat nisl nec efficitur aliquam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse faucibus odio ex, eu luctus justo ultricies in. Cras nisl enim, egestas ut hendrerit ut, imperdiet quis lectus. Mauris semper sapien metus, vitae congue sem elementum a. Aenean tristique placerat aliquam. Sed bibendum consectetur pulvinar. Vivamus quis elementum est, sed pharetra elit. Aliquam at purus arcu. Praesent sed ullamcorper sapien. Quisque eget dignissim diam, eget malesuada nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque aliquam euismod lorem et porta. Nulla eget lacus quis mauris faucibus dictum sit amet vitae arcu.</p>
+
+      </article>
+    </nav>
+  </section>
+</body>
+</html>
