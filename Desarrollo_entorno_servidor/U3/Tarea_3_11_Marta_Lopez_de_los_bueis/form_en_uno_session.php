@@ -83,7 +83,8 @@
     $administrador="root";
     $pw="";
         
-    $datosValidos; //boolean que nos indica si los datos introducidos por el usuairo son correctos dentro de la base de datos
+    $datosValidos; //boolean que nos indica si los datos introducidos por el usuario son correctos dentro de la base de datos
+    
     //conexion con la base de datos
     $base_de_datos= new PDO($datos_conexion,$administrador,$pw);
 
@@ -91,7 +92,7 @@
                                         FROM usuarios
                                         WHERE nombre = :nombre 
                                         AND clave = :clave");
-
+    //variable no inicializada para usarla con "isset()" para detectar si hay un error o no
     $error;
     if($_SERVER["REQUEST_METHOD"]=="POST"){ 
 
@@ -99,23 +100,25 @@
             //guardamos en una variable los datos del usuario que recibimos en el login
             $usr=$_POST['usuario'];
             $password=$_POST["pw"];
-            /**
-             * Tenemos que indicarle a la consulta que valores tendran ":nombre" y
-             * ":clave", los cuales son los que hemos extraido del POST del formulario
-             * y se deben definir de la siguiente forma:
-             */
-            $consulta -> bindParam(":nombre", $usr, PDO::PARAM_STR);
+            
+            /*
+            Tenemos que indicarle a la consulta que valores tendran ":nombre" y
+            ":clave", los cuales son los que hemos extraido del POST del formulario
+            y se deben definir de la siguiente forma:
+            */
+            $consulta -> bindParam(":nombre", $usr, PDO::PARAM_STR); //PDO::PARAM_STR se usa para indicar que un parámetro de una consulta SQL debe tratarse como una cadena de texto (string).
             $consulta -> bindParam(":clave", $password, PDO::PARAM_STR);
 
             $consulta->execute();
 
-
+            //en el momento en el que encuentre 1 igual al los datos de entrada del usuario,
+            //lo marca como TRUE, en el caso de no encontrar nada lo marca como FALSE, que seria que no se encuentra en la base de datos
             $datosValidos = ($consulta->rowCount() == 1) ? true : false;
 
             if($datosValidos==true){
                 header("Location: sesiones1_login.php");
             }else{
-                $error=false;
+                $error=true;
             }
 
             if (isset($error)) {
