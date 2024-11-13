@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pares e impares</title>
+</head>
+<body>   
+    <script>
+        /*
+            Realiza un fichero que contenga un array de tamaño 40 con números naturales comprendidos entre 1 y 50.
+
+            1.Crea una función llamada pares que reciba como parámetro el array.
+            2.La función deberá recorrer un array dado y devolver la cantidad de pares que hay en él.
+            3.Crea una función llamada impares que reciba parámetro el array.
+            4.La función hará lo mismo que la anterior, pero con la cantidad de impares.
+            5.Crea una estructura que indique el número de pares y el número de impares de un array, utilizando las funciones anteriores.
+            6.Imprime la estructura en la página.
+            7.Mejora el procedimiento anterior, con una única función.
+        */
+
+        //array de 10 posiciones con numeros aleatorios entre el 1 y 50
+        //hacer una funcion que diga cuantos pares e impares hay
+        let arrayNumeros=[];
+        let numeros;
+        //Creamos un bucle para introducir 10 numeros aleatorios del 1 al 50
+        for (let i = 0; i < 10; i++) {
+            arrayNumeros[i]=parseInt(Math.random()*(50-1)+1);
+        }
+
+        //Mostramos por pantalla el resultado
+        document.write("La cantidad de numeros pares es-> "+pares(arrayNumeros)+"<br>");
+        document.write("La cantidad de numeros impares es-> "+impares(arrayNumeros));
+
+
+        paresImpares(arrayNumeros);
+
+        //creamos la funcion pares donde contamos la cantidad de numeros pares que tiene el array que recibe la funcion
+        function pares(arrayNumeros){
+            let contador=0;
+            for (let i of arrayNumeros) {
+                if(i%2 === 0){
+                    contador++;
+                }
+            }
+            return contador;
+        }
+        function impares(arrayNumeros){
+            let contador=0;
+            for (let i of arrayNumeros) {
+                if(i%2 === 1){
+                    contador++;
+                }
+            }
+            return contador;
+        }
+
+        //Punto 7. Mejora el procedimiento anterior, con una única función.
+        function paresImpares(arrayNumeros){
+            let contadorPares=0;
+            let contadorImpares=0;
+
+            for (let i of arrayNumeros) {
+                if (i%2==0) {
+                    contadorPares++;
+                }else{
+                    contadorImpares++;
+                }
+            }
+            document.write("<br>El resultado obtenido en la funcion que calcula la cantidad de pares e impares es --> <br>PARES: " + contadorPares+" <br>IMPARES: "+contadorImpares);
+        }
+
+
+    </script>
+</body>
+</html>
