@@ -6,17 +6,52 @@
     <title>Document</title>
 </head>
 <body>
+    <form>
+        <label for="numero">Introduce un numero: </label><br>
+        <input type="number" name="numero" id="numero"><br><br>
+        <button type="button" onclick="fibonachi()">Pulsa aqui</button>
+    </form>
     <script>
-
-
-        function fibonachi(n){
+      
+        
+        function fibonachi(){
+            let n= document.getElementById("numero").value;
             if(n==0)return 0;
             if(n==1)return 1;
 
-            
+            let posicion1=0;
+            let posicion2=1;
+            let res=0;
+            for (let i = 2; i <= n; i++) {
+                
+                    res=posicion1+posicion2;
+                    posicion1=posicion2;
+                    posicion2=res;
+            }
+           // return res;
+            document.write(res);
+        }
+
+
+        function fibRecursivo(n){
+
+            if(n<=1)return n;
+          
+            return fibRecursivo(n-1)+fibRecursivo(n-2);
 
         }
 
+        document.write(fibRecursivo(7)+"<br>");
+
+        function triRecursivo(n){
+
+        if(n<=1)return n;
+
+        return triRecursivo(n-1)+triRecursivo(n-2)+triRecursivo(n-3);
+
+        }
+
+        document.write(triRecursivo(9));
     </script>
 </body>
 </html>
