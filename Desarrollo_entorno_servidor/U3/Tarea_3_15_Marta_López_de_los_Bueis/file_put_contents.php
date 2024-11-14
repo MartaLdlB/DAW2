@@ -14,6 +14,18 @@ if(is_readable("fichero1.txt")){
     */
 
     echo $fichero1;
+
+    $añadir="DAW2";
+
+    $ficheroConAñadido;
+    for ($i=0; $i < strlen($fichero1); $i++) { 
+        $ficheroConAñadido .= $fichero1[i];
+        if(i==5){
+            $ficheroConAñadido.=$añadir;
+        }
+    }
+    echo $ficheroConAñadido;
+    
 }else{
     echo "Error al leer el fichero.txt";
 }

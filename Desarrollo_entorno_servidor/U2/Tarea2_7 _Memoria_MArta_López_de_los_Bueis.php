@@ -7,7 +7,7 @@
 
         	try{
                 if ($divisor == 0){
-                    throw new Exception ("ERROR, Division por cero")
+                    throw new Exception ("ERROR, Division por cero");
                 }
             }catch(ExcepcionPorCero $e){
                 echo($e->getMessage());
