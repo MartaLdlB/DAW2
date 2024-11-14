@@ -13,14 +13,14 @@ if(is_readable("fichero1.txt")){
     ): string
     */
 
-    echo $fichero1;
+    echo $fichero1."<br><br>";
 
     $añadir="DAW2";
 
-    $ficheroConAñadido;
+    $ficheroConAñadido="";
     for ($i=0; $i < strlen($fichero1); $i++) { 
-        $ficheroConAñadido .= $fichero1[i];
-        if(i==5){
+        $ficheroConAñadido .= $fichero1[$i];
+        if($i==5){
             $ficheroConAñadido.=$añadir;
         }
     }
