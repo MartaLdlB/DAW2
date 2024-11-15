@@ -26,4 +26,4 @@
       //aqui imprimimos las variables
       echo "$num1 $num2 $num3 $num4 <br>";
     }
-  fclose($f);
+  fclose($fichero);
