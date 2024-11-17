@@ -1,0 +1,300 @@
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(220, 220, 226);
+}
+
+
+header {
+    background-color: rgb(35,35,36);
+    display: flex;
+   
+}
+
+/* Opciones de la barra */
+.registro {
+    color: white;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px ;
+    
+}
+
+
+
+.img_barras {
+    padding-left: 20px;
+    padding-top: 55px;
+}
+
+.div_logo {
+    flex-grow: 2;
+    display: flex;
+    justify-content: center;
+}
+
+/* Sección de iconos de redes */
+.insta, .x, .carrito {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.logos {
+    height: 50px;
+    width: 50px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.logos:hover {
+    transform: scale(1.3);
+    box-shadow: 10px 5px 5px rgb(68, 68, 68);
+}
+
+/* Estilo del menú principal */
+nav {
+    background-color: rgb(102, 102, 102);
+}
+
+#menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(102, 102, 102);
+}
+
+#menu ul li {
+    position: relative;
+    flex-grow: 1;
+    text-align: center;
+    display: block;
+    color: #fff;
+    font-size: 15px;
+    padding: 10px;
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#menu ul a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Efecto hover en el menú principal */
+#menu ul li:hover {
+    background: rgb(131, 131, 131);
+}
+
+/* Submenú desplegable */
+#menu ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgb(131, 131, 131);
+    padding: 0;
+   /* z-index: 999;*/
+}
+
+#menu ul ul li {
+    width: 100%;
+}
+
+#menu ul ul a {
+    width: 100%;
+    position: relative;
+    flex-grow: 1;
+    /*text-align: center;*/
+    display: block;
+    color: #fff;
+    font-size: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;         
+}
+
+/* Mostrar submenú al pasar el ratón */
+#menu ul li:hover > ul {
+    display: block;
+}
+
+/* Efecto hover en los enlaces del submenú */
+#menu ul ul li:hover {
+    background: rgb(180, 180, 180);
+}
+
+        
+.divlibros{
+        width: 100%;               /* Ajusta el ancho */
+        height: 500px;             /* Ajusta el alto */
+        background-size: cover;    /* Ajusta el tamaño de la imagen para cubrir el div */
+        background-position: center; /* Centra la imagen en el div */
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+        background-image: url("img/libros.jpg");
+}
+    
+.boton{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 20px;
+        padding: 15px;
+        margin: 250px;
+        margin-left: 850px;
+        align-items: center;
+        background-color: transparent;
+        border: rgb(0, 0, 0) solid 2px;
+
+        transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.boton:hover{
+        
+    transform: scale(1.3);
+
+
+}
+
+.imgferia{
+    float: left;
+    width: 400px;	
+    padding-right: 20px;
+}
+
+.feria{
+        
+        padding: 20px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 15px;
+        width: 900px;
+
+}
+
+.feria p{
+    margin: 20px;
+}
+
+.club{
+        padding: 20px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 15px;
+        width: 900px;
+
+}
+
+.imgclub{
+    float: right;
+    width: 400px;	
+    padding-right: 20px;
+
+}
+
+.club p{
+    margin: 20px;
+}
+.club h3{
+    margin: 20px;
+}
+
+.mapa{
+    display: inline-block;
+    margin: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    float: right;
+    margin-right: 200px;
+}
+
+.info{
+    display: inline-block;
+}
+
+.bestseller1 img{
+    width: 125px;
+    height: 200px;
+    float: left;
+}
+.bestseller1{
+    padding: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.inforebajas{
+    background-color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    height: 225px;
+    font-size: 25px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+  /*  display: inline-flex;*/
+    
+    
+}
+
+
+.ventas {
+    display: grid;
+    grid-template-columns: auto auto; /* Two columns */
+    grid-template-rows: auto auto;
+    gap: 20px; /* Adjusts space between the items */
+    padding: 20px;
+    margin: 50px;
+    text-align: center;
+}
+
+.bestseller1 {
+    background-color: #f8f8f8; /* Optional: to add some contrast */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+
+}
+
+.bestseller1 img {
+    width: 100%; /* Makes image responsive within each grid item */
+    height: auto;
+    max-width: 125px; /* Maintain original image dimensions */
+    margin-bottom: 10px;
+}
+
+.titulo{
+    text-align: center;
+}
+
+.boton_compra{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 20px;
+        padding: 15px;
+       width: 75px;
+        margin-left: 500px;
+        align-items: center;
+        background-color: transparent;
+        border: rgb(0, 0, 0) solid 2px;
+
+        transition: transform 0.3s, box-shadow 0.3s;
+        border-radius: 8px;
+}
+
+.boton_compra:hover{
+        transform: scale(1.2);
+    }
+
+    .titulodiv{
+        margin: 50px;
+        text-align: center;
+        font-size: 50px;
+    }
