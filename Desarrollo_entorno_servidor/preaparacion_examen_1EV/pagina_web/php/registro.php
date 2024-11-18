@@ -7,7 +7,7 @@
 </head>
 <body>
     
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"></form>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <label for="correo">Introduce el correo elecctronico de tu empresa:</label><br>
         <input type="email" name="correo" id="correo"><br>
 
@@ -30,11 +30,11 @@
         <input type="text" name="codigo_postal" id="codigo_postal"><br><br>
 
         <input type="submit" value="enviar">
-
+</form>
 
         <?php
      session_start(); //crea una sesion 
-/* modificar datos de la base de datos*/
+    /* modificar datos de la base de datos*/
     $datos_conexion="mysql:dbname=empresa;host=127.0.0.1";
     $administrador="root";
     $pw="";
