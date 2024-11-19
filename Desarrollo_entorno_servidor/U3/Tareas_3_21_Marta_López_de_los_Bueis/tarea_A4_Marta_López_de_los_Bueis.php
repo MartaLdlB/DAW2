@@ -15,7 +15,7 @@ try{
     $base_de_datos= new PDO($datos_conexion,$administrador,$pw);
 
     //realizamos la consulta 
-    $consulta= $base_de_datos->query("SELECT nombre FROM usuarios");
+    $consulta= $base_de_datos->query("SELECT * FROM usuarios");
 
     //almacenamos los datos que recibimos en una varibale
     $columnaNombre= $consulta->fetchAll(PDO::FETCH_COLUMN, 0);
