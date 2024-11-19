@@ -9,9 +9,11 @@
 <body>
     <header>
     <div class="contenedor">
-        <div class="botonSalir"><button><a href="logout.php">Cerrar sesión</a></button></div>
+        <div class="botonSalir"><button><a href="../php/logout.php">Cerrar sesión</a></button></div>
+
         <div><h1>Empresa de papeleria</h1></div>
-        <div class="botonCarrito"><button><a href="carrito.php">Ver carrito</a></button></div>
+
+        <div class="botonCarrito"><button><a href="../html/carrito.html">Ver carrito</a></button></div>
     </div>
         
     </header>

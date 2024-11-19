@@ -99,12 +99,9 @@ a:hover {
     text-decoration: underline;
 }
 
-.botonCarrito{
-    float: right;
-}
-.botonSalir{
-    float: left;
-}
+
 .contenedor{
     display: flex;
+    justify-content: space-between;
 }
+
