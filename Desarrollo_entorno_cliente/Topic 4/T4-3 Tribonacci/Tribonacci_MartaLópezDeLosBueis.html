@@ -29,7 +29,7 @@
                     posicion2=res;
             }
            // return res;
-            document.write(res);
+            document.write("Fibonachi no recursivo: "+res);
         }
 
 
@@ -41,17 +41,18 @@
 
         }
 
-        document.write(fibRecursivo(7)+"<br>");
+        document.write("Fibonachi recursivo de 7: "+fibRecursivo(7)+"<br>");
 
         function triRecursivo(n){
 
-        if(n<=1)return n;
+        if(n<=1)return 0;
+        if(n==2)return 1;
 
         return triRecursivo(n-1)+triRecursivo(n-2)+triRecursivo(n-3);
 
         }
 
-        document.write(triRecursivo(7));
+        document.write("Tribonachi recursivo de 7: "+triRecursivo(7));
     </script>
 </body>
 </html>

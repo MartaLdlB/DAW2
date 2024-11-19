@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T4-2 Media</title>
+</head>
+<body>
+
+    <form>
+        <label for="numero1">Introduce el numero 1:</label><br>
+        <input type="number" name="numero1" id="numero1"><br>
+        <label for="numero2">Introduce el numero 2:</label><br>
+        <input type="number" name="numero2" id="numero2"><br><br>
+        <button type="button" onclick="mostrarMedia()">Pulsa y ve la magia</button>
+
+    </form>
+    <script>
+
+       //funcion flecha de media
+        const media=(n,m)=>((n+m)/2);
+
+
+
+        function mostrarMedia(){
+
+            //introducimos los valores del formulario en variables
+            var n=parseInt(document.getElementById("numero1").value);
+            var m=parseInt(document.getElementById("numero2").value);
+
+            //almacenamos el resultado de la funcion media
+            var resul= media(n,m);
+            //Mostramos el resultado por pantalla
+            document.write(resul);
+        }
+        
+       
+    </script>
+</body>
+</html>

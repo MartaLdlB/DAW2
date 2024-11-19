@@ -98,3 +98,10 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+
+.contenedor{
+    display: flex;
+    justify-content: space-between;
+}
+
