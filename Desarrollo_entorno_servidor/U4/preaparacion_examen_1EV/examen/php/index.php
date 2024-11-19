@@ -13,7 +13,7 @@
 
         <div><h1>Empresa de papeleria</h1></div>
 
-        <div class="botonCarrito"><button><a href="../html/carrito.html">Ver carrito</a></button></div>
+        <div class="botonCarrito"><button><a href="../html/carrito.php">Ver carrito</a></button></div>
     </div>
         
     </header>
@@ -69,26 +69,11 @@
     */
     if (!isset($_POST["cambiar"])) {
         $consultaTodos->execute();
-            $productos = $consultaTodos->fetchAll(PDO::FETCH_ASSOC);
-            echo "<h2>Todos los productos</h2>";
-                foreach ($productos as $producto) {
-                    echo "<div>".
-                    "<p>Nombre:".($producto['nombre_producto'])."</p>".
-                    "<p>".($producto['descripcion_producto'])."</p>".
-                    "<p>".($producto['peso_producto'])."</p>".
-                    "<p>".($producto['tamanio_producto'])."</p>".
-                    "<p>".($producto['imagen_producto']);
-                    echo '<form action="carrtito.php" method="post">';
-                    echo '<label for="añadir">Añadir</label>';
-                    echo '<input type="number" name="cantidad" id="cantidad" value="1">';
-                    echo '<input type="submit" value="Añadir">';
-                    echo '</form>';
-                    echo"</div>";
-                }
+        $productos = $consultaTodos->fetchAll(PDO::FETCH_ASSOC);
+        echo "<h2>Todos los productos</h2>";
+        mostrarProductos($productos);
     }
-        
-       
-
+    
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if(isset($_POST['categoria'])){
@@ -96,55 +81,42 @@
         }else{
             $categoria=1;
         }
-   
-     if ($categoria == 1) {
-            echo "<h2>Todos los productos</h2>";
-        } elseif ($categoria == 2) {
-            echo "<h2>Artículos de papelería</h2>";
-        } elseif ($categoria == 3) {
-            echo "<h2>Mobiliario de oficina</h2>";
-        }
+
         
 
     if($categoria==1 || $_SERVER["REQUEST_METHOD"] != "POST"){
-        //creamos un array asociativo con los productos
+        
+        echo "<h2>Todos los productos</h2>";
         $consultaTodos->execute();
-    $productos = $consultaTodos->fetchAll(PDO::FETCH_ASSOC);
-    echo "<h2>Todos los productos</h2>";
-        foreach ($productos as $producto) {
-            echo "<div>".
-            "<p>Nombre:".($producto['nombre_producto'])."</p>".
-            "<p>".($producto['descripcion_producto'])."</p>".
-            "<p>".($producto['peso_producto'])."</p>".
-            "<p>".($producto['tamanio_producto'])."</p>".
-            "<p>".($producto['imagen_producto']);
-            echo '<form action="carrtito.php" method="post">';
-            echo '<label for="añadir">Añadir</label>';
-            echo '<input type="number" name="cantidad" id="cantidad" value="1">';
-            echo '<input type="submit" value="Añadir">';
-            echo '</form>';
-            echo"</div>";
-        }
+        //creamos un array asociativo con los productos
+        $productos = $consultaTodos->fetchAll(PDO::FETCH_ASSOC);
+        mostrarProductos($productos);
        
     }elseif ($categoria==2 || $categoria==3) {
-        
-        $consultaFiltro->bindParam(":categoria",$categoria,PDO::PARAM_INT);
+        $consultaFiltro->bindParam(":categoria", $categoria, PDO::PARAM_INT);
         $consultaFiltro->execute();
         $productos = $consultaFiltro->fetchAll(PDO::FETCH_ASSOC);
+        echo $categoria == 2 ? "<h2>Artículos de papelería</h2>" : "<h2>Mobiliario de oficina</h2>";
+        mostrarProductos($productos);
+        
+        }
+    }
+
+    function mostrarProductos($productos) {
         foreach ($productos as $producto) {
-            echo "<div>".
-                "<p>Nombre:".($producto['nombre_producto'])."</p>".
-                "<p>".($producto['descripcion_producto'])."</p>".
-                "<p>".($producto['peso_producto'])."</p>".
-                "<p>".($producto['tamanio_producto'])."</p>".
-                "<p>".($producto['imagen_producto']);
-                echo '<form action="carrtito.php" method="post">';
-                echo '<label for="añadir">Añadir</label>';
-                echo '<input type="number" name="cantidad" id="cantidad" value="1">';
-                echo '<input type="submit" value="Añadir">';
-                echo '</form>';
-                echo"</div>";
-            }
+            echo "<div>";
+            echo "<p>Nombre: " .($producto['nombre_producto']) . "</p>";
+            echo "<p>Descripción: " . ($producto['descripcion_producto']) . "</p>";
+            echo "<p>Peso: " . ($producto['peso_producto']) . " kg</p>";
+            echo "<p>Tamaño: " . ($producto['tamanio_producto']) . "</p>";
+            echo "<p>Imagen: " . ($producto['imagen_producto']) . "</p>";
+            echo '<form action="carrito_insert.php" method="post">';
+            echo '<input type="hidden" name="id_producto" value="' . ($producto['id_producto']) . '">';
+            echo '<label for="cantidad">Cantidad:</label>';
+            echo '<input type="number" name="cantidad" id="cantidad" value="1" min="1">';
+            echo '<input type="submit" value="Añadir al carrito">';
+            echo '</form>';
+            echo "</div>";
         }
     }
 

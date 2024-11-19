@@ -9,9 +9,9 @@ if(!file_exists($rutaXML)){
     throw new Exception("El archivo XSD en la ruta indicada no existe");
 }else{
 
-    $base_de_datos= new DOMDocument();
+    $datosBD= new DOMDocument();
 
-    $base_de_datos=load($rutaXML);
+    $datosBD=load($rutaXML);
 
     if(!$base_de_datos->schemaValidate($rutaXSD)){
         throw new Exception("Error en la validacion del XML con su XSD");
@@ -23,16 +23,25 @@ if(!file_exists($rutaXML)){
 function conexionConBD($datos_conexion){
 
     	try {
-            $dsn = "{$datos_conexion['tipo']}:{$datos_conexion['nombre']};{$datos_conexion['host']"
-        } catch (\Throwable $th) {
-            //throw $th;
+            $dsn = "{$datos_conexion['tipo']}:{$datos_conexion['nombre']};{$datos_conexion['host']}";
+            $administrador= $datos_conexion['usuario'];
+            $contrasenia= $datos_conexion['contrasenia'];
+ 
+            //creamos la conexion con la base de datos
+            $base_de_datos= new PDO($dsn,$administrador,$contrasenia);
+
+            //devolvemos  la conexion con la base de datos
+            return $base_de_datos;
+
+        } catch (PDOException $e) {
+            echo "Error con la base de datos --> ".$e->getMessage();
         }
 
 }
 
-function introducirDatos($base_de_datos){
+function introducirDatos($datosBD){
 
-    $xpath = new DOMXpath($base_de_datos);
+    $xpath = new DOMXpath($datosBD);
 
 
     $datos_conexion = [

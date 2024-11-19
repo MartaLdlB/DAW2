@@ -1,49 +1,78 @@
 <?php
-     session_start(); //crea una sesion 
+session_start(); // Inicia la sesión
+
+try {
+    // Conexión a la base de datos
+    $datos_conexion = "mysql:dbname=mydb;host=127.0.0.1";
+    $administrador = "root";
+    $pw = "";
+
+    $base_de_datos = new PDO($datos_conexion, $administrador, $pw);
     
-     $datos_conexion="mysql:dbname=empresa;host=127.0.0.1";
-     $administrador="root";
-     $pw="";
-         
-     $base_de_datos=new PDO($datos_conexion,$administrador,$pw);
+} catch (PDOException $e) {
+    // Manejo de errores de conexión
+    echo("Error al conectar con la base de datos: " . $e->getMessage());
+}
 
-     /*Introducir datos de la conexion con la base de datos */
+// Inicializamos la variable de error
+$error = false;
 
-    $consulta=$base_de_datos->prepare("SELECT correo, contrasenia
-                                        FROM credenciales
-                                        WHERE correo = :correo 
-                                        AND contrasenia = :contrasenia");
-    //variable no inicializada para usarla con "isset()" para detectar si hay un error o no
-    $error;
-    if($_SERVER["REQUEST_METHOD"]=="POST"){ 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recogemos los datos del formulario de forma segura
+    $usuario =  $_POST['correo'];
+    $contrasenia = $_POST['contrasenia']; // Si la contraseña necesita hash, no se sanitiza directamente aquí
 
-        
-            //guardamos en una variable los datos del usuario que recibimos en el login
-            $usuario=$_POST['correo'];
-            $contrasenia=$_POST["contrasenia"];
-            
+    if ($usuario && $contrasenia) {
+        // Preparamos la consulta
+        $consulta = $base_de_datos->prepare("SELECT correo, contrasenia, id_empresa
+                                            FROM credenciales
+                                            WHERE correo = :correo AND contrasenia = :contrasenia");
 
-             //indicamos que tipo de datos le estamos dando en la consulta
-            $consulta -> bindParam(":correo", $usuario, PDO::PARAM_STR); 
-            $consulta -> bindParam(":contrasenia", $contrasenia, PDO::PARAM_STR);
+        // Enlazamos los parámetros
+        $consulta->bindParam(":correo", $usuario, PDO::PARAM_STR);
+        $consulta->bindParam(":contrasenia", $contrasenia, PDO::PARAM_STR); 
+        $consulta->execute();
 
-            //ejecutamos la consulta
-            $consulta->execute();
+        // Obtenemos los datos en un array asociativo
+        $empresa = $consulta->fetch(PDO::FETCH_ASSOC);
 
-            //en el momento en el que encuentre 1 igual al los datos de entrada del usuario,
-            //lo marca como TRUE, en el caso de no encontrar nada lo marca como FALSE, que seria que no se encuentra en la base de datos
-            $datosValidos = ($consulta->rowCount() == 1);
+        if ($empresa) {
+            // Credenciales válidas
+            $_SESSION['id_empresa'] = $empresa['id_empresa'];
+            // Redirigimos al usuario
+            header("Location: index.php");
+            exit(); // Finaliza el script después de la redirección
+        } else {
+            // Credenciales inválidas
+            $error = true;
+        }
+    } else {
+        $error = true;
+    }
+}
+?>
 
-            if($datosValidos==true){
-                header("Location: index.php");
-            }else{
-                $error=true;
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <h1>Iniciar Sesión</h1>
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+        <label for="nombre">Introduce tu correo:</label><br>
+        <input type="email" name="correo" id="correo"><br>
+        <label for="contrasenia">Introduce tu contraseña:</label><br>
+        <input type="password" name="contrasenia" id="contrasenia"><br><br>
+        <input type="submit" value="Iniciar sesion">
+    </form>
 
-            if (isset($error)) {
-                // Mensaje de error y aviso por pantalla incrustado en HTML
-                echo "<br><p>¡Error! Verifica el usuario y la contraseña</p>";
-            
-            }
+    <?php if ($error){
+         echo "<p style='color: red;'>¡Error! Verifica el usuario y la contraseña.</p>";
     }
     ?>
+</body>
+</html>
