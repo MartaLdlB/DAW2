@@ -3,33 +3,34 @@
 class conectarBaseDeDatos{
 
         
-    private static PDO $datos_conexion; //Este PDO es como hacer un new PDO en un atributo
+   
 
-    private function __construct($rutaXML,$rutaXSD){
-        
-    }
+    private function __construct(){
+         $rutaXML="../conexion_base_de_datos/datos_conexion.xml";
+        $rutaXSD="../conexion_base_de_datos/schema.xsd";
 
-    $rutaXML="../conexion_base_de_datos/datos_conexion.xml";
-    $rutaXSD="../conexion_base_de_datos/schema.xsd";
+        if(!file_exists($rutaXML)){
+            throw new Exception ("El archivo XML en la ruta indicada no existe");
+        }elseif (!file_exists($rutaXSD)) {
+            throw new Exception("El archivo XSD en la ruta indicada no existe");
+        }else{
 
-    if(!file_exists($rutaXML)){
-        throw new Exception ("El archivo XML en la ruta indicada no existe");
-    }elseif (!file_exists($rutaXSD)) {
-        throw new Exception("El archivo XSD en la ruta indicada no existe");
-    }else{
+            $datosBD= new DOMDocument();
 
-        $datosBD= new DOMDocument();
+            $datosBD=load($rutaXML);
 
-        $datosBD=load($rutaXML);
-
-        if(!$base_de_datos->schemaValidate($rutaXSD)){
-            throw new Exception("Error en la validacion del XML con su XSD");
-            
+        if(!$datosBD->schemaValidate($rutaXSD)){
+                throw new Exception("Error en la validacion del XML con su XSD");    
         }
 
+        $datos_conexion = $this->introducirDatos
+
 
     }
-    function conexionConBD($datos_conexion){
+
+   
+    }
+    private function conexionConBD($datos_conexion){
 
             try {
                 $dsn = "{$datos_conexion['tipo']}:{$datos_conexion['nombre']};{$datos_conexion['host']}";

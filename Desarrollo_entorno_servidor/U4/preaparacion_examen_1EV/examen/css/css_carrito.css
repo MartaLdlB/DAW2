@@ -1,0 +1,93 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 30px;
+}
+
+h1 {
+    font-size: 28px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de la tabla */
+.container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Tabla de productos */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+td:hover {
+    background-color: #f1f1f1;
+}
+
+table tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+/* Mensajes de error o vacíos */
+p {
+    color: #d9534f;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Botón de finalizar carrito */
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+form input[type="submit"] {
+    padding: 12px 24px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+form input[type="submit"]:active {
+    background-color: #1e7e34;
+}

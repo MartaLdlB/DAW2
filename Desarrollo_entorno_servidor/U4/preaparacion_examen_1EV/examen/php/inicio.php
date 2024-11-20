@@ -8,14 +8,15 @@
 </head>
 <body>
     <header>
-    <div class="contenedor">
-        <div class="botonSalir"><button><a href="../php/logout.php">Cerrar sesión</a></button></div>
-
-        <div><h1>Empresa de papeleria</h1></div>
-
-        <div class="botonCarrito"><button><a href="../html/carrito.php">Ver carrito</a></button></div>
-    </div>
-        
+        <div class="contenedor">
+            
+                <button><a href="../php/logout.php">Cerrar sesión</a></button>
+            
+            <div><h1>Empresa de papeleria</h1></div>
+            
+                <button><a href="../html/carrito.php">Ver carrito</a></button>
+           
+        </div>
     </header>
     <h2>Bienvenido</h2>
 
@@ -103,6 +104,7 @@
     }
 
     function mostrarProductos($productos) {
+        echo "<div class='contenedor'>";
         foreach ($productos as $producto) {
             echo "<div>";
             echo "<p>Nombre: " .($producto['nombre_producto']) . "</p>";
@@ -110,7 +112,7 @@
             echo "<p>Peso: " . ($producto['peso_producto']) . " kg</p>";
             echo "<p>Tamaño: " . ($producto['tamanio_producto']) . "</p>";
             echo "<p>Imagen: " . ($producto['imagen_producto']) . "</p>";
-            echo '<form action="nuevo_carrito_insert.php" method="post">';
+            echo '<form action="carrito_insert.php" method="post">';
             echo '<input type="hidden" name="id_producto" value="' . ($producto['id_producto']) . '">';
             echo '<label for="cantidad">Cantidad:</label>';
             echo '<input type="number" name="cantidad" id="cantidad" value="1" min="1">';
@@ -118,6 +120,7 @@
             echo '</form>';
             echo "</div>";
         }
+         echo "</div>";
     }
 
     ?>

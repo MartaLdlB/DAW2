@@ -8,6 +8,8 @@
     use PHPMailer\PHPMailer\Exception;
   	use PHPMailer\PHPMailer\SMTP;
 
+
+
  /*
   * Incluir el fichero autoload.php de Composer que 
   * se encarga de incluir las librerías PHPMailer
@@ -17,31 +19,12 @@
  	require 'c:/xampp/composer/vendor/phpmailer/phpmailer/src/SMTP.php';
  	require "c:/xampp/composer/vendor/autoload.php";
 
-	 session_start();
-    
-	try{
-		$datos_conexion="mysql:dbname=mydb;host=127.0.0.1";
-	 	$administrador="root";
-	 	$pw="";
-		 
-	 	$base_de_datos=new PDO($datos_conexion,$administrador,$pw);
- 
-	 	/*Introducir datos de la conexion con la base de datos */
- 
-	}catch(PDOException $e){
-		echo "<p>Error con la base de datos: </p>".$e->getMessage();
-	}
- 
-
-	//mensaje es un string formateado con html que contiene los productos del carrito
-	//enviar dos correos distintos uno al departamento y al destinatario (mismo mensaje)
-
-	function enviarEmail(string $destinatario, string $facturaHTML){
+	function send_mail(string $message, string $address) {
 
 		$mail = new PHPMailer(TRUE);
 		$mail->IsSMTP();
 		// cambiar a 0 para no ver mensajes de error
-		$mail->SMTPDebug  = 0; 	//el 2 muestra por pantalla trazas del mail luego cambiar a 0 para quitarlos						
+		$mail->SMTPDebug  = 0; 							
 		$mail->SMTPAuth   = true;
 		$mail->SMTPSecure = "tls"; //ssl                
 		$mail->Host       = "smtp.gmail.com";    
@@ -50,16 +33,15 @@
 		$mail->Username   = "dawiesventura@gmail.com"; 
 		// introducir clave
 		$mail->Password   = "nnli oyoa game qmoc";   	
-		$mail->SetFrom('dawiesventura@gmail.com', 'Empresa de papeleria');
+		$mail->SetFrom('dawiesventura@gmail.com', 'Materiales de oficina Aitor');
 		// asunto
-		$mail->Subject    = "Resumen de tu pedido";
+		$mail->Subject    = "Datos del pedido";
 		// cuerpo
-		$mail->MsgHTML($facturaHTML);
+		$mail->MsgHTML($message);
 		// adjuntos
-		//$mail->addAttachment("empleado.xsd");
-		//$mail->addAttachment("error.html");
+		//$mail->addAttachment("hola.txt"); //archivo mando
 		// destinatario
-		$address = "marta21700@gmail.com";
+		//$address = "aitorpj93@gmail.com";
 		$mail->AddAddress($address, "Prueba");
 		//$mail->IsHTML(true);
 		// enviar
@@ -69,7 +51,4 @@
 		} else {
 		echo "Enviado";
 		}
-	  
 	}
-
- 	

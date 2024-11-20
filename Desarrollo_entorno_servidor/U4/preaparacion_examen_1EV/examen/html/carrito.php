@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito</title>
+    <link rel="stylesheet" href="../css/css_carrito.css">
 </head>
 <body>
     <?php
@@ -15,79 +16,75 @@
         $pw = "";
 
         $base_de_datos = new PDO($datos_conexion, $administrador, $pw);
+        $base_de_datos->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
         echo "<p>Error con la base de datos: </p>" . $e->getMessage();
         exit();
     }
 
+    if (!isset($_SESSION['id_empresa'])) {
+        die("<p>Error: No se ha iniciado sesión correctamente.</p>");
+    }
+
+    $id_empresa = $_SESSION['id_empresa'];
+
     if (isset($_SESSION['id_carrito'])) {
         $id_carrito = $_SESSION['id_carrito'];
 
-       /* $obtenerProductosCarrito = $base_de_datos->prepare("SELECT * 
-                                                            FROM detalle_carrito 
-                                                            WHERE id_carrito = :id_carrito");
+        // Verificar si el carrito está activo
+        $consultaCarritoActivo = $base_de_datos->prepare("SELECT id_carrito
+                                                          FROM carrito
+                                                          WHERE id_empresa = :id_empresa
+                                                          AND estado_carrito = 'activo'");
+        $consultaCarritoActivo->bindParam(":id_empresa", $id_empresa, PDO::PARAM_INT);
+        $consultaCarritoActivo->execute();
 
-        $obtenerProductosCarrito->bindParam(":id_carrito", $id_carrito, PDO::PARAM_INT);
-        $obtenerProductosCarrito->execute();
-
-      
-        // Obtenemos un array asociativo con los productos en el carrito donde tenemos los id_productos
-        $productosCarrito = $obtenerProductosCarrito->fetchAll(PDO::FETCH_ASSOC);
-
-        //ahora necesitamos los datos de estos productos
-          $datosProducto = $base_de_datos->prepare("SELECT *
-                                                FROM productos
-                                                WHERE id_producto = :id_producto");
-
-        $datosProducto->bindParam("id_producto", $productosCarrito['id_producto'],PDO::PARAM_INT);
-
-        $datosProducto->execute();
-        */
-
-        $consultaDatosProductos= $base_de_datos->prepare("SELECT dc.*, p.nombre_producto, p.precio, p.descripcion_producto, p.tamanio_producto 
-                                                        FROM detalle_carrito dc
-                                                        INNER JOIN productos p ON dc.id_producto = p.id_producto
-                                                        WHERE dc.id_carrito = :id_carrito");
-
-                                                    
-         $consultaDatosProductos->bindParam(":id_carrito", $id_carrito, PDO::PARAM_INT);
-         //$consultaDatosProductos->execute();
-         $productosCarrito = $consultaDatosProductos->fetchAll(PDO::FETCH_ASSOC);
-
-        //contamos los elementos del array, en el caso de ser mayor a 0
-        if (count($productosCarrito) > 0) {
-            echo "<table border='1'>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Peso</th>
-                        <th>Tamaño</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                    </tr>";
-            foreach ($productosCarrito as $producto) {
-                echo "<tr>
-                        <td>" . ($producto['nombre_producto']) . "</td>
-                        <td>" . ($producto['descripcion_producto']) . "</td>
-                        <td>" . ($producto['peso_producto']) . "</td>
-                        <td>" . ($producto['tamanio_producto']) . "</td>
-                        <td>" . ($producto['precio']) . "</td>
-                        <td>" . ($producto['cantidad_producto']) . "</td>
-                      </tr>";
-            }
-            echo "</table>";
+        if ($consultaCarritoActivo->rowCount() == 0) {
+            echo "<p>Carrito no definido.</p>";
         } else {
-            echo "<p>No hay productos en el carrito.</p>";
+            // Obtener los productos del carrito
+            $consultaDatosProductos = $base_de_datos->prepare("SELECT dc.*, p.nombre_producto, p.precio_producto, 
+                                                               p.descripcion_producto, p.tamanio_producto, p.peso_producto 
+                                                               FROM detalle_carrito dc
+                                                               INNER JOIN productos p ON dc.id_producto = p.id_producto
+                                                               WHERE dc.id_carrito = :id_carrito");
+            $consultaDatosProductos->bindParam(":id_carrito", $id_carrito, PDO::PARAM_INT);
+            $consultaDatosProductos->execute();
+            $productosCarrito = $consultaDatosProductos->fetchAll(PDO::FETCH_ASSOC);
+
+            // Mostrar los productos si existen
+            if (count($productosCarrito) > 0) {
+                echo "<table border='1'>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Peso</th>
+                            <th>Tamaño</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                        </tr>";
+                foreach ($productosCarrito as $producto) {
+                    echo "<tr>
+                            <td>" . htmlspecialchars($producto['nombre_producto']) . "</td>
+                            <td>" . htmlspecialchars($producto['descripcion_producto']) . "</td>
+                            <td>" . htmlspecialchars($producto['peso_producto']) . "</td>
+                            <td>" . htmlspecialchars($producto['tamanio_producto']) . "</td>
+                            <td>" . htmlspecialchars($producto['precio_producto']) . "</td>
+                            <td>" . htmlspecialchars($producto['cantidad_producto']) . "</td>
+                          </tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "<p>No hay productos en el carrito.</p>";
+            }
         }
     } else {
-        echo "<p>Carrito no definido.</p>";
+        echo "<p>Error: No hay un carrito asociado a la sesión.</p>";
     }
-
     ?>
 
-    <form action="../php/enviar_email.php">
+    <form action="../php/factura.php" method="POST">
         <input type="submit" value="Finalizar carrito">
     </form>
-    
 </body>
 </html>

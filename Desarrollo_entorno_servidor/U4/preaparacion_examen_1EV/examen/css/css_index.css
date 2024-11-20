@@ -16,6 +16,7 @@ header {
 
 header h1 {
     margin: 0;
+    color: black;
 }
 
 /* Contenedor para botones del header */
@@ -128,7 +129,7 @@ img {
 
 /* Enlaces */
 a {
-    color: #4CAF50;
+    color: white;
     text-decoration: none;
 }
 
