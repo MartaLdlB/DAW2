@@ -31,14 +31,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                     VALUES (:id_empresa, 'activo')");
 
         $insertarCarrito->bindParam(":id_empresa", $_SESSION['id_empresa'], PDO::PARAM_INT);
-        $insertarCarrito->execute();
+        //$insertarCarrito->execute();
 
+
+
+        $carritoActivo = $insertarCarrito->fetch(PDO::FETCH_ASSOC);
          /*lastInsertId() es un método de PDO que devuelve el último
         ID generado automáticamente por una consulta INSERT en una
         base de datos que utiliza claves primarias autoincrementales
         Por lo que guardamos la id_carrito en la variable sesion*/
-        $_SESSION['id_carrito'] = $base_de_datos->lastInsertId();
-
+        //$_SESSION['id_carrito'] = $base_de_datos->lastInsertId();
+        $_SESSION['id_carrito'] = $carritoActivo['id_carrito'];
+        
     } else {
 
         //si existe un carrito activo para el id_empresa

@@ -31,43 +31,53 @@
 	}catch(PDOException $e){
 		echo "<p>Error con la base de datos: </p>".$e->getMessage();
 	}
-
+ //completado una vez enviado a el email
 	$consultaUpgradeEstadoCarrito= $base_de_datos->prepare("UPDATE carrito 
                                                         	SET estado_carrito =  'completado'
                                                         	WHERE id_carrito = :id_carrito");
 
 	$consultaUpgradeEstadoCarrito->execute();
 
-	/*
- 	$mail = new PHPMailer(TRUE);
- 	$mail->IsSMTP();
- 	// cambiar a 0 para no ver mensajes de error
- 	$mail->SMTPDebug  = 2; 							
- 	$mail->SMTPAuth   = true;
- 	$mail->SMTPSecure = "tls"; //ssl                
-	$mail->Host       = "smtp.gmail.com";    
-	$mail->Port       = 587; //465                
-	// introducir usuario de google
-	$mail->Username   = "dawiesventura@gmail.com"; 
-	// introducir clave
-	$mail->Password   = "nnli oyoa game qmoc";   	
-	$mail->SetFrom('dawiesventura@gmail.com', 'Mercedes Profe');
-	// asunto
-	$mail->Subject    = "Resumen de tu pedido";
-	// cuerpo
-	$mail->MsgHTML('Factura');
-	// adjuntos
-	//$mail->addAttachment("empleado.xsd");
-	//$mail->addAttachment("error.html");
-	// destinatario
-	$address = "marta21700@gmail.com";
-	$mail->AddAddress($address, "Prueba");
-	//$mail->IsHTML(true);
-	// enviar
-	$resul = $mail->Send();
-	if(!$resul) {
-	  echo "Error" . $mail->ErrorInfo;
-	} else {
-	  echo "Enviado";
+	
+
+
+	//mensaje es un string formateado con html que contiene los productos del carrito
+	//enviar dos correos distintos uno al departamento y al destinatario (mismo mensaje)
+
+	function enviarEmail(string $destinatario, string $mensaje){
+
+		$mail = new PHPMailer(TRUE);
+		$mail->IsSMTP();
+		// cambiar a 0 para no ver mensajes de error
+		$mail->SMTPDebug  = 2; 	//el 2 muestra por pantalla trazas del mail luego cambiar a 0 para quitarlos						
+		$mail->SMTPAuth   = true;
+		$mail->SMTPSecure = "tls"; //ssl                
+		$mail->Host       = "smtp.gmail.com";    
+		$mail->Port       = 587; //465                
+		// introducir usuario de google
+		$mail->Username   = "dawiesventura@gmail.com"; 
+		// introducir clave
+		$mail->Password   = "nnli oyoa game qmoc";   	
+		$mail->SetFrom('dawiesventura@gmail.com', 'Empresa de papeleria');
+		// asunto
+		$mail->Subject    = "Resumen de tu pedido";
+		// cuerpo
+		$mail->MsgHTML($mensaje);
+		// adjuntos
+		//$mail->addAttachment("empleado.xsd");
+		//$mail->addAttachment("error.html");
+		// destinatario
+		$address = $destinatario;
+		$mail->AddAddress($address, "Prueba");
+		//$mail->IsHTML(true);
+		// enviar
+		$resul = $mail->Send();
+		if(!$resul) {
+		echo "Error" . $mail->ErrorInfo;
+		} else {
+		echo "Enviado";
+		}
+	  
 	}
-	  */
+
+ 	
