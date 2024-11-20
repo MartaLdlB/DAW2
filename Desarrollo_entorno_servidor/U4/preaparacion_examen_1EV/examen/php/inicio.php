@@ -110,7 +110,7 @@
             echo "<p>Peso: " . ($producto['peso_producto']) . " kg</p>";
             echo "<p>Tamaño: " . ($producto['tamanio_producto']) . "</p>";
             echo "<p>Imagen: " . ($producto['imagen_producto']) . "</p>";
-            echo '<form action="carrito_insert.php" method="post">';
+            echo '<form action="nuevo_carrito_insert.php" method="post">';
             echo '<input type="hidden" name="id_producto" value="' . ($producto['id_producto']) . '">';
             echo '<label for="cantidad">Cantidad:</label>';
             echo '<input type="number" name="cantidad" id="cantidad" value="1" min="1">';

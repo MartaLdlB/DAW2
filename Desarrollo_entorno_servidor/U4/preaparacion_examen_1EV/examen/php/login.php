@@ -20,7 +20,7 @@ $error = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recogemos los datos del formulario de forma segura
     $usuario =  $_POST['correo'];
-    $contrasenia = $_POST['contrasenia']; // Si la contraseña necesita hash, no se sanitiza directamente aquí
+    $contrasenia = $_POST['contrasenia']; 
 
     if ($usuario && $contrasenia) {
         // Preparamos la consulta
@@ -31,16 +31,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Enlazamos los parámetros
         $consulta->bindParam(":correo", $usuario, PDO::PARAM_STR);
         $consulta->bindParam(":contrasenia", $contrasenia, PDO::PARAM_STR); 
+        //si se ejecuta correctamente quiere decir que hay un usuario con estos parametros
         $consulta->execute();
 
         // Obtenemos los datos en un array asociativo
         $empresa = $consulta->fetch(PDO::FETCH_ASSOC);
 
         if ($empresa) {
-            // Credenciales válidas
-            $_SESSION['id_empresa'] = $empresa['id_empresa'];
+            //Almacenamos el id_empresa en la variable global para poder usarla en todo el proyecto
+            $_SESSION['id_empresa'] = $empresa['id_empresa']; 
             // Redirigimos al usuario
-            header("Location: index.php");
+            header("Location: inicio.php");
             exit(); // Finaliza el script después de la redirección
         } else {
             // Credenciales inválidas

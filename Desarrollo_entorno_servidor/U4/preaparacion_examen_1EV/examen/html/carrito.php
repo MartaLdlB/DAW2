@@ -44,13 +44,14 @@
         $datosProducto->execute();
         */
 
-        $consultaDatosProductos= $base_de_datos->prepare("
-                                                    SELECT dc.*, p.nombre_producto, p.precio, p.descripcion_producto, p.tamanio_producto 
-                                                    FROM detalle_carrito dc
-                                                    INNER JOIN productos p ON dc.id_producto = p.id_producto
-                                                    WHERE dc.id_carrito = :id_carrito");
+        $consultaDatosProductos= $base_de_datos->prepare("SELECT dc.*, p.nombre_producto, p.precio, p.descripcion_producto, p.tamanio_producto 
+                                                        FROM detalle_carrito dc
+                                                        INNER JOIN productos p ON dc.id_producto = p.id_producto
+                                                        WHERE dc.id_carrito = :id_carrito");
+
+                                                    
          $consultaDatosProductos->bindParam(":id_carrito", $id_carrito, PDO::PARAM_INT);
-         $consultaDatosProductos->execute();
+         //$consultaDatosProductos->execute();
          $productosCarrito = $consultaDatosProductos->fetchAll(PDO::FETCH_ASSOC);
 
         //contamos los elementos del array, en el caso de ser mayor a 0
@@ -81,6 +82,12 @@
     } else {
         echo "<p>Carrito no definido.</p>";
     }
+
     ?>
+
+    <form action="../php/enviar_email.php">
+        <input type="submit" value="Finalizar carrito">
+    </form>
+    
 </body>
 </html>
