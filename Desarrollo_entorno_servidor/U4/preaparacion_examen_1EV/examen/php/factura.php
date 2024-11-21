@@ -84,15 +84,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // enviar_email($correo_cuenta, $facturaHTML);
 
         // Actualizar la tabla pedidos
-        $actualizarTablaPedidos = $base_de_datos->prepare("UPDATE pedidos 
-                                                        SET estado_de_envio = 'pendiente',
-                                                        cuenta_de_pago = 'sin especificar',
-                                                        fecha_pedido = NOW(),
-                                                        id_carrito = :id_carrito
-                                                        WHERE id_carrito = :id_carrito");
+        $actualizarTablaPedidos = $base_de_datos->prepare("INSERT INTO pedidos (estado_de_envio, cuenta_de_pago, fecha_pedido, id_carrito)
+                                                            VALUES ('Pendiente', 'Sin especificar', NOW(), :id_carrito)");
 
-        $actualizarTablaPedidos->bindParam(":id_carrito", $id_carrito, PDO::PARAM_INT);
-        $actualizarTablaPedidos->execute();
+                                                        
 
         $actualizarTablaPedidos->bindParam(":id_carrito", $id_carrito, PDO::PARAM_INT);
         $actualizarTablaPedidos->execute();
