@@ -17,23 +17,22 @@
  	require 'c:/xampp/composer/vendor/phpmailer/phpmailer/src/SMTP.php';
  	require "c:/xampp/composer/vendor/autoload.php";
 
-	 session_start();
+	
     
-	try{
-		$datos_conexion="mysql:dbname=mydb;host=127.0.0.1";
-	 	$administrador="root";
-	 	$pw="";
-		 
-	 	$base_de_datos=new PDO($datos_conexion,$administrador,$pw);
+	require_once "conexion_bd.php";
+	try {
  
-	 	/*Introducir datos de la conexion con la base de datos */
- 
-	}catch(PDOException $e){
-		echo "<p>Error con la base de datos: </p>".$e->getMessage();
+		$conexionBD = new ConectarBaseDeDatos();
+		$base_de_datos = $conexionBD->getConexion();
+		
+	} catch (Exception $e) {
+		 echo "Error: " . $e->getMessage();
 	}
- 
+	
+	
+  	session_start();
 
-	//mensaje es un string formateado con html que contiene los productos del carrito
+	//$facturaHTML es un string formateado con html que contiene los productos del carrito
 	//enviar dos correos distintos uno al departamento y al destinatario (mismo mensaje)
 
 	function enviarEmail(string $destinatario, string $facturaHTML){

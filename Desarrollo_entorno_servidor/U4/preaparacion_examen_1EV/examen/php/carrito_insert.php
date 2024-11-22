@@ -2,17 +2,16 @@
 // Iniciamos sesión para usar $_SESSION
 session_start();
 
-try {
-    $datos_conexion = "mysql:dbname=mydb;host=127.0.0.1";
-    $administrador = "root";
-    $pw = "";
+require_once "conexion_bd.php";
 
-    $base_de_datos = new PDO($datos_conexion, $administrador, $pw);
-    $base_de_datos->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    try {
 
-} catch (PDOException $e) {
-    die("<p>Error con la base de datos: </p>" . $e->getMessage());
-}
+        $conexionBD = new ConectarBaseDeDatos();
+        $base_de_datos = $conexionBD->getConexion();
+    
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -21,18 +20,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_producto = $_POST['id_producto'];
     $cantidad_producto = $_POST['cantidad'];
 
-
+    //Con esta consulta comprobamos si hay un carrito para la empresa que esta haciendo el pedido, con el estado activo
     $consultaCarritoActivo = $base_de_datos->prepare("SELECT id_carrito
                                                         FROM carrito
                                                         WHERE id_empresa = :id_empresa
                                                         AND estado_carrito = 'activo'");
 
+    //el id_empresa se almacena desde el inicio, en el momento en el que la persona inicia sesión
     $consultaCarritoActivo->bindParam(":id_empresa",$id_empresa, PDO::PARAM_INT);
     $consultaCarritoActivo->execute();
-    //si al ejecutar la consulta no encuentra un carrito para una empresa con el 
-    //estado activo
+    //si al ejecutar la consulta no encuentra un carrito para una empresa con el estado activo
     if($consultaCarritoActivo->rowCount() == 0){
-       // Crear nuevo carrito
+       //insertamos dentro de la base de datos un nuevo carrito con el estado activo, ya que es el que se va a usar
        $insertarCarrito = $base_de_datos->prepare("INSERT INTO carrito (id_empresa, estado_carrito)
                                                      VALUES (:id_empresa, 'activo')");
         $insertarCarrito->bindParam(":id_empresa", $id_empresa, PDO::PARAM_INT);
@@ -43,13 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ID generado automáticamente por una consulta INSERT en una
         base de datos que utiliza claves primarias autoincrementales
         Por lo que guardamos la id_carrito en la variable sesion*/
-        //$_SESSION['id_carrito'] = $base_de_datos->lastInsertId();p;'[p[']]
+        
         $_SESSION['id_carrito'] = $base_de_datos->lastInsertId();
        
        
         
     } else {
-        //si existe un carrito usamos ese carrito
+        //si existe un carrito usamos ese carrito, almacenandolo en un array asociativo
         $carrito = $consultaCarritoActivo->fetch(PDO::FETCH_ASSOC);
         //guardamos el id_carrito en $_SESSION del array asociativo que obtenemos de la consulta 
         //que comprueba la existencia de una carrito activo para esa empresa
@@ -63,14 +62,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                                     FROM detalle_carrito
                                                                     WHERE id_carrito = :id_carrito
                                                                     AND id_producto = :id_producto");
-
+        //en esta ocasion hemos utilizado directamente $_SESSION para indicar que parametro es :id_carrito, asi se muestra que podemos ponerlo de varias formas
         $consultaComprobarProductoCarrito->bindParam(":id_carrito", $_SESSION['id_carrito'], PDO::PARAM_INT);
         $consultaComprobarProductoCarrito->bindParam(":id_producto", $id_producto, PDO::PARAM_INT);
         $consultaComprobarProductoCarrito->execute();
 
-        //Si en la consulta no obtenemos resultado
+        //si en la consulta no obtenemos resultado
         if($consultaComprobarProductoCarrito->rowCount() == 0){
-            //Incluimos el producto en detalle_carrito
+            //Incluimos el producto en detalle_carrito, que es el que almacena los datos de los productos
             $insertarProductos = $base_de_datos->prepare("INSERT INTO detalle_carrito (id_producto, id_carrito, cantidad_producto)
                                                         VALUES (:id_producto, :id_carrito, :cantidad_producto)");
             $insertarProductos->bindParam(":id_producto", $id_producto, PDO::PARAM_INT);
@@ -78,8 +77,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $insertarProductos->bindParam(":cantidad_producto", $cantidad_producto, PDO::PARAM_INT);
             $insertarProductos->execute();
 
-        }else{//Si obtenemos un resultado
-            //Actualizamos la cantidad del producto
+        }else{//si obtenemos un resultado
+            //actualizamos la cantidad del producto, sumandole la nueva cantidad a la anterior
             $actualizarCantidad = $base_de_datos->prepare("UPDATE detalle_carrito 
                                                             SET cantidad_producto = cantidad_producto + :cantidad_producto 
                                                             WHERE id_carrito = :id_carrito
@@ -92,6 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    
 
     }
+    //esta pagina no se mostraría, segun se inserta o actualiza un producto actualiza la pagina principal para poder seguir
+    //añadiendo productos al carrito
     header('Location: ../php/inicio.php');
 
 ?>

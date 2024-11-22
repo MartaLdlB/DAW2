@@ -1,17 +1,20 @@
 <?php
+//dentro de este script necesitamos 
+require_once "conexion_bd.php";
+require_once "enviar_email.php";
 
-try {
-    $datos_conexion = "mysql:dbname=mydb;host=127.0.0.1";
-    $administrador = "root";
-    $pw = "";
+    try {
 
-    $base_de_datos = new PDO($datos_conexion, $administrador, $pw);
-} catch (PDOException $e) {
-    die("<p>Error con la base de datos: </p>" . $e->getMessage());
-}
+        $conexionBD = new ConectarBaseDeDatos();
+        $base_de_datos = $conexionBD->getConexion();
+    
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    session_start();
+    
 
     $id_carrito = $_SESSION['id_carrito'];
     $id_empresa = $_SESSION['id_empresa'];
@@ -51,9 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <td>" . htmlspecialchars($producto['descripcion_producto']) . "</td>
                             <td>" . htmlspecialchars($producto['peso_producto']) . "</td>
                             <td>" . htmlspecialchars($producto['tamanio_producto']) . "</td>
-                            <td>$" . number_format($producto['precio_producto'], 2) . "</td>
+                            <td>" . number_format($producto['precio_producto'], 2) . "€</td>
                             <td>" . htmlspecialchars($producto['cantidad_producto']) . "</td>
-                            <td>$" . number_format($subtotal, 2) . "</td>
+                            <td>" . number_format($subtotal, 2) . "€</td>
                         </tr>";
     }
 
@@ -80,8 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $correo_cuenta = $consultaCorreoCuenta->fetch(PDO::FETCH_COLUMN);
 
     if ($correo_cuenta && $correo_departamento) {
-        // enviar_email($correo_departamento, $facturaHTML);
-        // enviar_email($correo_cuenta, $facturaHTML);
+        enviarEmail($correo_departamento, $facturaHTML);
+        enviarEmail($correo_cuenta, $facturaHTML);
 
         // Actualizar la tabla pedidos
         $actualizarTablaPedidos = $base_de_datos->prepare("INSERT INTO pedidos (estado_de_envio, cuenta_de_pago, fecha_pedido, id_carrito)

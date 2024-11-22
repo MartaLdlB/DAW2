@@ -1,18 +1,19 @@
 <?php
-session_start(); // Inicia la sesión
+//session_start(); // Inicia la sesión
 
-try {
-    // Conexión a la base de datos
-    $datos_conexion = "mysql:dbname=mydb;host=127.0.0.1";
-    $administrador = "root";
-    $pw = "";
 
-    $base_de_datos = new PDO($datos_conexion, $administrador, $pw);
+
+/*require_once "conexion_bd.php";
+
+    try {
+        
+        $conexionBD = new ConectarBaseDeDatos();
+        $base_de_datos = $conexionBD->getConexion();
     
-} catch (PDOException $e) {
-    // Manejo de errores de conexión
-    echo("Error al conectar con la base de datos: " . $e->getMessage());
-}
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
+*/
 
 // Inicializamos la variable de error
 $error = false;
@@ -22,8 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario =  $_POST['correo'];
     $contrasenia = $_POST['contrasenia']; 
 
+
+
+    //comprobamos si el usuario existe con una funcion fuera de este script, almacenado en consultas.php, añadimos require_once consultas.php para poder usar las funciones que se almacenan alli
+
     if ($usuario && $contrasenia) {
-        // Preparamos la consulta
+
+
+    /*    // Preparamos la consulta
         $consulta = $base_de_datos->prepare("SELECT correo, contrasenia, id_empresa
                                             FROM credenciales
                                             WHERE correo = :correo AND contrasenia = :contrasenia");
@@ -41,9 +48,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //Almacenamos el id_empresa en la variable global para poder usarla en todo el proyecto
             $_SESSION['id_empresa'] = $empresa['id_empresa']; 
             // Redirigimos al usuario
+
+    */
+        $esUsuarioExistente = consultaLogin($usuario, $contrasenia);
+        if($esUsuarioExistente==true){
             header("Location: inicio.php");
-            exit(); // Finaliza el script después de la redirección
-        } else {
+        }else {
             // Credenciales inválidas
             $error = true;
         }
@@ -51,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = true;
     }
 }
+
 ?>
 
 <!DOCTYPE html>

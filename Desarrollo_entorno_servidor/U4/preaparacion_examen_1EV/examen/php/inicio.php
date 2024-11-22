@@ -34,28 +34,27 @@
 
     <?php
     session_start();
+
+    require_once "conexion_bd.php";
+    require_once "consultas.php";
+
+    try {
+
+        $conexionBD = new ConectarBaseDeDatos();
+        $base_de_datos = $conexionBD->getConexion();
     
-    try{
-         $datos_conexion="mysql:dbname=mydb;host=127.0.0.1";
-    $administrador="root";
-    $pw="";
-        
-    $base_de_datos=new PDO($datos_conexion,$administrador,$pw);
-
-    /*Introducir datos de la conexion con la base de datos */
-
-    }catch(PDOException $e){
-        echo "<p>Error con la base de datos: </p>".$e->getMessage();
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
     }
-   
-    $consultaTodos=$base_de_datos->prepare("SELECT *
+
+   /* $consultaTodos=$base_de_datos->prepare("SELECT *
                                         FROM productos");
 
     $consultaFiltro=$base_de_datos->prepare("SELECT * 
                                             FROM productos
                                             WHERE id_categorias = :categoria");
     
-    
+
 
 
     /*Desde el formulario enviamos un valor hidden con valor a 1 que se llama cambiar
@@ -69,9 +68,10 @@
     no llegaría a entrar en este if
     */
     if (!isset($_POST["cambiar"])) {
-        $consultaTodos->execute();
-        $productos = $consultaTodos->fetchAll(PDO::FETCH_ASSOC);
+      //  $consultaTodos->execute();
+      //  $productos = $consultaTodos->fetchAll(PDO::FETCH_ASSOC);
         echo "<h2>Todos los productos</h2>";
+        $productos = consultaObtenerTodosProductos();
         mostrarProductos($productos);
     }
     
@@ -87,10 +87,14 @@
 
     if($categoria==1 || $_SERVER["REQUEST_METHOD"] != "POST"){
         
-        echo "<h2>Todos los productos</h2>";
+      /*  echo "<h2>Todos los productos</h2>";
         $consultaTodos->execute();
         //creamos un array asociativo con los productos
         $productos = $consultaTodos->fetchAll(PDO::FETCH_ASSOC);
+        mostrarProductos($productos);*/
+
+        echo "<h2>Todos los productos</h2>";
+        $productos = consultaObtenerTodosProductos();
         mostrarProductos($productos);
        
     }elseif ($categoria==2 || $categoria==3) {
@@ -104,14 +108,15 @@
     }
 
     function mostrarProductos($productos) {
+
         echo "<div class='contenedor'>";
         foreach ($productos as $producto) {
             echo "<div>";
             echo "<p>Nombre: " .($producto['nombre_producto']) . "</p>";
             echo "<p>Descripción: " . ($producto['descripcion_producto']) . "</p>";
-            echo "<p>Peso: " . ($producto['peso_producto']) . " kg</p>";
+            echo "<p>Peso: " . ($producto['peso_producto']) . "</p>";
             echo "<p>Tamaño: " . ($producto['tamanio_producto']) . "</p>";
-            echo "<p>Imagen: " . ($producto['imagen_producto']) . "</p>";
+            echo '<img src="data:image/jpeg;base64,' . base64_encode($producto['imagen_producto']) . '" alt="Imagen del producto" width="300px" height="300px"" />';
             echo '<form action="carrito_insert.php" method="post">';
             echo '<input type="hidden" name="id_producto" value="' . ($producto['id_producto']) . '">';
             echo '<label for="cantidad">Cantidad:</label>';
