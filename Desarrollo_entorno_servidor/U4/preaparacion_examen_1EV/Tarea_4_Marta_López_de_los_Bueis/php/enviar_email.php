@@ -30,7 +30,7 @@
 	}
 	
 	
-  	session_start();
+  	
 
 	//$facturaHTML es un string formateado con html que contiene los productos del carrito
 	//enviar dos correos distintos uno al departamento y al destinatario (mismo mensaje)
@@ -57,7 +57,9 @@
 		// adjuntos
 		//$mail->addAttachment("empleado.xsd");
 		//$mail->addAttachment("error.html");
-		// destinatario
+
+		// $destinatario (este address es mi correo personal para comprobar que si se envian los correos
+		// cuando se quiera enviar al correo que se indique en la base de datos, debemos poner $destinatario)
 		$address = "marta21700@gmail.com";
 		$mail->AddAddress($address, "Prueba");
 		//$mail->IsHTML(true);
