@@ -4,16 +4,12 @@ require_once "conexion_bd.php";
 
 session_start();
 
-
     try {
         $conexionBD = new ConectarBaseDeDatos();
         $base_de_datos = $conexionBD->getConexion();
     } catch (Exception $e) {
         echo "Error: " . $e->getMessage();
     }
-
-
-
 
 //funcion para login
 function consultaLogin($usuario, $contrasenia){
