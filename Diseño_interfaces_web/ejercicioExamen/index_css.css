@@ -1,0 +1,141 @@
+html, body, header {
+    margin: 0px;
+    padding: 0px;
+}
+
+/**Menu de navegacion, lista**/
+nav {
+    background-color: rgb(60, 0, 95);
+}
+
+#menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(60, 0, 95);
+}
+
+#menu ul li {
+    position: relative;
+    flex-grow: 1;
+    text-align: center;
+    display: block;
+    color: #fff;
+    font-size: 15px;
+    padding: 10px;
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#menu ul a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+  /* Efecto hover en el menú principal */
+  #menu ul li:hover {
+    background:  rgb(96, 0, 151);
+}
+
+/* Submenú desplegable */
+#menu ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgb(60, 0, 95);
+    padding: 0;
+   /* z-index: 999;*/
+}
+
+#menu ul ul li {
+    width: 100%;
+}
+
+#menu ul ul a {
+    width: 100%;
+    position: relative;
+    flex-grow: 1;
+    /*text-align: center;*/
+    display: block;
+    color: #fff;
+    font-size: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;         
+}
+
+/* Mostrar submenú al pasar el ratón */
+#menu ul li:hover > ul {
+    display: block;
+}
+
+/* Efecto hover en los enlaces del submenú */
+#menu ul ul li:hover {
+    background:  rgb(96, 0, 151);
+}
+
+
+/*Header*/
+header{
+    background-color: rgb(95, 18, 139);
+}
+
+/*Div header*/
+
+.contenedor{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.icono{
+    flex: 1;
+    padding-left: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+.titulo{
+    flex: 1;
+    text-align: center;
+}
+.registro{
+    flex: 1;
+    text-align: center;
+    margin-top: 60px;
+    padding-left: 360px;
+}
+
+.horoscopo_semanal{
+    display: flex;
+    margin: 100px 0 0 200px;
+    width: 90%;
+    height: 600px;
+    justify-content: center;
+    gap: 0px;
+}
+.horoscopo_semanal img{
+    /*339 664*/
+    /*height: 600px;
+    width: 300px;*/
+    width: 60%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: all ease-in-out 0.5s
+
+}
+
+.horoscopo_semanal img:hover{
+    width: 100%;
+
+}
+
