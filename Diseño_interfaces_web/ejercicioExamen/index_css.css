@@ -116,13 +116,13 @@ header{
 
 .horoscopo_semanal{
     display: flex;
-    margin: 100px 0 0 200px;
+    margin: 50px 0 0 200px;
     width: 90%;
     height: 600px;
     justify-content: center;
     gap: 0px;
 }
-.horoscopo_semanal img{
+.horoscopo_semanal a img{
     /*339 664*/
     /*height: 600px;
     width: 300px;*/
@@ -134,8 +134,12 @@ header{
 
 }
 
-.horoscopo_semanal img:hover{
+.horoscopo_semanal a img:hover{
     width: 100%;
 
 }
 
+.titulo_horoscopo{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}

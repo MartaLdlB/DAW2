@@ -51,8 +51,10 @@ const employees = [
         sal: 20000
     }
 ];
-function getNames(employee) {
+
+ const getNames = ()=>employee.name;
+/*function getNames(employee) {
     return employee.name;
-}
+}*/
 const names = employees.map(getNames);
 console.log('2. Employee names:\n' + names); //esto debes mantenerlo

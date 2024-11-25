@@ -7,6 +7,12 @@ html, body, header {
 nav {
     background-color: rgb(60, 0, 95);
 }
+body{
+    background-color: rgb(128, 64, 245);
+    /*no-repeat #000;*/
+    background-size: cover;
+}
+
 
 #menu ul {
     list-style: none;
@@ -14,7 +20,7 @@ nav {
     padding: 0;
     display: flex;
     justify-content: space-around;
-    background-color: rgb(60, 0, 95);
+    background-color: rgb(52, 0, 95);
 }
 
 #menu ul li {
@@ -41,7 +47,7 @@ nav {
 }
   /* Efecto hover en el menú principal */
   #menu ul li:hover {
-    background:  rgb(96, 0, 151);
+    background:  rgb(78, 0, 151);
 }
 
 /* Submenú desplegable */
@@ -116,23 +122,21 @@ header{
 
 .horoscopo_semanal{
     display: flex;
-    margin: 100px 0 0 100px;
-    width: 90%;
+    margin: 50px 0 0 230px;
+    width: 75%;
     height: 600px;
+    justify-content: center;
     
 }
 
-.horoscopo_semanal a img{
-    /*339 664*/
-    /*height: 600px;
-    width: 300px;*/
-    width: 0px;
+.horoscopo_semanal a img {
+    width: 150px; /* Ancho inicial visible */
     flex-grow: 1;
     object-fit: cover;
     opacity: .8;
     transition: .5s ease;
-
-
+    height: 100%;
+    border-radius: 10px;
 }
 
 .horoscopo_semanal a img:hover{
@@ -144,4 +148,23 @@ header{
 
 }
 
+.titulo_horoscopo{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    font-size: 100px;
+    font-weight: bold;
+    
+}
 
+.miss-fajardose-regular {
+    font-family: "Miss Fajardose", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .eagle-lake-regular {
+    font-family: "Eagle Lake", serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  
