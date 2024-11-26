@@ -11,6 +11,7 @@ body{
     background-color: rgb(128, 64, 245);
     /*no-repeat #000;*/
     background-size: cover;
+    overflow-x: hidden;
 }
 
 
@@ -91,34 +92,28 @@ body{
 
 /*Header*/
 header{
-    background-color: rgb(95, 18, 139);
+    /*background-color: rgb(31, 32, 34);*/
+    background-image: url(https://i.pinimg.com/originals/5f/00/96/5f009674bb012f8e26ea43dad4abdd00.gif);
 }
 
 /*Div header*/
 
-.contenedor{
+.contenedor {
     display: flex;
-    justify-content: space-between;
-    
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center;    /* Centra los elementos verticalmente */
+   /* height: 100vh;          /* Opcional: Asegúrate de ocupar toda la altura del viewport */
 }
 
-.icono{
+.icono,
+.logo,
+.registro {
     flex: 1;
-    padding-left: 100px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    display: flex;          /* Asegúrate de que los elementos internos estén alineados */
+    justify-content: center; /* Centra el contenido dentro de cada sección */
+    align-items: center;    /* Centra el contenido verticalmente */
+}
 
-}
-.titulo{
-    flex: 1;
-    text-align: center;
-}
-.registro{
-    flex: 1;
-    text-align: center;
-    margin-top: 60px;
-    padding-left: 360px;
-}
 
 .horoscopo_semanal{
     display: flex;
@@ -151,7 +146,7 @@ header{
 .titulo_horoscopo{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
-    font-size: 100px;
+    font-size: 50px;
     font-weight: bold;
     
 }
@@ -161,10 +156,26 @@ header{
     font-weight: 400;
     font-style: normal;
   }
-  .eagle-lake-regular {
+.eagle-lake-regular {
     font-family: "Eagle Lake", serif;
     font-weight: 300;
     font-style: normal;
-  }
+}
   
+.info1{
+    
+    margin-top: 50px;
+    margin-left: 50px;
+    padding: 10px;
+    background-color: rgb(142, 94, 231);
+    border-radius: 10px;
+    height: 600px;
+   /* width: 600px;*/
+
+}
+.info1 img{
+    float: right;
+    height: 200px;
+    width: 400px;
+}
   

@@ -43,12 +43,19 @@
         let secuenciaValida = ['G', 'T', 'T', 'A', 'C', 'A']; 
         let secuenciaNoValida = ['A','T','G','G','C','T','T','A','I','G'];
 
+        let nuevaSecuencia = ['A','T','G','C','T','T','C','A','G','A','A','A'];
 
        console.log(cuentaNucleotidos(secuenciaValida));
        console.log(cuentaNucleotidos(secuenciaNoValida));
 
        for ([clave,valor] of cuentaNucleotidos(secuenciaValida)) {
-            document.write(clave,valor+"<br>");
+            document.write(clave +" => "+valor+"<br>");
+       }
+
+       document.write("***********************************************************<br>");
+
+       for ([clave,valor] of cuentaNucleotidos(nuevaSecuencia)) {
+            document.write(clave +" => "+valor+"<br>");
        }
 
         function cuentaNucleotidos(arrayNucleotidos){
