@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concesionario</title>
+</head>
+<body>
+    <h1>Gestión de Coches</h1>
+
+    <!--Formulario para insertar un coche -->
+    <form action="../php/insertar_coche.php" method="post" enctype="multipart/form-data">
+        <h2>Introduce un nuevo coche</h2>
+        
+        <label for="modelo">Introduce el modelo de tu coche:</label><br>
+        <input type="text" name="modelo" id="modelo" required><br><br>
+        
+        <label for="fabricante">Introduce su fabricante:</label><br>
+        <input type="text" name="fabricante" id="fabricante" required><br><br>
+        
+        <label for="anio">Introduce el año de fabricación:</label><br>
+        <input type="number" name="anio" id="anio" min="1886" max="2024" required><br><br>
+        
+        <label for="foto">Introduce una foto:</label><br>
+        <input type="file" name="foto" id="foto" accept="image/*" required><br><br>
+        
+        <input type="submit" value="Enviar">
+    </form>
+
+    <br>
+
+    <!--Formulario para mostrar coches -->
+    <form action="mostrar_coches.php" method="post">
+        <h2>Ver los coches registrados</h2>
+        <label for="submit">Pulsa el botón para ver los coches:</label><br>
+        <input type="submit" value="Mostrar Coches">
+    </form>
+</body>
+</html>
