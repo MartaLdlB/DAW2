@@ -1,0 +1,37 @@
+ 
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    
+ </body>
+ <script>
+   
+            do{
+                let confirmacion = confirm("Quieres abrir una cuenta de ahorros eh guarrita?");
+            }while(confirmacion==false);
+
+            let cuantoQuieresAhorrar = Number(prompt("Introduce la cantidad que quieres ahorrar"));
+            let cuentaAhorro=0;
+            let nuevoAhorro;
+            
+            
+            do{
+                nuevoAhorro = Number(prompt("Introduce la cantidad que quieres incluir en tu cuenta"));
+                cuentaAhorro+=nuevoAhorro;
+            
+            }while(cuentaAhorro<cuantoQuieresAhorrar);
+        
+            alert("Felicidades, llegaste a la meta");
+            
+   
+        
+
+    
+ </script>
+ </html>
+ 
