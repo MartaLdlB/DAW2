@@ -1,181 +1,147 @@
-html, body, header {
-    margin: 0px;
-    padding: 0px;
+/* Estilos generales */
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #3e3b57;
+    overflow-x: hidden;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-/**Menu de navegacion, lista**/
+/* Menú de navegación */
 nav {
     background-color: rgb(60, 0, 95);
 }
-body{
-    background-color: rgb(128, 64, 245);
-    /*no-repeat #000;*/
-    background-size: cover;
-    overflow-x: hidden;
-}
 
+.eagle-lake-regular {
+    font-family: "Eagle Lake", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
 
 #menu ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: space-around;
+    margin: 0;
+    padding: 0;
     background-color: rgb(52, 0, 95);
 }
 
-#menu ul li {
-    position: relative;
+#menu ul li, #menu ul a {
     flex-grow: 1;
     text-align: center;
-    display: block;
-    color: #fff;
-    font-size: 15px;
     padding: 10px;
-    text-decoration: none;
-    font-family: 'Times New Roman', Times, serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-#menu ul a {
-    display: block;
     color: #fff;
-    text-decoration: none;
-    font-family: 'Times New Roman', Times, serif;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-  /* Efecto hover en el menú principal */
-  #menu ul li:hover {
-    background:  rgb(78, 0, 151);
+    text-decoration: none;
+    font-size: 15px;
 }
 
-/* Submenú desplegable */
+#menu ul li:hover {
+    background: rgb(78, 0, 151);
+}
+
 #menu ul ul {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
     width: 100%;
     background: rgb(60, 0, 95);
-    padding: 0;
-   /* z-index: 999;*/
 }
 
-#menu ul ul li {
-    width: 100%;
-}
-
-#menu ul ul a {
-    width: 100%;
-    position: relative;
-    flex-grow: 1;
-    /*text-align: center;*/
-    display: block;
-    color: #fff;
-    font-size: 10px;
-    font-family: 'Times New Roman', Times, serif;
-    text-transform: uppercase;         
-}
-
-/* Mostrar submenú al pasar el ratón */
 #menu ul li:hover > ul {
     display: block;
 }
 
-/* Efecto hover en los enlaces del submenú */
 #menu ul ul li:hover {
-    background:  rgb(96, 0, 151);
+    background: rgb(96, 0, 151);
 }
 
-
-/*Header*/
-header{
-    /*background-color: rgb(31, 32, 34);*/
+/* Header */
+header {
     background-image: url(https://i.pinimg.com/originals/5f/00/96/5f009674bb012f8e26ea43dad4abdd00.gif);
 }
 
-/*Div header*/
-
 .contenedor {
     display: flex;
-    justify-content: center; /* Centra los elementos horizontalmente */
-    align-items: center;    /* Centra los elementos verticalmente */
-   /* height: 100vh;          /* Opcional: Asegúrate de ocupar toda la altura del viewport */
+    justify-content: center;
+    align-items: center;
 }
 
-.icono,
-.logo,
-.registro {
+.icono, .logo, .registro {
     flex: 1;
-    display: flex;          /* Asegúrate de que los elementos internos estén alineados */
-    justify-content: center; /* Centra el contenido dentro de cada sección */
-    align-items: center;    /* Centra el contenido verticalmente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-
-.horoscopo_semanal{
+/* Horóscopo semanal */
+.horoscopo_semanal {
     display: flex;
-    margin: 50px 0 0 230px;
+    margin: 50px auto;
     width: 75%;
     height: 600px;
     justify-content: center;
-    
 }
 
 .horoscopo_semanal a img {
-    width: 150px; /* Ancho inicial visible */
+    width: 150px;
+    height: 100%;
     flex-grow: 1;
     object-fit: cover;
-    opacity: .8;
-    transition: .5s ease;
-    height: 100%;
     border-radius: 10px;
+    opacity: 0.8;
+    transition: 0.5s ease;
 }
 
-.horoscopo_semanal a img:hover{
+.horoscopo_semanal a img:hover {
     cursor: crosshair;
     width: 300px;
     opacity: 1;
     filter: contrast(120%);
-    
-
 }
 
-.titulo_horoscopo{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+/* Títulos */
+.titulo_horoscopo {
     text-align: center;
     font-size: 50px;
     font-weight: bold;
-    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.miss-fajardose-regular {
-    font-family: "Miss Fajardose", cursive;
-    font-weight: 400;
-    font-style: normal;
-  }
-.eagle-lake-regular {
-    font-family: "Eagle Lake", serif;
-    font-weight: 300;
-    font-style: normal;
-}
-  
-.info1{
-    
-    margin-top: 50px;
-    margin-left: 50px;
+/***************************************************************************/
+/* Estilo básico para la sección info1 */
+.info1 {
+    width: 100%;
+    overflow: hidden;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
     padding: 10px;
-    background-color: rgb(142, 94, 231);
-    border-radius: 10px;
-    height: 600px;
-   /* width: 600px;*/
-
-}
-.info1 img{
-    float: right;
-    height: 200px;
-    width: 400px;
-}
+    position: relative;
+  }
+  
+  /* Contenedor de noticias */
+  .news-container {
+    position: relative;
+    height: 50px; /* Altura fija para mostrar solo una noticia a la vez */
+  }
+  
+  /* Cada noticia individual */
+  .news-item {
+    font-size: 16px;
+    color: #333;
+    padding: 10px 0;
+    text-align: center;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  /* Clase activa para la noticia visible */
+  .news-item.active {
+    opacity: 1;
+  }
   
