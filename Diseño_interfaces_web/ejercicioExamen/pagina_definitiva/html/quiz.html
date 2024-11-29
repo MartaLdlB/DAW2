@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Esotérico</title>
+    <link rel="stylesheet" href="../css/quiz.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2 class="form-title eagle-lake-regular">Formulario Esotérico</h2>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="signo-zodiaco">Selecciona tu signo zodiacal:</label>
+                <select id="signo-zodiaco" name="signo-zodiaco">
+                    <option value="aries">Aries</option>
+                    <option value="tauro">Tauro</option>
+                    <option value="geminis">Géminis</option>
+                    <option value="cancer" selected>Cáncer</option>
+                    <option value="leo">Leo</option>
+                    <option value="virgo">Virgo</option>
+                    <option value="libra">Libra</option>
+                    <option value="escorpio">Escorpio</option>
+                    <option value="sagitario">Sagitario</option>
+                    <option value="capricornio">Capricornio</option>
+                    <option value="acuario">Acuario</option>
+                    <option value="piscis">Piscis</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="carta-astral">¿Te gustaría conocer tu carta astral?</label>
+                <input type="radio" id="carta-astral-si" name="carta-astral" value="si">
+                <label for="carta-astral-si">Sí</label>
+                <input type="radio" id="carta-astral-no" name="carta-astral" value="no">
+                <label for="carta-astral-no">No</label>
+            </div>
+
+            <div class="form-group">
+                <label for="horoscopo-semanal-titulo">¿Quieres recibir tu horóscopo semanal?</label>
+                <label for="horoscopo-semanal">Sí, me gustaría recibirlo <input type="checkbox" id="horoscopo-semanal" name="horoscopo-semanal" value="si"></label>
+               
+                
+            </div>
+
+            <div class="form-group">
+                <label for="color-favorito">Selecciona tu color favorito asociado a la energía esotérica:</label>
+                <input type="color" id="color-favorito" name="color-favorito" value="#ff6600">
+            </div>
+
+            <div class="form-group">
+                <label for="comentarios">Comentarios adicionales:</label>
+                <textarea id="comentarios" name="comentarios" rows="4" placeholder="Escribe tus comentarios o preguntas"></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

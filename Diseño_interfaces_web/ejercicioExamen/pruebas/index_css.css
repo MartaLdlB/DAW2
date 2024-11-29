@@ -12,12 +12,6 @@ nav {
     background-color: rgb(60, 0, 95);
 }
 
-.eagle-lake-regular {
-    font-family: "Eagle Lake", serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
 
 #menu ul {
     list-style: none;
@@ -108,40 +102,79 @@ header {
     text-align: center;
     font-size: 50px;
     font-weight: bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+.eagle-lake-regular {
+    font-family: "Eagle Lake", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
 
 /***************************************************************************/
 /* Estilo básico para la sección info1 */
 .info1 {
     width: 100%;
+    height: 500px;
     overflow: hidden;
-    background-color: #f4f4f4;
-    border: 1px solid #ddd;
+    background-color: #4a3f7e; /* Cambié el color de fondo a un tono púrpura oscuro */
+    background-image: url(https://img1.picmix.com/output/stamp/normal/0/3/4/9/1749430_8d101.gif);
+    /*background-size: cover;*/
+   /* border: 1px solid #ddd;*/
     padding: 10px;
     position: relative;
-  }
-  
-  /* Contenedor de noticias */
-  .news-container {
+    color: #fff; /* Cambié el color del texto a blanco */
+    text-align: center; /* Centré todo el texto dentro del contenedor de noticias */
+}
+
+/* Contenedor de noticias */
+.news-container {
     position: relative;
     height: 50px; /* Altura fija para mostrar solo una noticia a la vez */
-  }
-  
-  /* Cada noticia individual */
-  .news-item {
-    font-size: 16px;
-    color: #333;
+}
+
+/* Cada noticia individual */
+.news-item {
+    margin-left: 10px;
+    font-size: 13px;
+    color: #fff; /* Cambié el color del texto de las noticias a blanco */
     padding: 10px 0;
-    text-align: center;
     opacity: 0;
     position: absolute;
     width: 100%;
     transition: opacity 1s ease-in-out;
-  }
-  
-  /* Clase activa para la noticia visible */
-  .news-item.active {
+    float: left;
+    text-align: center; /* Centré el texto de cada noticia */
+}
+
+/* Imágenes dentro de las noticias */
+.news-item img {
+    float: right;
+    height: 150px; /* Ajusté el tamaño de la imagen */
+    width: 250px;  /* Ajusté el tamaño de la imagen */
+    border-radius: 10px; /* Añadí bordes redondeados */
+}
+
+/* Clase activa para la noticia visible */
+.news-item.active {
     opacity: 1;
-  }
-  
+}
+
+/*footer*/
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,80 @@
+/* Estilos para páginas legales */
+body {
+    font-family: 'Times New Roman', Times, serif; /* Usa una tipografía clásica serif para todo el cuerpo de la página */
+    line-height: 1.6; /* Mejora la legibilidad del texto al aumentar el espacio entre líneas */
+    color: #f4f4f4; /* Color blanco para el texto, garantizando que sea legible sobre el fondo oscuro */
+    margin: 0; /* Elimina los márgenes predeterminados del navegador */
+    padding: 0; /* Elimina el padding predeterminado */
+    background-color: #3e3b57; /* Fondo color púrpura oscuro */
+    overflow-x: hidden; /* Desactiva el desplazamiento horizontal */
+    background-image: url(https://img1.picmix.com/output/stamp/normal/0/3/4/9/1749430_8d101.gif); /* Fondo con imagen animada */
+}
+
+/* Encabezados */
+header {
+    background-image: url(https://i.pinimg.com/originals/5f/00/96/5f009674bb012f8e26ea43dad4abdd00.gif); /* Fondo para el encabezado */
+    text-align: center; /* Centra el texto del encabezado */
+    padding: 50px 20px; /* Añade relleno alrededor del texto */
+    color: #fff; /* Establece el color del texto como blanco */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Agrega una sombra sutil al texto para hacerlo más visible */
+}
+
+header h1 {
+    font-family: 'Eagle Lake', serif; /* Usa una fuente personalizada para el título */
+    font-size: 3rem; /* Tamaño grande para el título */
+    margin: 0; /* Elimina márgenes alrededor del título */
+}
+
+/* Contenedor principal */
+main {
+    max-width: 800px; /* Limita el ancho del contenido principal */
+    margin: 30px auto; /* Centra el contenedor con márgenes superior e inferior */
+    padding: 20px; /* Añade relleno dentro del contenedor */
+    background-color: rgb(45, 32, 65, 0.5); /* Fondo oscuro y semitransparente */
+    color: #f4f4f4; /* Color claro para el texto */
+    border-radius: 10px; /* Bordes redondeados para el contenedor */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad al contenedor */
+}
+
+/* Títulos */
+main h2 {
+    color: #ffccff; /* Color lila para los títulos */
+    font-size: 1.8rem; /* Tamaño moderado para los subtítulos */
+    margin-bottom: 10px; /* Espacio debajo del título */
+}
+
+/* Listas */
+main ul {
+    margin-left: 20px; /* Desplaza la lista hacia la derecha */
+    list-style-type: square; /* Estilo de lista con viñetas cuadradas */
+    color: #f4f4f4; /* Color blanco para el texto de la lista */
+}
+
+/* Enlaces */
+main a {
+    color: #ffe066; /* Color amarillo para los enlaces */
+    text-decoration: none; /* Elimina el subrayado predeterminado de los enlaces */
+    font-weight: bold; /* Hace los enlaces en negrita */
+}
+
+main a:hover {
+    text-decoration: underline; /* Subraya el enlace cuando el ratón pasa por encima */
+}
+
+/* Footer */
+footer {
+    background-color: rgb(60, 0, 95); /* Fondo oscuro para el pie de página */
+    color: #fff; /* Texto blanco */
+    text-align: center; /* Centra el texto del pie de página */
+    padding: 20px 0; /* Relleno superior e inferior en el pie de página */
+}
+
+footer a {
+    color: #ffe066; /* Color amarillo para los enlaces del pie de página */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    font-size: 14px; /* Tamaño de fuente más pequeño para los enlaces */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Subraya el enlace al pasar el ratón */
+}

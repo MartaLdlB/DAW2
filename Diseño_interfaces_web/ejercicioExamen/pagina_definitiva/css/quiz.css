@@ -1,0 +1,83 @@
+/* Estilos generales */
+body {
+    background-color: rgb(45, 32, 65); /* Color de fondo oscuro para toda la página */
+    margin: 0; /* Elimina el margen predeterminado del navegador */
+    padding: 0; /* Elimina el padding predeterminado */
+    display: flex; /* Usamos Flexbox para centrar el contenido en el eje vertical y horizontal */
+    justify-content: center; /* Centra el contenido en el eje horizontal */
+    align-items: center; /* Centra el contenido en el eje vertical */
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    background-image: url(https://img1.picmix.com/output/stamp/normal/0/3/4/9/1749430_8d101.gif); /* Fondo con imagen animada */
+}
+
+/* Contenedor del formulario */
+.form-container {
+    background-color: #3e3b57; /* Fondo oscuro para el formulario */
+    padding: 20px; /* Relleno alrededor del formulario */
+    border-radius: 10px; /* Bordes redondeados para el contenedor */
+    width: 90%; /* El contenedor ocupa el 90% del ancho de la pantalla */
+    max-width: 500px; /* El contenedor tiene un ancho máximo de 500px */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar un efecto de profundidad */
+}
+
+/* Título del formulario */
+.form-title {
+    text-align: center; /* Centra el título dentro del contenedor */
+    color: #fff; /* El texto del título es blanco */
+    font-size: 24px; /* Tamaño de fuente grande para el título */
+    margin-bottom: 20px; /* Añade espacio debajo del título */
+}
+
+/* Estilos para las etiquetas y campos */
+.form-group {
+    margin-bottom: 20px; /* Añade espacio debajo de cada grupo de campos */
+}
+
+label {
+    color: #fff; /* Color blanco para las etiquetas */
+    font-size: 16px; /* Tamaño de fuente moderado para las etiquetas */
+    display: block; /* Hace que las etiquetas ocupen toda la línea */
+    margin-bottom: 8px; /* Añade un pequeño margen debajo de las etiquetas */
+}
+
+select, input[type="radio"], input[type="checkbox"], input[type="color"], textarea {
+    width: 100%; /* Hace que los campos ocupen todo el ancho disponible */
+    padding: 8px; /* Añade espacio dentro de los campos */
+    border-radius: 5px; /* Bordes redondeados para los campos */
+    border: 1px solid #ddd; /* Un borde sutil de color gris claro */
+    background-color: #fff; /* Fondo blanco para los campos */
+    font-size: 16px; /* Tamaño de fuente moderado para los campos */
+    color: #333; /* Color oscuro para el texto dentro de los campos */
+}
+
+textarea {
+    resize: vertical; /* Permite que el área de texto se redimensione solo verticalmente */
+}
+
+/* Botón de enviar */
+.submit-button {
+    background-color: #6a4e9f; /* Fondo púrpura para el botón */
+    color: #fff; /* Texto blanco para el botón */
+    border: none; /* Elimina el borde predeterminado */
+    padding: 12px 20px; /* Relleno alrededor del texto dentro del botón */
+    font-size: 16px; /* Tamaño de fuente para el texto dentro del botón */
+    border-radius: 5px; /* Bordes redondeados para el botón */
+    cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón */
+    width: 100%; /* El botón ocupa todo el ancho disponible */
+    transition: background-color 0.3s ease; /* Transición suave al cambiar el color de fondo */
+}
+
+.submit-button:hover {
+    background-color: #5a3e8a; /* Cambio de color cuando el ratón pasa sobre el botón */
+}
+
+.submit-button:active {
+    background-color: #4a2e6a; /* Cambio de color cuando se hace clic en el botón */
+}
+
+/* Estilo para fuente personalizada */
+.eagle-lake-regular {
+    font-family: "Eagle Lake"; /* Uso de una fuente personalizada para los textos */
+    font-weight: 400; /* Peso normal para la fuente */
+    font-style: normal; /* Estilo normal (sin cursiva) */
+}

@@ -1,0 +1,189 @@
+/* Estilos generales */
+html, body {
+    margin: 0; /* Elimina los márgenes predeterminados del navegador */
+    padding: 0; /* Elimina el padding predeterminado */
+    background-color: #3e3b57; /* Establece un fondo oscuro púrpura */
+    overflow-x: hidden; /* Desactiva el desplazamiento horizontal */
+    font-family: 'Times New Roman', Times, serif; /* Fuente clásica para el texto */
+}
+
+/* Menú de navegación */
+nav {
+    background-color: rgb(60, 0, 95); /* Fondo del menú en color púrpura oscuro */
+}
+
+/* Estilos para la lista del menú */
+#menu ul {
+    list-style: none; /* Elimina los puntos de la lista */
+    display: flex; /* Disposición en fila */
+    justify-content: space-around; /* Espacia los elementos de manera equitativa */
+    margin: 0; /* Elimina márgenes */
+    padding: 0; /* Elimina el padding */
+    background-color: rgb(52, 0, 95); /* Fondo oscuro para el menú */
+}
+
+/* Estilo de los elementos de lista y enlaces dentro del menú */
+#menu ul li, #menu ul a {
+    flex-grow: 1; /* Los elementos ocupan el mismo espacio disponible */
+    text-align: center; /* Centra el texto */
+    padding: 10px; /* Relleno de los enlaces */
+    color: #fff; /* Color blanco para el texto */
+    text-transform: uppercase; /* Pone las letras en mayúsculas */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    text-decoration: none; /* Elimina subrayado de los enlaces */
+    font-size: 15px; /* Tamaño de fuente de los enlaces */
+}
+
+/* Efecto hover en los elementos del menú */
+#menu ul li:hover {
+    background: rgb(78, 0, 151); /* Fondo más oscuro cuando se pasa el ratón */
+}
+
+/* Submenú oculto por defecto */
+#menu ul ul {
+    display: none; /* Oculta los submenús */
+    position: absolute; /* Los submenús se posicionan fuera del flujo */
+    top: 100%; /* Aparecen debajo del menú principal */
+    width: 100%; /* El submenú ocupa todo el ancho */
+    background: rgb(60, 0, 95); /* Fondo de submenú */
+}
+
+/* Muestra el submenú cuando se pasa el ratón por encima */
+#menu ul li:hover > ul {
+    display: block; /* Muestra el submenú */
+}
+
+/* Efecto hover en los elementos del submenú */
+#menu ul ul li:hover {
+    background: rgb(96, 0, 151); /* Fondo diferente para los subelementos */
+}
+
+/* Header */
+header {
+    background-image: url(https://i.pinimg.com/originals/5f/00/96/5f009674bb012f8e26ea43dad4abdd00.gif); /* Fondo animado en el header */
+}
+
+/* Contenedor del header */
+.contenedor {
+    display: flex; /* Usa flexbox para alinear los elementos */
+    justify-content: center; /* Centra los elementos en el eje horizontal */
+    align-items: center; /* Centra los elementos en el eje vertical */
+}
+
+/* Estilo de los iconos, logo y sección de registro */
+.icono, .logo, .registro {
+    flex: 1; /* Hace que cada elemento ocupe el mismo espacio */
+    display: flex; /* Usa flexbox para alinear el contenido */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+}
+
+/* Sección horóscopo semanal */
+.horoscopo_semanal {
+    display: flex; /* Flexbox para disposición horizontal */
+    margin: 50px auto; /* Margen automático para centrar */
+    width: 75%; /* Ancho de la sección */
+    height: 600px; /* Altura de la sección */
+    justify-content: center; /* Centra los elementos dentro */
+}
+
+/* Imágenes dentro de los enlaces en la sección horóscopo */
+.horoscopo_semanal a img {
+    width: 150px; /* Establece el ancho de la imagen */
+    height: 100%; /* Establece la altura para ocupar todo el contenedor */
+    flex-grow: 1; /* Hace que la imagen ocupe espacio disponible */
+    object-fit: cover; /* Ajusta la imagen para que cubra sin deformarse */
+    border-radius: 10px; /* Bordes redondeados */
+    opacity: 0.8; /* Opacidad inicial */
+    transition: 0.5s ease; /* Transición suave al hacer hover */
+}
+
+/* Efecto hover en las imágenes */
+.horoscopo_semanal a img:hover {
+    cursor: crosshair; /* Cambia el cursor al pasar sobre la imagen */
+    width: 300px; /* Aumenta el tamaño de la imagen */
+    opacity: 1; /* Hace la imagen completamente visible */
+    filter: contrast(120%); /* Aumenta el contraste de la imagen */
+}
+
+/* Títulos */
+.titulo_horoscopo {
+    text-align: center; /* Centra el texto */
+    font-size: 50px; /* Tamaño grande para el título */
+    font-weight: bold; /* Pone el título en negrita */
+}
+
+/* Estilo para la fuente personalizada */
+.eagle-lake-regular {
+    font-family: "Eagle Lake", serif; /* Usa la fuente personalizada */
+    font-weight: 400; /* Peso normal */
+    font-style: normal; /* Estilo normal */
+}
+
+/***************************************************************************/
+/* Estilo para la sección info1 */
+.info1 {
+    width: 100%; /* Ancho completo */
+    height: 500px; /* Altura fija */
+    overflow: hidden; /* Esconde el contenido que se sale */
+    background-color: #4a3f7e; /* Fondo púrpura oscuro */
+    background-image: url(https://img1.picmix.com/output/stamp/normal/0/3/4/9/1749430_8d101.gif); /* Fondo animado */
+    padding: 10px; /* Relleno interno */
+    position: relative; /* Posicionamiento relativo para el contenedor */
+    color: #fff; /* Color blanco para el texto */
+    text-align: center; /* Centra el texto */
+}
+
+/* Contenedor de noticias */
+.news-container {
+    position: relative; /* Necesario para posicionar los elementos dentro */
+    height: 50px; /* Establece la altura fija */
+}
+
+/* Estilo de cada noticia individual */
+.news-item {
+    margin-left: 10px; /* Margen a la izquierda */
+    font-size: 13px; /* Tamaño pequeño para las noticias */
+    color: #fff; /* Color blanco para el texto */
+    padding: 10px 0; /* Relleno vertical */
+    opacity: 0; /* Invisible por defecto */
+    position: absolute; /* Posiciona cada noticia de forma absoluta */
+    width: 100%; /* Ancho completo */
+    transition: opacity 1s ease-in-out; /* Transición suave en la opacidad */
+    float: left; /* Flota los elementos a la izquierda */
+    text-align: center; /* Centra el texto */
+}
+
+/* Imágenes dentro de las noticias */
+.news-item img {
+    float: right; /* Hace que las imágenes se alineen a la derecha */
+    height: 150px; /* Establece la altura de la imagen */
+    width: 250px;  /* Establece el ancho de la imagen */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Clase activa para la noticia visible */
+.news-item.active {
+    opacity: 1; /* Muestra la noticia */
+}
+
+/* Estilo del footer */
+footer {
+    background-color: #333; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    text-align: center; /* Centra el texto */
+    padding: 20px 0; /* Relleno vertical */
+    margin-top: 20px; /* Margen superior */
+}
+
+/* Estilos para los enlaces en el footer */
+footer a {
+    color: #fff; /* Color blanco */
+    text-decoration: none; /* Elimina el subrayado */
+    margin: 0 15px; /* Espacio entre los enlaces */
+}
+
+/* Efecto hover en los enlaces del footer */
+footer a:hover {
+    text-decoration: underline; /* Subraya los enlaces al pasar el ratón */
+}
