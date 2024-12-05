@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function categorias(){
+
+            var xhttp = new XMLHttpRequest(); ;
+
+            xhttp.onreadystatechage = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    //creo la lista creando ese elemento DOM
+
+                    var lista= document.createElement("ul");
+
+                    //extraemos de la respuesta JSON la indo y la guardamos en un array
+
+                    var categorias = JSON.parse(this.response);
+                    for (let i = 0; i < categorias.length; i++) {
+                        //sabemos que nuestra tabla cateogorias teien id_categorias, nombres, descripcion
+                        //creamos cada elemento DOM li con el campo nombre de la categoria
+
+                        var e = document.createElement("li");
+
+                        e.innerHTML =  categorias[i]["nombre"];
+
+                        //añadimos cada elemento DOM li a la lista
+                        lista.appendChild(e);
+
+                    }
+                    let body = document.getElementById("principal");
+                    //eliminamos el contenido actual de la seccion principal
+                    body.innerHTML = "";
+                    body.appendChild(lista);
+                }
+            };
+
+            xhttp.open("GET","datos_categorias.php", true); 
+            xhttp.send();
+            //para que no se siga el link que llama a esta funcion
+            return false;
+        }
+    </script>
+
+    <section id="principal"></section>
+    <script>categorias();</script>
+</body>
+</html>
