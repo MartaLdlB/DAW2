@@ -13,7 +13,6 @@
         var numeroAleatorio=0;
         var arrayAleatorios=new Array();
        
-
         /*Generamos un numero aleatorio para cada posicion del array*/
         for (let i = 1; i < 20; i++) {
             numeroAleatorio=parseInt(Math.random()*(50-1)+1);
@@ -24,8 +23,6 @@
         arrayAleatorios.forEach( (numero, posicion) => {
             document.write("Posición: "+posicion+" numero de asteriscos: "+numero+" "+"*".repeat(numero)+"<br>");
         });
-
-
 
     </script>
 

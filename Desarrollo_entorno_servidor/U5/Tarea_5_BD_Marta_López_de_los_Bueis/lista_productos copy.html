@@ -17,7 +17,7 @@
                   
                     //creo la lista creando ese elemento DOM
 
-                    var lista= document.createElement("ul");
+                    var lista= document.createElement("table");
 
                     //extraemos de la respuesta JSON la indo y la guardamos en un array
 
@@ -26,9 +26,12 @@
                         //sabemos que nuestra tabla cateogorias teien id_categorias, nombres, descripcion
                         //creamos cada elemento DOM li con el campo nombre de la categoria
 
-                        var e = document.createElement("li");
-
-                        e.innerHTML =  categorias[i]["nombre"];
+                        var tr = document.createElement("tr");
+                        var th= document.createElement("th");
+                        
+                        
+                        }
+                        th.innerHTML =  categorias[i]["nombre_producto"];
 
                         //añadimos cada elemento DOM li a la lista
                         lista.appendChild(e);
@@ -41,7 +44,7 @@
                 }
             };
 
-            xhttp.open("GET","datos_categorias_json.php", true); 
+            xhttp.open("GET","datos_productos_json.php", true); 
             xhttp.send();
             //para que no se siga el link que llama a esta funcion
             return false;

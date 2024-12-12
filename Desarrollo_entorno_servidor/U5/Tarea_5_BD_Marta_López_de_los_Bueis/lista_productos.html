@@ -28,8 +28,8 @@
 
                         var e = document.createElement("li");
 
-                        e.innerHTML =  categorias[i]["nombre"];
-
+                        e.innerHTML =  categorias[i]["nombre_producto"];
+                        
                         //añadimos cada elemento DOM li a la lista
                         lista.appendChild(e);
                         
@@ -41,7 +41,7 @@
                 }
             };
 
-            xhttp.open("GET","datos_categorias_json.php", true); 
+            xhttp.open("GET","datos_productos_json.php", true); 
             xhttp.send();
             //para que no se siga el link que llama a esta funcion
             return false;

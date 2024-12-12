@@ -1,0 +1,9 @@
+ <datos_conexion xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:noNamespaceSchemaLocation="schema.xsd">
+     <Tipo>mysql</Tipo>
+     <Nombre>mydb</Nombre>
+     <Host>127.0.0.1:3306</Host>
+     <Usuario>root</Usuario>
+     <Contrasenia></Contrasenia><!-- Vacia, no tiene. -->
+ </datos_conexion> 
+ 
