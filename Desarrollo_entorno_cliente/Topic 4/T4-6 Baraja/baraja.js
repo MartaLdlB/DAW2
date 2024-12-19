@@ -35,4 +35,11 @@ function carta(palo, valor){
 
     }
 
+    if(this.darValor(this.palo, this.valor)==false){
+        return null;
+    }else{
+        return this;
+    }
+
+    
 }
