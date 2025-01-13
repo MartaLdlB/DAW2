@@ -1,0 +1,150 @@
+¿Qué es una API de REST?
+
+*Conjunto de reglas que permite la comunicación entre sistemas utilizando el protocolo HTTP. 
+REST es un estilo arquitectónico que define cómo las API deben estructurarse para ser simples, escalables y eficaces.
+
+Las APIs REST suelen utilizar métodos HTTP para realizar operaciones sobre los recursos:
+
+*GET: Leer o recuperar información.
+*POST: Crear un nuevo recurso.
+*PUT o PATCH: Actualizar un recurso existente.
+*DELETE: Eliminar un recurso.
+
+***************************************
+@setter
+ Genera automáticamente el método "setter"
+
+	*Ejemplo sin @setter*
+public class Persona {
+    private String nombre;
+
+    // Método setter manual
+    public String setNombre() {
+        return nombre;
+    }
+}
+
+	*Ejemplo con @setter*
+
+import lombok.Setter;
+
+public class Persona {
+    @Setter
+    private String nombre;
+}
+
+********************************************
+
+@getter
+
+ Genera automáticamente el método "Getter"
+
+	*Ejemplo sin @Getter*
+
+public class Persona {
+    private String nombre;
+
+    // Método getter manual
+    public String getNombre() {
+        return nombre;
+    }
+}
+
+	*Ejemplo con @Getter*
+
+import lombok.Getter;
+
+public class Persona {
+    @Getter
+    private String nombre;
+}
+
+*******************************************
+
+@Data
+
+ Genera automáticamente lo siguiente:
+
+1.Getters para todos los atributos de la clase.
+2.Setters para todos los atributos no finales.
+3.toString(): Un método para representar el objeto como una cadena.
+4.equals() y hashCode(): Métodos para comparar objetos y calcular su código hash.
+5.Constructor: Un constructor sin argumentos (si no hay otros constructores definidos).
+6.canEqual(): Un método especial utilizado para garantizar la correcta comparación en subclases.
+
+	*Ejemplo sin @Data*
+
+public class Persona {
+    private String nombre;
+    private int edad;
+
+    // Constructor
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    // Getters y Setters
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    // Método toString
+    @Override
+    public String toString() {
+        return "Persona{nombre='" + nombre + "', edad=" + edad + "}";
+    }
+
+    // Métodos equals y hashCode
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Persona persona = (Persona) o;
+        return edad == persona.edad && Objects.equals(nombre, persona.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, edad);
+    }
+}
+
+	*Ejemplo con @Data*
+
+import lombok.Data;
+
+@Data
+public class Persona {
+    private String nombre;
+    private int edad;
+}
+
+******************************13/01/2025****************************************
+
+Operacion	Método		Descripcion 		EndPoint
+
+cRud GET	listarGrupos	traer datos, 		@GetMapping("/grupos")
+				todos los grupos	@PathVariable String grupo
+
+cRud GET	gruposDeUnIes	Traer solo los
+				grupos de los ies	@GetMapping("/grupos/{ies}")
+
+Crud POST	crearGrupo	Insertar nuevo dato	@PostMapping
+							@PathVariable 
+
+crUd PUT	actualizarGrupo	
+
+cruD DELETE 	borrarGrupo	
