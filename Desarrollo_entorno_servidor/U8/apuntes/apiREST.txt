@@ -147,4 +147,14 @@ Crud POST	crearGrupo	Insertar nuevo dato	@PostMapping
 
 crUd PUT	actualizarGrupo	
 
-cruD DELETE 	borrarGrupo	
+cruD DELETE 	borrarGrupo
+
+*****************************14/01/2025*****************************************
+
+@RequiredArgsConstructor
+
+@NoArgsConstructor
+
+@AllArgsConstructor
+
+@NonNull	
