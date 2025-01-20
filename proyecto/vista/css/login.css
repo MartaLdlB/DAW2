@@ -1,0 +1,32 @@
+.eagle-lake-regular {
+    font-family: "Eagle Lake", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+body{
+    background-color: rgb(100, 65, 156);
+    background-image: url(https://img1.picmix.com/output/stamp/normal/0/3/4/9/1749430_8d101.gif);
+}
+
+div{
+    border: 1px solid black;
+    
+}
+
+.contenedor{
+    border: 0px;
+    display: flexbox;
+    width: 400px;
+}
+
+.div-hijo{
+    align-self: center;
+    text-align: center;
+}
+
+.texto{
+    border-radius: 10px;
+    width: 300px;
+    height: 30px;
+}
