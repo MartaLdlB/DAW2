@@ -74,11 +74,6 @@ public class controlador {
                 }
             }
         }
-
-        @GetMapping("/peubaException/{param}")
-        public String pruebaException(@RequestParam String param) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST).body(body:"todo mal");
-        }
         
 
 }
