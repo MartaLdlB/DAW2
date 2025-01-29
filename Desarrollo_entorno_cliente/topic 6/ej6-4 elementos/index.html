@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo 6.4 - Elementos DOM</title>
+    <link rel="icon" type="image/x-icon" href="https://iesventura.es/_ies_datos/LOGO_new.jpg">
+</head>
+
+<body>
+    <h4>Ejemplo:</h4>
+    <div class='ejemplo' id='ejemplo-1'>
+        <p id='temporal'>Puedes borrar elementos del HTML con JavaScript.</p>
+    </div>
+
+    <hr>
+
+    <h3>Elementos del DOM</h3>
+    <p>Son los nodos del árbol DOM y existen 12 tipos diferentes. Los más relevantes son:</p>
+    <ul>
+        <li><code>Document</code>, nodo raíz del que derivan todos los demás nodos del árbol.</li>
+        <li><code>Element</code>, representa cada una de las etiquetas XHTML. Se trata del único nodo que puede contener atributos y el único del que pueden derivar otros nodos.</li>
+        <li><code>Attr</code>, se define un nodo de este tipo para representar cada uno de los atributos de las etiquetas XHTML, es decir, uno por cada par <code>atributo:valor</code>.</li>
+        <li><code>Text</code>, nodo que contiene el texto encerrado por una etiqueta XHTML.</li>
+        <li><code>Comment</code>, representa los comentarios incluidos en la página XHTML.</li>
+    </ul>
+    
+    <h3>Crear y eliminar nodos</h3>
+    <p>Para <strong>crear</strong> un elemento, se siguen cuatro pasos:</p>
+    <ol>
+        <li>Creación de un nodo <code>Element</code> que represente al elemento.
+            <br>
+            Usa <code>createElement(etiqueta)</code> para ello.
+        </li>
+        <li>Creación de un nodo <code>Text</code> que represente el contenido del elemento.
+            <br>
+            Usa <code>createTextNode(contenido)</code> para ello.
+        </li>
+        <li>Añadir el nodo <code>Text</code> como nodo hijo del nodo <code>Element</code>.
+            <br>
+            Usa <code>nodoPadre.appendChild(nodoHijo)</code> para ello.
+        </li>
+        <li>Añadir el nodo <code>Element</code> a la página, en forma de nodo hijo del nodo correspondiente al lugar en el que se quiere insertar el elemento.
+            <br>
+            Vuelve a usar <code>nodoPadre.appendChild(nodoHijo)</code> para ello.
+        </li>
+    </ol>
+
+    <p>Para <strong>eliminar</strong> un nodo del DOM bastará con utilizar la función <code>removeChild()</code>.</p>
+
+    <p>Para <strong>insertar</strong> un nodo en una posición concreta, se debe indicar la posición deseada. Usaremos:</p>
+    <ul>
+        <li><code>insertBefore(nuevo, posterior</code> si el nodo padre de nuestro nuevo elemento tiene otros nodos hijo</li>
+        <li><code>appendChild()</code> si el nodo padre no tiene más hijos.</li>
+        <li><code>replaceChild(nuevo, antiguo)</code> si el padre tiene otros nodos hijo y queremos reemplazar uno de ellos por el nuevo. El nodo retirado desaparece del árbol DOM, pero sigue existiendo y puede referenciarse.</li>
+    </ul>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

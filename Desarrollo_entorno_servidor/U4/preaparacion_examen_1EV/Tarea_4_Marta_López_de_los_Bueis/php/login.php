@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
     <?php if ($error){
-         echo "<p style='color: red;'>¡Error! Verifica el usuario y la contraseña.</p>";
+        echo "<p style='color: red;'>¡Error! Verifica el usuario y la contraseña.</p>";
     }
     ?>
 </body>
