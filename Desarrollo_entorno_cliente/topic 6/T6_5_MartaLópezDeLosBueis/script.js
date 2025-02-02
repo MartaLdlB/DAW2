@@ -31,15 +31,19 @@ setTimeout(() =>
             let texto = document.body.innerHTML;
 
             let posicion = texto.indexOf(palabra);
+            const regex = new Regex (`${palabra}`, "g");
 
             while(posicion != -1){
                 contador++;
-                posicion=texto.indexOf(palabra, posicion+1); //esto empezará a buscar en la posicion siguiente
+                posicion = texto.indexOf(palabra, posicion+1); //esto empezará a buscar en la posicion siguiente
+                texto = texto.replace(regex, '<span class="highlight">$1</span>');
             }
             let parrafo1 = document.createElement("p");
-            let contenido1= document.createTextNode(`La palabra ${palabra} aparece ${contador} veces`);
+            let contenido1 = document.createTextNode(`La palabra ${palabra} aparece ${contador} veces`);
             parrafo1.appendChild(contenido1);
 
-            document.body.insertBefore(parrafo1,document.body.firsChild);
+            document.body.insertAfter(parrafo1,document.body.firsChild);
+
+            document.body.innnerHTML = texto + document.body.innerHTML;
         }
     }, 3000)
