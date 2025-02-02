@@ -13,33 +13,35 @@ Se muestra el texto buscado y su cantidad de ocurrencias al principio de la pág
 Modificaremos esta tarea en clase para añadirle otra funcionalidad.
 */
 
-
-//Primera parte
-let palabra = prompt("Escriba la palabra a buscar");
-
-if(palabra){
-    window.find(palabra);
+function marcarPalabra(palabra,elemento){
+    let texto=elemento.textContent;
+    
+    let pos=texto.indexOf(palabra);
+    if(pos!=-1){
+        let expReg=new RegExp(palabra,"g");
+        elemento.innerHTML=elemento.innerHTML.replace(
+            expReg,"<mark>"+palabra+"</mark>");
+        return true;
+    }
+    else
+        return false;
 }
 
-/***************************************************************************************/
-//Segunda parte
-
-setTimeout(() => {
-    if (encontrada && confirm(`Se calculará el nº de veces que aparece la palabra "${palabra}" en el texto.`)) {
-        let texto = document.body.innerHTML;
-        let regex = new RegExp(`(${palabra})`, "gi");
-        let coincidencias = texto.match(regex); // Array con todas las coincidencias encontradas
-        let contador = coincidencias ? coincidencias.length : 0;
-
-        // Resaltar todas las ocurrencias en el texto
-        texto = texto.replace(regex, '<span class="highlight">$1</span>');
-        document.body.innerHTML = texto;
-
-        // Crear mensaje con el resultado y colocarlo al inicio
-        let parrafo1 = document.createElement("p");
-        parrafo1.innerHTML = `La palabra "<strong>${palabra}</strong>" aparece ${contador} veces en el texto.`;
-
-        document.body.insertBefore(parrafo1, document.body.firstChild); // Insertar al principio de la página
-        window.scrollTo(0, 0); // Desplazar hacia arriba para ver el mensaje
+function buscarTextoEnElemento(elemento,palabra){
+    if(elemento.children){
+        for(let hijo of elemento.children){  //Recorre todos los hijos del elemento
+            if(hijo.children.length>0){
+                buscarTextoEnElemento(hijo);  //Llamada recursiva si el elemento
+            }
+            else{
+                marcarPalabra(palabra,hijo);
+            }
+        }
     }
-}, 3000);
+}
+
+
+let texto=prompt("Escriba la palabra a marcar");
+if(texto){
+    buscarTextoEnElemento(document.body,texto);
+}
