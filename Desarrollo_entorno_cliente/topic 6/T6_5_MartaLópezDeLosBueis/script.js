@@ -24,26 +24,22 @@ if(palabra){
 /***************************************************************************************/
 //Segunda parte
 
-setTimeout(() =>
-    {
-        if(confirm(`Se calculará el nº de veces que aparece la palabra ${palabra} en el texto`)){
-            let contador = 0;
-            let texto = document.body.innerHTML;
+setTimeout(() => {
+    if (encontrada && confirm(`Se calculará el nº de veces que aparece la palabra "${palabra}" en el texto.`)) {
+        let texto = document.body.innerHTML;
+        let regex = new RegExp(`(${palabra})`, "gi");
+        let coincidencias = texto.match(regex); // Array con todas las coincidencias encontradas
+        let contador = coincidencias ? coincidencias.length : 0;
 
-            let posicion = texto.indexOf(palabra);
-            const regex = new Regex (`${palabra}`, "g");
+        // Resaltar todas las ocurrencias en el texto
+        texto = texto.replace(regex, '<span class="highlight">$1</span>');
+        document.body.innerHTML = texto;
 
-            while(posicion != -1){
-                contador++;
-                posicion = texto.indexOf(palabra, posicion+1); //esto empezará a buscar en la posicion siguiente
-                texto = texto.replace(regex, '<span class="highlight">$1</span>');
-            }
-            let parrafo1 = document.createElement("p");
-            let contenido1 = document.createTextNode(`La palabra ${palabra} aparece ${contador} veces`);
-            parrafo1.appendChild(contenido1);
+        // Crear mensaje con el resultado y colocarlo al inicio
+        let parrafo1 = document.createElement("p");
+        parrafo1.innerHTML = `La palabra "<strong>${palabra}</strong>" aparece ${contador} veces en el texto.`;
 
-            document.body.insertAfter(parrafo1,document.body.firsChild);
-
-            document.body.innnerHTML = texto + document.body.innerHTML;
-        }
-    }, 3000)
+        document.body.insertBefore(parrafo1, document.body.firstChild); // Insertar al principio de la página
+        window.scrollTo(0, 0); // Desplazar hacia arriba para ver el mensaje
+    }
+}, 3000);
