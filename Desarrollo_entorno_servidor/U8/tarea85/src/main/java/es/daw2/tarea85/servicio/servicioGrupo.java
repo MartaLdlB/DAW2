@@ -2,14 +2,11 @@ package es.daw2.tarea85.servicio;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.daw2.tarea85.modelo.Ciclo;
 @Service
 public class servicioGrupo {
-
-    
 
     public List<Ciclo> obtenerCiclosPorIes(String ies){
         //
