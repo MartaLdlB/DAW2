@@ -1,4 +1,4 @@
-package es.daw2.tarea91.modelo;
+package es.daw2.tarea93.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
