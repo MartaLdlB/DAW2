@@ -8,15 +8,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $nombre_usuario=$_POST['nombre'];
     $apellido_usuario=$_POST['apellido'];
     $fecha_nacimiento_usuario=$_POST['fecha_nacimiento'];
-    $nick_usuario=$_POST['contrasena'];
+    $nick_usuario=$_POST['nick'];
     $correo_usuario=$_POST['email'];
+    $contrasenia_usuario=$_POST['contrasenia'];
 
     if(comprobarNick()){
-        //MENSAJE DE QUE EL NICK EXISTE
+        echo "El nick ya está en uso.";
     }elseif(comprobarEmail()){
-        //MENSAJE DE QUE EL CORREO ESTA EN USO
+        echo "El correo ya está registrado.";
     }else{
-        registrarUsuario($nombre_usuario,$apellido_usuario,$fecha_nacimiento_usuario,$nick_usuario,$correo_usuario);
+        registrarUsuario($nombre_usuario,$apellido_usuario,$fecha_nacimiento_usuario,$nick_usuario,$correo_usuario,$contrasenia_usuario);
+        header("Location: /vista/principal.html");
     }
 
 }

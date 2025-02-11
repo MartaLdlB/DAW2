@@ -46,20 +46,17 @@ function obtenerTodosEmail(){
 
 //registrar usuario en la base de datos
 
-function registrarUsuario($nombre_usuario,$apellido_usuario,$fecha_nacimiento_usuario,$nick_usuario,$correo_usuario){
+function registrarUsuario($nombre_usuario,$apellido_usuario,$fecha_nacimiento_usuario,$nick_usuario,$correo_usuario,$contrasenia_usuario){
      // Hashear la contraseña para seguridad
-     $hashed_password = password_hash($pw_usuario, PASSWORD_DEFAULT);
+    $hashed_contrasenia = password_hash($contrasenia_usuario, PASSWORD_DEFAULT);
 
      // Insertar nuevo usuario
-     $stmt = $pdo->prepare("INSERT INTO usuarios (nombre_usuario, apellido_usuario, nacimiento_usuario, nick_usuario, correo_usuario, pw_usuario) 
-                            VALUES (:nombre, :apellido, :fecha_nacimiento, :nick, :correo, :password)");
-     
-     $stmt->execute([
-         'nombre' => $nombre_usuario,
-         'apellido' => $apellido_usuario,
-         'fecha_nacimiento' => $fecha_nacimiento_usuario,
-         'nick' => $nick_usuario,
-         'correo' => $correo_usuario,
-         'password' => $hashed_password
-     ]);
-}
+    $registrar_usuario = $pdo->prepare("INSERT INTO usuarios (nombre_usuario, apellido_usuario, nacimiento_usuario, nick_usuario, correo_usuario, pw_usuario) 
+                            VALUES (:nombre, :apellido, :fecha_nacimiento, :nick, :correo, :contrasenia)");
+    $registrar_usuario->bindParam(':nombre', $nombre_usuario, PDO::PARAM_STR);
+    $registrar_usuario->bindParam(':apellido', $apellido_usuario, PDO::PARAM_STR);
+    $registrar_usuario->bindParam(':fecha_nacimiento', $fecha_nacimiento_usuario, PDO::PARAM_STR); // Fecha en formato YYYY-MM-DD
+    $registrar_usuario->bindParam(':nick', $nick_usuario, PDO::PARAM_STR);
+    $registrar_usuario->bindParam(':correo', $correo_usuario, PDO::PARAM_STR);
+    $registrar_usuario->bindParam(':contrasenia', $hashed_contrasenia, PDO::PARAM_STR);
+    $registrar_usuario->execute();
