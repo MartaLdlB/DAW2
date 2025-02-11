@@ -57,13 +57,16 @@ CREATE TABLE tiradas (
 CREATE TABLE tiradas_cartas (
     cartas_tarot_id_cartas INT,
     tiradas_id_tiradas INT,
-    tiradas_cartascol VARCHAR(45),  
+    tiradas_cartascol VARCHAR(45),
     PRIMARY KEY (cartas_tarot_id_cartas, tiradas_id_tiradas),
     FOREIGN KEY (cartas_tarot_id_cartas) REFERENCES cartas_tarot(id_cartas) ON DELETE CASCADE,
     FOREIGN KEY (tiradas_id_tiradas) REFERENCES tiradas(id_tiradas) ON DELETE CASCADE
 );
 
+INSERT INTO barajas_tarot (nombre_baraja) VALUES ("Tarot de Marsella"); --no le indicamos un id ya que este esta indicado como autoincremental, se generará automaticamente un
+
 -- Arcanos Mayores (22 cartas en posición normal e invertida)
+--El atributo invertida es un booleano que indica la posicion 0-Derecha 1-Invertida
 INSERT INTO cartas_tarot (baraja_id, tipo_carta, numero_carta, nombre_carta, invertida, palabras_clave_carta) VALUES
 (1, 'Mayor', 0, 'El Loco', 0, 'Libertad, espontaneidad, locura, nuevas aventuras'),
 (1, 'Mayor', 0, 'El Loco', 1, 'Imprudencia, inmadurez, irresponsabilidad, caos'),
@@ -168,9 +171,7 @@ INSERT INTO cartas_tarot (baraja_id, tipo_carta, numero_carta, nombre_carta, inv
 (1, 'Menor', NULL, 'Rey de Copas', 1, 'Falta de control emocional, manipulación, frialdad'),
 
 -- Arcanos Menores: Bastos
--- Palos: Bastos (14 cartas)
 
--- Bastos 1-10
 INSERT INTO cartas_tarot (baraja_id, tipo_carta, numero_carta, nombre_carta, invertida, palabras_clave_carta) VALUES
 (1, 'Menor', 1, 'As de Bastos', 0, 'Energía, pasión, nuevos comienzos, inspiración'),
 (1, 'Menor', 1, 'As de Bastos', 1, 'Bloqueo creativo, falta de dirección, retrasos'),
