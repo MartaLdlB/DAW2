@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Asignatura</title>
+</head>
+<body>
+    <form th:action="@{/aniadir}" method="post" th:object="${asignatura}">
+        <h1>Nueva asignatura</h1>
+
+        <p><label>Nombre del Módulo</label>
+            <input type="text" th:field="*{nombre}" required>
+        </p>
+
+        <p><label>Nombre del Ciclo</label>
+            <input type="text" th:field="*{ciclo}" required>
+        </p>
+
+        <p><label>Indique si es de 1º o de 2º</label>
+            <input type="number" th:field="*{curso}" required>
+        </p>
+
+        <p><label>Número de Horas</label>
+            <input type="number" th:field="*{horas}" required>
+        </p>
+
+        <p><button type="submit">Enviar</button></p>
+    </form>
+
+    <h1>Informe</h1>
+    <p><span th:text="${atr_nombre}">Nombre por defecto</span></p>
+    <p><span th:text="${atr_ciclo}">Ciclo por defecto</span></p>
+    <p><span th:text="${atr_curso}">Curso por defecto</span></p>
+    <p><span th:text="${atr_horas}">Horas por defecto</span></p>
+    <p><span th:text="${atr_horas_trimestre}">Horas por trimestre por defecto</span></p>
+
+</body>
+</html>
