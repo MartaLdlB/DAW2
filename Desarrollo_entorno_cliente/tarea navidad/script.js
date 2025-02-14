@@ -37,15 +37,77 @@ removeBook(Book) -> solicita buscar un libro y, existe, elimina el libro y su hu
 
 
 
-/*Funcion constructora de Autor*/
+//Funcion constructora de Autor
 
-function Author(name, surname){
+function Author(name, surnames) {
     this.name = name;
-    this.surname = surname;
-
+    this.surnames = surnames;
+    this.books = [];
+    
+    this.addBook = function(book) {
+        this.books.push(book);
+    };
+    
+    this.getBooks = function() {
+        return this.books;
+    };
+    
+    this.toString = function() {
+        return `${this.name} ${this.surnames}`;
+    };
 }
 
-function Book(title, authors){
+
+//Funcion constructora de Book
+function Book(title, authors = [new Author('Anónimo', [''])]) {
     this.title = title;
-    this.authors = authors;
+    this.authors = authors; //si no se da un valor pone como por defecto Anonimo
+    
+    this.getAuthors = function() {
+        return this.authors;
+    };
+    
+    this.toString = function() {
+        return `${this.title}, escrito por: ${this.authors.map(a => a.toString()).join(', ')}`;
+    };
 }
+
+//Funcion constructora de Library
+function Library() {
+    this.books = [];
+    this.authors = [];
+    
+    this.sortAuthors = function() {
+        this.authors.sort((a, b) => a.surnames[0].localeCompare(b.surnames[0]));
+    };
+    
+    this.sortBooks = function() {
+        this.books.sort((a, b) => a.title.localeCompare(b.title));
+    };
+    
+    this.searchAuthor = function(author) {
+        return this.authors.findIndex(a => a.toString() === author.toString());
+    };
+    
+    this.searchBook = function(book) {
+        return this.books.findIndex(b => b.title === book.title);
+    };
+    
+}
+
+
+//Creamos los autores y libros
+const autor1 = new Author('Federico', ['García', 'Lorca']);
+const libro1 = new Book('La casa de Bernarda Alba', [autor1]);
+
+const autor2 = new Author('Neil', ['Gaiman']);
+const libro2 = new Book('Coraline', [autor2]);
+
+const autor3 = new Author('Terry', ['Pratchett']);
+const libro3 = new Book('Good Omens', [autor2, autor3]);
+
+const autor4 = new Author('Gloria', ['Fuertes', 'García']);
+const libro4 = new Book('Diccionario estrafalario', [autor4]);
+
+const libro5 = new Book('Las mil y una noches');
+
