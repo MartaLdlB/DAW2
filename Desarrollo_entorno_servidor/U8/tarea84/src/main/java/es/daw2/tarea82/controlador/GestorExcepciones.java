@@ -7,8 +7,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestControllerAdvice
 public class GestorExcepciones {
+
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<String> handleResponseStatusException(ResponseStatusException exception) {
         return ResponseEntity.badRequest().body("El índice n no es válido");
     }
+
+
+    
 }
