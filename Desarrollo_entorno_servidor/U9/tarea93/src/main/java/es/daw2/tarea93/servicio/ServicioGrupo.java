@@ -2,18 +2,18 @@ package es.daw2.tarea93.servicio;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.daw2.tarea93.excepciones.GrupoExistenteException;
 import es.daw2.tarea93.excepciones.GrupoNoEncontradoException;
-import es.daw2.tarea93.excepciones.GrupoNoPuedeEstarVacioException;
 import es.daw2.tarea93.modelo.Grupo;
 import es.daw2.tarea93.repositorio.RepositorioGrupo;
 
-@Service
+//el servicio se encarga de la logica de negocio (la logica de tu aplicacion)
+
+@Service //interfaz que es un BEAN que te permite usar @autowired
 public class ServicioGrupo implements IFSeervicioGrupo{
     @Autowired
     RepositorioGrupo repositorioGrupo;
@@ -56,17 +56,13 @@ public class ServicioGrupo implements IFSeervicioGrupo{
     }
 
     public Grupo crearGrupoVacio(Grupo grupo) {
-        if(!grupo.getAlumnos().isEmpty()){
-            throw new GrupoNoPuedeEstarVacioException(); //en el caso de que tenga alumnos lanza excepcion
-        }
+        //Para que no se generen grupos iguales con distinto id, ejemplo IES VENTURA solo tiene una clase de DAW 2
         if (repositorioGrupo.existsByIesAndCicloAndCurso(grupo.getIes(), grupo.getCiclo(), grupo.getCurso())) {
             throw new GrupoExistenteException();
         }
-        //Comprobar que no existe
-
 
         grupo = repositorioGrupo.save(grupo);//Guarda los datos y te devuelve el objeto grupo tal y como esta en la base de datos
-
+        
         return grupo;
     }
 
