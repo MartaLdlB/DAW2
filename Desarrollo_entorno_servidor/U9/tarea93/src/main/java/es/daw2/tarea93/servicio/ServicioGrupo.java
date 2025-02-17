@@ -57,6 +57,21 @@ public class ServicioGrupo implements IFSeervicioGrupo{
 
     public Grupo crearGrupoVacio(Grupo grupo) {
         //Para que no se generen grupos iguales con distinto id, ejemplo IES VENTURA solo tiene una clase de DAW 2
+        //la clase existsByIesAndCicloAndCurso() tiene esa sintaxis especifica para que funciones
+        
+        if (repositorioGrupo.existsByIesAndCicloAndCurso(grupo.getIes(), grupo.getCiclo(), grupo.getCurso())) {
+            throw new GrupoExistenteException();
+        }
+
+        grupo = repositorioGrupo.save(grupo);//Guarda los datos y te devuelve el objeto grupo tal y como esta en la base de datos
+        
+        return grupo;
+    }
+
+    public Grupo crearGrupo(Grupo grupo) {
+        //Para que no se generen grupos iguales con distinto id, ejemplo IES VENTURA solo tiene una clase de DAW 2
+        //la clase existsByIesAndCicloAndCurso() tiene esa sintaxis especifica para que funciones
+        
         if (repositorioGrupo.existsByIesAndCicloAndCurso(grupo.getIes(), grupo.getCiclo(), grupo.getCurso())) {
             throw new GrupoExistenteException();
         }
