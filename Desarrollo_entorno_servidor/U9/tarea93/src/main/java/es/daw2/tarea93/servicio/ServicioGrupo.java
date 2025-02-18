@@ -20,8 +20,14 @@ public class ServicioGrupo implements IFSeervicioGrupo{
 
     @Override
     public Grupo borrarGrupo(Grupo g) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'borrarGrupo'");
+        Optional<Grupo> grupoOptional = repositorioGrupo.findById(g.getIdGrupo());
+
+        if (grupoOptional.isPresent()) {
+            repositorioGrupo.deleteById(g.getIdGrupo());
+            return grupoOptional.get();  // Retorna el grupo eliminado
+        } else {
+            return null;  // O puedes lanzar una excepción personalizada
+        }
     }
 
     @Override
@@ -32,9 +38,8 @@ public class ServicioGrupo implements IFSeervicioGrupo{
 
     @Override
     public List<Grupo> listaGrupo() {
-        Iterable<Grupo> todos= repositorioGrupo.findAll();
-        throw new UnsupportedOperationException("Unimplemented method 'anioDeGrupo'");
-        
+        List<Grupo> todos= (List<Grupo>) repositorioGrupo.findAll();
+        return todos;
     }
 
     @Override
