@@ -101,6 +101,6 @@ public class controladorGrupos {
 
     @DeleteMapping("borrarGrupo/{id}")
     public ResponseEntity<Grupo> borrarGrupo(@PathVariable Long id, @RequestBody Grupo grupo){
-        
+        return ResponseEntity.ok(grupo);
     }
 }

@@ -44,7 +44,7 @@ public class ServicioGrupo implements IFSeervicioGrupo{
     }
 
     public Grupo obtenerGrupoPorId(Long id) {
-        //optional=obliga a comprobar que se ha enviado un objeto o no puta
+        //optional=obliga a comprobar que se ha enviado un objeto o no
         Optional<Grupo>posibleGrupo = repositorioGrupo.findById(id); //esto devuelve un optional de grupo
 
         if(posibleGrupo.isEmpty()){//en el caso de que el Optional esté vacio, devuelve la excepcion
