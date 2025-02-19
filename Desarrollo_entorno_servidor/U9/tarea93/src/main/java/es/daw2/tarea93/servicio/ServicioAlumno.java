@@ -1,6 +1,7 @@
 package es.daw2.tarea93.servicio;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,14 +17,29 @@ public class ServicioAlumno implements IFServcioAlumno {
 
     @Override
     public List<Alumno> listaAlumno() {
-        List<Alumno> listaAlumnos = (List<Alumno>) repositorioAlumno.findAll();
-        
+        return (List<Alumno>) repositorioAlumno.findAll();
     }
 
     @Override
     public Alumno borrarAlumno(Alumno a) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'borrarAlumno'");
+        repositorioAlumno.delete(a);
+        return a;
     }
-    
+
+    public Optional<Alumno> obtenerAlumnoPorId(Long id) {
+        return repositorioAlumno.findById(id);
+    }
+
+    public Alumno crearAlumno(Alumno alumno) {
+        return repositorioAlumno.save(alumno);
+    }
+
+    public Alumno actualizarAlumno(Long id, Alumno alumno) {
+        if (repositorioAlumno.existsById(id)) {
+            alumno.setIdAlumno(id);
+            return repositorioAlumno.save(alumno);
+        } else {
+            return null;
+        }
+    }
 }
