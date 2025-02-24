@@ -58,8 +58,11 @@ public class controladorAlumnos {
 
     @PostMapping("/crearAlumno")
     public ResponseEntity<?> crearAlumno(@RequestBody Alumno alumno) {
+
         Alumno nuevoAlumno = servicioAlumno.crearAlumno(alumno);
+
         URI location = URI.create("/obtenerAlumno/" + nuevoAlumno.getIdAlumno());
+        
         return ResponseEntity.created(location).body(nuevoAlumno);
     }
 
