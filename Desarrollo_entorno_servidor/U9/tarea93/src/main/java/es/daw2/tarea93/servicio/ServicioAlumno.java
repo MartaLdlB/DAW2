@@ -31,7 +31,8 @@ public class ServicioAlumno implements IFServcioAlumno {
     }
 
     public Alumno crearAlumno(Alumno alumno) {
-        return repositorioAlumno.save(alumno);
+        alumno = repositorioAlumno.save(alumno);
+        return alumno;
     }
 
     public Alumno actualizarAlumno(Long id, Alumno alumno) {

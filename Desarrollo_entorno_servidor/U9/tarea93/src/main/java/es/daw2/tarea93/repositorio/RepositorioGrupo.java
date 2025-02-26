@@ -9,6 +9,7 @@ import es.daw2.tarea93.modelo.Grupo;
 public interface RepositorioGrupo extends CrudRepository<Grupo, Long>{
 
     public boolean existsByIesAndCicloAndCurso(String ies, String ciclo, Integer curso);
+    public boolean existsByIes(String ies);
     /*
      * Un repositorio provee las funciones basicas de un CRUD
      * CREATE: save(argumento)

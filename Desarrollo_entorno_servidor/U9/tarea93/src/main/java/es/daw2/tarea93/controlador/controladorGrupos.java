@@ -74,13 +74,15 @@ public class controladorGrupos {
         grupo = servicioGrupo.crearGrupoVacio(grupo);
 
         //El objeto URI es un string con una direccion o recurso concreto, enviando esta URI que creamos puedes obtener el grupo con el ID que proporciones
+        //como ya hemos creado el recurso que utiliza un @GetMapping(grupos), lo que hacemos con esto
+        //es que si ponemos en el postman grupos/1 por ejemplo, nos dará el grupo con el id 1
         URI direccion = URI.create("grupos/" + grupo.getIdGrupo());
         return ResponseEntity.created(direccion).body(grupo);
     }
 
     @PostMapping("/crearGrupoConAlumnos")
-    public ResponseEntity<Grupo> crearGrupo(@RequestBody Grupo grupo) { 
- 
+    public ResponseEntity<Grupo> crearGrupo(@RequestBody Grupo grupo) {
+
         //comprobamos que el grupo introducido no tiene una ID predefinida
         if (grupo.getIdGrupo() != null) {
             throw new GrupoConIdException();
@@ -92,15 +94,35 @@ public class controladorGrupos {
         return ResponseEntity.created(direccion).body(grupo);
     }
 
-    //TODO 
     @PutMapping("actualizarGrupo/{id}")
     public ResponseEntity<Grupo> actualizarGrupo(@PathVariable Long id, @RequestBody Grupo grupoActualizado){
-        
-        return ResponseEntity.ok(grupoActualizado);
+        Grupo grupo = servicioGrupo.obtenerGrupoPorId(id);
+        if (grupo == null) {
+            return ResponseEntity.notFound().build();
+        }
+        grupo.setIes(grupoActualizado.getIes());
+        grupo.setCiclo(grupoActualizado.getCiclo());
+        grupo.setCurso(grupoActualizado.getCurso());
+        grupo = servicioGrupo.actualizarGrupo(grupo);
+        return ResponseEntity.ok(grupo);
     }
 
-    @DeleteMapping("borrarGrupo/{id}")
+    @DeleteMapping("borrarGrupo/{id}")//borrar grupo que no tenga alumnos
     public ResponseEntity<Grupo> borrarGrupo(@PathVariable Long id, @RequestBody Grupo grupo){
-        return ResponseEntity.ok(grupo);
+        //creo un grupo si ya existe uno con el ID proporcionado
+        Grupo grupoExistente = servicioGrupo.obtenerGrupoPorId(id);
+        //si se crea uno null
+        if (grupoExistente == null) {
+            return ResponseEntity.notFound().build();
+        }
+        //si el grupo tiene alumnos se lanza una excepcion
+        if (grupoExistente.getAlumnos() != null) {
+            throw new GrupoConAlumnosException();
+        }
+        
+        //si no es null y no tiene alumnos, llamamos a servicioGrupo donde borramos este grupo
+        grupoExistente = servicioGrupo.borrarGrupo(grupoExistente);
+        //devolvemos una ResponseEntity
+        return ResponseEntity.noContent().build();
     }
 }
