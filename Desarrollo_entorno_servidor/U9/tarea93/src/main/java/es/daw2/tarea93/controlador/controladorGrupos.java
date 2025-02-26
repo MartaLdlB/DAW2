@@ -19,9 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 //El controlador maneja la las peticiones http y la logica de las peticiones
-
-
-@RestController
+@RestController //indica que esta clase es un controlador y que responde a peticiones http
 public class controladorGrupos {
 
 
@@ -35,10 +33,11 @@ public class controladorGrupos {
   * borrar el grupo idGrupo, sólo si no tiene alumnos | borrarGrupo()
 */
 
-    @Autowired
+    @Autowired //sirve para la inyeccion de dependencias, es decir, 
+    //para que spring cree un objeto de la clase que le indiquemos y asi poder utilizar sus metodos
     private ServicioGrupo servicioGrupo;
 
-    @GetMapping("/grupos")
+    @GetMapping("/grupos") //@GetMapping → Define una ruta HTTP GET para leer recursos
     public ResponseEntity<?> obtenerGrupos() {
         Iterable<Grupo> it = null;
         it = servicioGrupo.listaGrupo();
@@ -50,7 +49,7 @@ public class controladorGrupos {
         return ResponseEntity.ok(it);
     }
 
-    @GetMapping("/grupos/{id}")
+    @GetMapping("/grupos/{id}") //@GetMapping → Define una ruta HTTP GET para leer recursos
     public ResponseEntity<Grupo> getGrupoId(@PathVariable Long id) {
         Grupo grupo = servicioGrupo.obtenerGrupoPorId(id);
         
@@ -58,10 +57,9 @@ public class controladorGrupos {
         return ResponseEntity.ok(grupo);
     }
     
-    @PostMapping("/crearGrupoVacio")
-    public ResponseEntity<Grupo> crearGrupoVacio(@RequestBody Grupo grupo) { //grupo vacio de alumnos jijiji
+    @PostMapping("/crearGrupoVacio") //@PostMapping → Define una ruta HTTP POST para crear un recurso
+    public ResponseEntity<Grupo> crearGrupoVacio(@RequestBody Grupo grupo) {//@RequestBody → Indica que los datos de entrada vienen en el cuerpo de la petición.
         //@RequestBody -> mapea un grupo desde el cuerpo de la peticion
-
 
         if (grupo.getIdGrupo() != null) {
             throw new GrupoConIdException();
@@ -80,7 +78,7 @@ public class controladorGrupos {
         return ResponseEntity.created(direccion).body(grupo);
     }
 
-    @PostMapping("/crearGrupoConAlumnos")
+    @PostMapping("/crearGrupoConAlumnos") //@PostMapping → Define una ruta HTTP POST para crear un recurso
     public ResponseEntity<Grupo> crearGrupo(@RequestBody Grupo grupo) {
 
         //comprobamos que el grupo introducido no tiene una ID predefinida
@@ -94,7 +92,7 @@ public class controladorGrupos {
         return ResponseEntity.created(direccion).body(grupo);
     }
 
-    @PutMapping("actualizarGrupo/{id}")
+    @PutMapping("actualizarGrupo/{id}") //@PutMapping → Define una ruta HTTP PUT para actualizar un recurso
     public ResponseEntity<Grupo> actualizarGrupo(@PathVariable Long id, @RequestBody Grupo grupoActualizado){
         Grupo grupo = servicioGrupo.obtenerGrupoPorId(id);
         if (grupo == null) {
@@ -107,7 +105,7 @@ public class controladorGrupos {
         return ResponseEntity.ok(grupo);
     }
 
-    @DeleteMapping("borrarGrupo/{id}")//borrar grupo que no tenga alumnos
+    @DeleteMapping("borrarGrupo/{id}")//@DeleteMapping → Define una ruta HTTP DELETE para eliminar un recurso
     public ResponseEntity<Grupo> borrarGrupo(@PathVariable Long id, @RequestBody Grupo grupo){
         //creo un grupo si ya existe uno con el ID proporcionado
         Grupo grupoExistente = servicioGrupo.obtenerGrupoPorId(id);

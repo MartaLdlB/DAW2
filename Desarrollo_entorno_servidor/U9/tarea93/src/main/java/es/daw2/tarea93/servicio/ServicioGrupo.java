@@ -15,9 +15,11 @@ import es.daw2.tarea93.repositorio.RepositorioGrupo;
 
 //el servicio se encarga de la logica de negocio (la logica de tu aplicacion)
 
-@Service //interfaz que es un BEAN que te permite usar @autowired
+@Service //marca esta clase como un servicio, gracias a esto podemos usar "autowired" en el controlador
 public class ServicioGrupo implements IFSeervicioGrupo{
-    @Autowired
+    @Autowired //esto es para que spring cree un objeto de la clase que le indiquemos y asi poder utilizar sus metodos
+
+    
     RepositorioGrupo repositorioGrupo;
 
     @Override
