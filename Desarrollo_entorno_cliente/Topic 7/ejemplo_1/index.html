@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let tiempo = 3000;
+        temporizador(tiempo);
+
+        function temporizador(tiempo) {
+            let promesa = new Promise((resolve, reject) => {
+                let temp= setTimeout(()=>{
+                    resolve("Tiempo concluido");
+                },tiempo);
+                
+
+                //esto no se ejecutaria nunca ya que el resolve en este caso si se ejecuta, esto solo saldria
+                //si no se ejecuta resolve y pasa el doble del tiempo establecido
+                let temp2 = setTimeout(()=>{
+                    reject("El tiempo no va bien");
+                }, tiempo*2);
+            })
+        }
+
+        
+    </script>
+</body>
+</html>
