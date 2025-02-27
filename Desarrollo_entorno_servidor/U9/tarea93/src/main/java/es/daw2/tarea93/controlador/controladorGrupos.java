@@ -36,7 +36,7 @@ public class controladorGrupos {
     private ServicioGrupo servicioGrupo;
 
     @GetMapping("/grupos") //@GetMapping → Define una ruta HTTP GET para leer recursos
-    public ResponseEntity<?> obtenerGrupos() {
+    public ResponseEntity<?> obtenerGrupos() { //ResponseEntity es una clase que crea una trama HTTP bien formada
         Iterable<Grupo> it = null;
         it = servicioGrupo.listaGrupo();
 
