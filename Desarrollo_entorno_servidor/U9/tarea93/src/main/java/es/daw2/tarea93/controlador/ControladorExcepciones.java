@@ -16,6 +16,7 @@ import es.daw2.tarea93.excepciones.NoExisteEseIesEnGruposException;
 @RestControllerAdvice //esta anotacion es la de excepciones, si hay una excepcion este te dice eh aqui estoy yo
 public class ControladorExcepciones {
 
+    //esta anotacion permite manejar excepciones de manera personalizada
     @ExceptionHandler(GrupoNoEncontradoException.class) //esta anotacion recibe como parametro la clase
     public ResponseEntity<String> grupoNoEncontrado() {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se ha encontrado el grupo");

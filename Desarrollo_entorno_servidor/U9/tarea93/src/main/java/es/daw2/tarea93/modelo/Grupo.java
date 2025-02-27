@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity //marca la clase como una tabla
 @Table(name = "Grupo")
 public class Grupo {
     @Id @GeneratedValue

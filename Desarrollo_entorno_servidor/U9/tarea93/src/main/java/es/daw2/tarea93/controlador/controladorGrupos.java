@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RestController //indica que esta clase es un controlador y que responde a peticiones http
 public class controladorGrupos {
 
-
-
 /*
   * obtener todos los Grupos | obtenerGrupos() [x]
   * obtener un grupo dado su id | obtenerGrupo() [x]
@@ -33,7 +31,7 @@ public class controladorGrupos {
   * borrar el grupo idGrupo, sólo si no tiene alumnos | borrarGrupo()
 */
 
-    @Autowired //sirve para la inyeccion de dependencias, es decir, 
+    @Autowired //sirve para la inyeccion de dependencias, es decir,
     //para que spring cree un objeto de la clase que le indiquemos y asi poder utilizar sus metodos
     private ServicioGrupo servicioGrupo;
 
@@ -59,7 +57,7 @@ public class controladorGrupos {
     
     @PostMapping("/crearGrupoVacio") //@PostMapping → Define una ruta HTTP POST para crear un recurso
     public ResponseEntity<Grupo> crearGrupoVacio(@RequestBody Grupo grupo) {//@RequestBody → Indica que los datos de entrada vienen en el cuerpo de la petición.
-        //@RequestBody -> mapea un grupo desde el cuerpo de la peticion
+                                                                                            //mapea un grupo desde el cuerpo de la peticion
 
         if (grupo.getIdGrupo() != null) {
             throw new GrupoConIdException();
@@ -75,6 +73,7 @@ public class controladorGrupos {
         //como ya hemos creado el recurso que utiliza un @GetMapping(grupos), lo que hacemos con esto
         //es que si ponemos en el postman grupos/1 por ejemplo, nos dará el grupo con el id 1
         URI direccion = URI.create("grupos/" + grupo.getIdGrupo());
+        //devolver respuesta 201 Created con la ubicación del recurso
         return ResponseEntity.created(direccion).body(grupo);
     }
 
