@@ -13,7 +13,7 @@ import es.daw2.tarea93.excepciones.NoExisteEseIesEnGruposException;
 import es.daw2.tarea93.modelo.Grupo;
 import es.daw2.tarea93.repositorio.RepositorioGrupo;
 
-//el servicio se encarga de la logica de negocio (la logica de tu aplicacion)
+//el servicio se encarga de la logica de negocio (la logica de la aplicacion)
 
 @Service //marca esta clase como un servicio, gracias a esto podemos usar "autowired" en el controlador
 public class ServicioGrupo implements IFSeervicioGrupo{
