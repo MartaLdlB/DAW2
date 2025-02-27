@@ -28,7 +28,7 @@ public class ServicioGrupo implements IFSeervicioGrupo{
             repositorioGrupo.deleteById(grupoBorrar.getIdGrupo());
             return grupoOptional.get();  // Retorna el grupo eliminado
         } else {
-            return null;  // O puedes lanzar una excepción personalizada
+            return null;
         }
     }
 
