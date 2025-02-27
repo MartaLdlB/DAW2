@@ -17,29 +17,27 @@ Llamar a gestionarDescarga() para ejecutar el proceso.
 
 */
 
-function pedirDatos() {
-    return new Promise((resolve, reject) => {
-    setTimeout(() => {
-        const exito = true; // Cambia a false para simular un error
+function descargarArchivo(){
+    let promesa = new Promise((resolve, reject)=> {
+        let temp1 = setTimeout(() => {
+            clearTimeout(temp2);
+            resolve("Descarga completada");
+        },3000);
 
-        if (exito) {
-        resolve("Datos recibidos correctamente");
-        } else {
-        reject("Error al obtener los datos");
-        }
-    }, 2000);
-    });
+        let temp2 = setTimeout(()=>{
+            clearTimeout(temp1);
+            reject("Fallo en la descarga");
+        },6000);
+    })
+    return promesa;
 }
 
-  // Usando la promesa
-pedirDatos()
+async function gestionarDescarga() {
 
-    //este .then(resultado) va a imprimir el mensaje de la promesa que hay en la funcion si es resolve, se añadie al mensaje de la promesa 
-    //al console.log 
-    .then((resultado) => {
-    console.log("Éxito:", resultado);
-    })
-    //en este caso el .catch(error) captura el reject, el cual en el console.log() imprime el mensaje indicado en el catch mas el puesto en la promesa en el caso de error
-    .catch((error) => {
-    console.log("Error:", error);
-    });
+    console.log("Iniciando la descarga...");
+    let mensaje = await descargarArchivo();
+    console.log(mensaje);
+    
+}
+
+gestionarDescarga();
