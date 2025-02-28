@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation</title>
+    <style>
+     
+        div {
+            width: 100px;
+            height: 58px;
+            background-color: red;
+            font-weight: bold;
+            position: relative;
+            animation-name: mymove;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        
+        #div1 {
+            animation-timing-function: linear;
+        }
+
+        #div2 {
+            animation-timing-function: ease;
+        }
+
+        #div3 {
+            animation-timing-function: ease-in;
+        }
+
+        #div4 {
+            animation-timing-function: ease-out;
+        }
+
+        #div5 {
+            animation-timing-function: ease-in-out;
+        }
+
+
+        @keyframes mymove {
+            from {
+                left: 0px;
+            }
+            to {
+                left: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Animation</h1>
+    <p>La propiedad animation-timing-function especifica la curva de velocidad. En el ejemplo siguiente se muetsran algunas de las diferentes curvas que pueden utilizar:</p>
+
+    <div id="div1">Linear</div>
+    <div id="div2">Ease</div>
+    <div id="div3">Ease-in</div>
+    <div id="div4">Ease-out</div>
+    <div id="div5">Ease-in-out</div>
+</body>
+</html>

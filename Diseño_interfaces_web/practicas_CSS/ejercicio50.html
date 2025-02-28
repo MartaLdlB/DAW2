@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip Básico</title>
+    <style>
+      
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black; 
+        }
+
+    
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+        
+            position: absolute;
+            z-index: 1;
+            
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+    </style>
+</head>
+<body style="text-align:center;">
+
+    <h2>Tooltip Básico</h2>
+    <p>Pasa el mouse sobre el texto a continuación:</p>
+
+    <div class="tooltip">
+        Pasa el mouse sobre mí
+        <span class="tooltiptext">Texto del tooltip</span>
+    </div>
+
+    <p>Nota que el tooltip está posicionado encima del texto.</p>
+
+</body>
+</html>
