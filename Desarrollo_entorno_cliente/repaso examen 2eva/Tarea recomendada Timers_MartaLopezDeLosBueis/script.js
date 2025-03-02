@@ -21,11 +21,11 @@ setTimeout(function(){
 setTimeout(function(){
     const respuesta = confirm("¿Abrir Google en una nueva pestaña?");
     if (respuesta) {
-        //Si se acepta, abrir Google en una nueva pestaña
+        //abrir Google en una nueva pestaña
         window.open("https://www.google.com/?hl=es");
     } else {
-        //Si se rechaza, abrir DuckDuckGo en la misma pestaña
+        //abrir DuckDuckGo en la misma pestaña
         window.location.href = "https://duckduckgo.com";
     }
-},8000); //Pongo 8 segundos para tener en cuenta los 3 segundos del anterior, asi empieza 5 segundos segun muestra el navegador
+},8000); //pongo 8 segundos para tener en cuenta los 3 segundos del anterior, asi empieza 5 segundos segun muestra el navegador
 
