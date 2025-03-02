@@ -1,0 +1,36 @@
+Configurar Spring boot
+**********************
+
+Spring Boot es un framework basado en Spring que permite 
+desarrollar aplicaciones en Java.
+
+En este caso usamos Visual Studio Code
+**************************************
+
+Instalamos la extensiones llamadas:
+	-Extension Pack for Java Auto Config -> Este es un conjunto de extensiones para 
+						programar en Java desde VSCode desarrollado por Microsoft
+						Este contiene JDK Auto-Configuration, Extension Pack for Java y Spring Boot Extension pack
+
+	-Spring Initializr Java Support -> Esta extensión de VSCode que permite crear proyectos Spring Boot de manera rápida
+
+	-Spring Boot Tools -> Esta extensión mejora la experiencia de desarrollo con Spring Boot.
+
+	-Spring Boot Dashboard -> Proporciona una interfaz visual para administrar y monitorear aplicaciones Spring Boot.
+
+
+
+Para crear el primer proyecto, en la esquina superior izquierda dentro de VSCode, podemos encontrar la pestaña:
+	->View > Paleta de comandos
+	En la barra del buscador de VSCode aparecera ">" Seguido de esta flecha escribimos Spring Initializr.
+	Nos dara la opcion de crear un proyecto con Maven, el cual es el builder que vamos a emplear.
+	-Nos pedira seleccionar una version, la primera opcion es la mas actual
+	-A continuacion pedira seleccionar el lenguaje con el que vamos a trabajar, en nuestro caso Java
+	-Group id: para estas tareas usaremos es.daw2
+	-artifact: Indicamos el nombre del proyecto
+	-empaquetado: Jar
+	-Version de Java: 17 o 21 
+	-Dependencias: Comenzaremos por Spring web, la cual es la que se utilizar para hacer proyectos web con Java
+
+Una vez terminados estos pasos tenemos las carpetas creadas para empezar a desarrollar nuestro proyecto.
+	
