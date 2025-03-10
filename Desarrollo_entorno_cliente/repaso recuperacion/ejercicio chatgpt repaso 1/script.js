@@ -46,7 +46,7 @@ function Betis(){
         
         this.arrayJugadores.forEach(jugador => {
             let li = document.createElement("li");
-            li.textContent = jugador;
+            li.textContent = jugador.nombre;
             lista.appendChild(li);
         });
         document.body.appendChild(lista);
@@ -61,23 +61,49 @@ function Betis(){
                 reject("Fichaje fallido");
             }
 
-            return promesa
+            
+        })
+        return promesa
                 .then((mensaje)=>(alert(mensaje)))
                 .catch((mensaje)=>(alert(mensaje)));
 
-        })
-        
     }
 
     this.parpadearJugadores = function(){
         setInterval(()=>{
             let numero = 0;
             if(numero==0){
-                
-                this.mostrarJugadores;
+                this.mostrarJugadores();
+                numero = 1;
+            }else{
+                document.body.innerHTML = "";
+                numero = 0;
             }
-        },1000)
+        },1000);
     }
+}
 
+let botonAgregar = document.getElementById("agregar");
+let nombreJugador = botonAgregar.addEventListener("click",obtenerNombre);
 
+let equipoBetis = new Betis();
+
+let nuevoJugador = new Jugador(nombreJugador);
+
+let ficharJugador = nuevoJugador.fichaje();
+if(ficharJugador){
+    equipoBetis.ficharJugador(nuevoJugador);
+    equipoBetis.agregarJugador(nuevoJugador);
+}else{
+    equipoBetis.ficharJugador(nuevoJugador);
+}
+
+if(equipoBetis.arrayJugadores.length > 0){
+    equipoBetis.mostrarJugadores();
+}
+
+function obtenerNombre(){
+    let nombre;
+    nombre = document.getElementById("nombre").value;
+    return nombre;
 }
