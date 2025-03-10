@@ -1,0 +1,95 @@
+<?php
+session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: login.php");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Días</title>
+    <link rel="stylesheet" href="css/css.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido, <?php echo $_SESSION['user']; ?>!</h1>
+        <a href="logout.php">Cerrar sesión</a>
+        
+        <h1>Contador de Días para un Evento</h1>
+        <input type="text" id="nombreEvento" placeholder="Nombre del evento">
+        <input type="date" id="fechaEvento">
+        <button onclick="calcularDias()">Calcular</button>
+        <button onclick="guardarEvento()">Guardar Evento</button>
+        <p id="resultado"></p>
+        
+        <h2>Eventos Guardados</h2>
+        <ul id="eventosGuardados"></ul>
+    </div>
+
+    <script>
+        function calcularDias() {
+            let fechaInput = document.getElementById('fechaEvento').value;
+            if (!fechaInput) {
+                document.getElementById('resultado').innerText = "Por favor, selecciona una fecha.";
+                return;
+            }
+            let fechaEvento = new Date(fechaInput);
+            let fechaHoy = new Date();
+            
+            fechaHoy.setHours(0, 0, 0, 0);
+            fechaEvento.setHours(0, 0, 0, 0);
+            
+            let diferencia = fechaEvento - fechaHoy;
+            let diasFaltantes = Math.ceil(diferencia / (1000 * 60 * 60 * 24));
+            
+            if (diasFaltantes > 0) {
+                document.getElementById('resultado').innerText = `Faltan ${diasFaltantes} días para tu evento.`;
+            } else if (diasFaltantes === 0) {
+                document.getElementById('resultado').innerText = "¡Hoy es el día del evento!";
+            } else {
+                document.getElementById('resultado').innerText = "El evento ya pasó.";
+            }
+        }
+
+        function guardarEvento() {
+            let nombreInput = document.getElementById('nombreEvento').value;
+            let fechaInput = document.getElementById('fechaEvento').value;
+            if (!nombreInput || !fechaInput) {
+                alert("Por favor, ingresa un nombre y una fecha antes de guardar.");
+                return;
+            }
+            
+            let eventos = JSON.parse(localStorage.getItem('eventosGuardados')) || [];
+            eventos.push({ nombre: nombreInput, fecha: fechaInput });
+            localStorage.setItem('eventosGuardados', JSON.stringify(eventos));
+            alert("Evento guardado correctamente.");
+            mostrarEventos();
+        }
+
+        function mostrarEventos() {
+            let eventos = JSON.parse(localStorage.getItem('eventosGuardados')) || [];
+            let listaEventos = document.getElementById('eventosGuardados');
+            listaEventos.innerHTML = "";
+            eventos.forEach(evento => {
+                let fechaEvento = new Date(evento.fecha);
+                let fechaHoy = new Date();
+                fechaHoy.setHours(0, 0, 0, 0);
+                fechaEvento.setHours(0, 0, 0, 0);
+                let diferencia = fechaEvento - fechaHoy;
+                let diasFaltantes = Math.ceil(diferencia / (1000 * 60 * 60 * 24));
+                let mensaje = diasFaltantes > 0 ? `Faltan ${diasFaltantes} días` : (diasFaltantes === 0 ? "¡Hoy es el evento!" : "El evento ya pasó");
+                
+                let li = document.createElement('li');
+                li.textContent = `${evento.nombre} - ${evento.fecha} (${mensaje})`;
+                listaEventos.appendChild(li);
+            });
+        }
+
+        window.onload = mostrarEventos;
+    </script>
+</body>
+</html>
