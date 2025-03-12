@@ -1,83 +1,61 @@
-* {
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-body {
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    background: linear-gradient(135deg, #ff416c, #ff4b2b);
-    color: white;
-    height: 100vh;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+}
+.titulo{
+    color:rgb(255, 255, 255);
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+}
+header, footer {
+    background-color: #6a0dad;
+    color: #fff;
+    text-align: center;
+    padding: 15px 20px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+}
+header {
+    top: 0;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+}
+.header-buttons {
+    display: flex;
+    gap: 10px;
+}
+footer {
+    bottom: 0;
 }
 .container {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    width: 80%;
-    max-width: 500px;
-}
-h1 {
-    font-size: 28px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-input, button {
-    padding: 12px;
-    margin: 10px 0;
-    font-size: 16px;
+    max-width: 800px;
     width: 100%;
-    border: none;
-    border-radius: 5px;
-}
-input {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 100px auto 60px;
     text-align: center;
 }
-input::placeholder {
-    color: #ccc;
+h1, h2 {
+    color: #6a0dad;
 }
-button {
-    background: #ff4b2b;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-button:hover {
-    background: #ff416c;
-}
-#resultado {
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 20px;
-}
-#eventosGuardados {
-    margin-top: 20px;
-    text-align: left;
-}
-ul {
-    list-style: none;
-    padding: 0;
-}
-li {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
+.clock {
+    font-size: 48px;
+    color: #6a0dad;
     text-align: center;
+    margin-top: 20px;
 }
-a {
-    color: white;
-    text-decoration: none;
+#cuentaRegresiva {
+    font-size: 18px;
     font-weight: bold;
     margin-top: 10px;
-    display: inline-block;
+    color: #6a0dad;
 }
