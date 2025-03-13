@@ -42,45 +42,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login y Registro</title>
+    <title>Login - Contador de Días</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            max-width: 400px;
-            width: 100%;
-        }
-        .card {
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../assets/css/estilos.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="card text-center">
-            <h2 class="mb-3">Login / Registro</h2>
+        <div class="login-card">
+            <h2>Login</h2>
             <?php if (!empty($mensaje)) : ?>
                 <div class="alert alert-info"><?php echo $mensaje; ?></div>
             <?php endif; ?>
-            <form method="POST">
-                <div class="mb-3">
-                    <input type="text" name="usuario" class="form-control" placeholder="Usuario" required>
+            <form action="login.php" method="post">
+                <div class="form-group">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="usuario" class="form-control" required>
                 </div>
-                <div class="mb-3">
-                    <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
                 </div>
-                <button type="submit" name="tipo" value="login" class="btn btn-primary w-100 mb-2">Iniciar Sesión</button>
-                <button type="submit" name="tipo" value="registro" class="btn btn-success w-100">Registrarse</button>
+                <button type="submit" name="tipo" value="login" class="btn btn-primary">Iniciar Sesión</button>
+                <button type="submit" name="tipo" value="registro" class="btn btn-success">Registrarse</button>
             </form>
         </div>
     </div>
