@@ -1,0 +1,16 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+# Permitir acceso directo a archivos y directorios existentes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Permitir acceso a archivos CSS y JS
+<FilesMatch "\.(css|js)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# Configurar tipos MIME
+AddType text/css .css
+AddType application/javascript .js 
